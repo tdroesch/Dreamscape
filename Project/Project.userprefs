@@ -1,8 +1,9 @@
 ﻿<Properties>
   <MonoDevelop.Ide.Workspace />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Editor\CreateNewCard.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="..\..\..\Q08 2014 Summer\VG3315 Programming for Shading II\Work\Final\Assets\Shaders\Test2.shader">
     <Files>
-      <File FileName="Assets\Editor\CreateNewCard.cs" Line="2" Column="19" />
+      <File FileName="..\..\..\Q08 2014 Summer\VG3315 Programming for Shading II\Work\Final\Assets\Shaders\Test2.shader" Line="94" Column="21" />
+      <File FileName="..\..\..\Q08 2014 Summer\VG3315 Programming for Shading II\Work\Final\Assets\Shaders\Projection Bumpy Surfaces.shader" Line="157" Column="51" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
