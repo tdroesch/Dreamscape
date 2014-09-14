@@ -1,9 +1,11 @@
 ﻿<Properties>
-  <MonoDevelop.Ide.Workspace />
-  <MonoDevelop.Ide.Workbench ActiveDocument="..\..\..\Q08 2014 Summer\VG3315 Programming for Shading II\Work\Final\Assets\Shaders\Test2.shader">
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Scripts\TestClass.cs">
     <Files>
-      <File FileName="..\..\..\Q08 2014 Summer\VG3315 Programming for Shading II\Work\Final\Assets\Shaders\Test2.shader" Line="94" Column="21" />
-      <File FileName="..\..\..\Q08 2014 Summer\VG3315 Programming for Shading II\Work\Final\Assets\Shaders\Projection Bumpy Surfaces.shader" Line="157" Column="51" />
+      <File FileName="Assets\Scripts\CardEffect.cs" Line="6" Column="60" />
+      <File FileName="Assets\Scripts\CardEventManager.cs" Line="42" Column="3" />
+      <File FileName="Assets\Scripts\DrawOnDeath.cs" Line="1" Column="1" />
+      <File FileName="Assets\Scripts\TestClass.cs" Line="18" Column="1" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
