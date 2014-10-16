@@ -15,7 +15,7 @@ written I'm sure.
 
 #### **Utilities/Tools:**
 
-- CardMaker - SCRAPPED
+- ~~CardMaker~~ - SCRAPPED
 - Click/Select/Drag Cards
 - Game Settings
 
