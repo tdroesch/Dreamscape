@@ -25,7 +25,7 @@ written I'm sure.
 - Player
 - Card
 - ICardContainer
-- Hand/Deck/SubConscious - Dori
+-- Hand/Deck/SubConscious - Dori
 - Turn
 - FSM - Tyler
 
