@@ -13,20 +13,31 @@ written I'm sure.
 
 Dreamscape Scripts
 
-Utilities/Tools
--CardMaker - SCRAPPED
--Click/Select/Drag Cards
--Game Settings
+#### **Utilities/Tools:**
 
-Game Play
--Game
--Player
--Card
--ICardContainer
---Hand/Deck/SubConscious
--Turn
--FSM - Tyler
+- CardMaker - SCRAPPED
 
-Graphical
--Particle Emitter
--Menus
+- Click/Select/Drag Cards
+
+- Game Settings
+
+#### **Game Play:**
+
+- Game
+
+- Player
+
+- Card
+
+- ICardContainer
+
+- Hand/Deck/SubConscious - Dori
+
+- Turn
+
+- FSM - Tyler
+
+#### **Graphical:**
+
+- Particle Emitter
+- Menus
