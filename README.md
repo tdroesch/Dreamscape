@@ -16,25 +16,17 @@ Dreamscape Scripts
 #### **Utilities/Tools:**
 
 - CardMaker - SCRAPPED
-
 - Click/Select/Drag Cards
-
 - Game Settings
 
 #### **Game Play:**
 
 - Game
-
 - Player
-
 - Card
-
 - ICardContainer
-
 - Hand/Deck/SubConscious - Dori
-
 - Turn
-
 - FSM - Tyler
 
 #### **Graphical:**
