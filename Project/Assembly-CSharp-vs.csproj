@@ -5,11 +5,11 @@
 	<Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
 	<ProductVersion>10.0.20506</ProductVersion>
 	<SchemaVersion>2.0</SchemaVersion>
-	<ProjectGuid>{6CDB4719-1D28-38FF-BF92-A07FF7EAE25F}</ProjectGuid>
+	<ProjectGuid>{5B9FF267-005F-A3BF-219E-FEAE2D8C894F}</ProjectGuid>
 	<OutputType>Library</OutputType>
 	<AppDesignerFolder>Properties</AppDesignerFolder>
 	<RootNamespace></RootNamespace>
-	<AssemblyName>Assembly-CSharp-Editor</AssemblyName>
+	<AssemblyName>Assembly-CSharp</AssemblyName>
 	<TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
 	<FileAlignment>512</FileAlignment>
 	<BaseDirectory>Assets</BaseDirectory>
@@ -46,14 +46,16 @@
 	</Reference>
   </ItemGroup>
   <ItemGroup>
-     <Compile Include="Assets\Editor\CreateNewCard.cs" />
- <Reference Include="UnityEditor.Graphs">
- <HintPath>E:/Unity/Editor/Data/Managed/UnityEditor.Graphs.dll</HintPath>
- </Reference>
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="Assembly-CSharp-vs.csproj">
-      <Project>{5B9FF267-005F-A3BF-219E-FEAE2D8C894F}</Project>      <Name>Assembly-CSharp-vs</Name>    </ProjectReference>
+     <Compile Include="Assets\Scripts\Hand, Deck, Subconscious\Board.cs" />
+     <Compile Include="Assets\Scripts\Hand, Deck, Subconscious\Card.cs" />
+     <Compile Include="Assets\Scripts\Hand, Deck, Subconscious\Deck.cs" />
+     <Compile Include="Assets\Scripts\Hand, Deck, Subconscious\Field.cs" />
+     <Compile Include="Assets\Scripts\Hand, Deck, Subconscious\Game.cs" />
+     <Compile Include="Assets\Scripts\Hand, Deck, Subconscious\Hand.cs" />
+     <Compile Include="Assets\Scripts\Hand, Deck, Subconscious\ICardContainer.cs" />
+     <Compile Include="Assets\Scripts\Hand, Deck, Subconscious\IController.cs" />
+     <Compile Include="Assets\Scripts\Hand, Deck, Subconscious\Player.cs" />
+     <Compile Include="Assets\Scripts\Hand, Deck, Subconscious\Subconscious.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
