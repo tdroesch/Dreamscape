@@ -51,12 +51,16 @@
      <Compile Include="Assets\Scripts\CardEffects\DrawOnDeath.cs" />
      <Compile Include="Assets\Scripts\CardEffects\TestClass.cs" />
      <Compile Include="Assets\Scripts\FSM\DSActionInit.cs" />
+     <Compile Include="Assets\Scripts\FSM\DSActionNextTurn.cs" />
      <Compile Include="Assets\Scripts\FSM\DSStateMachine.cs" />
      <Compile Include="Assets\Scripts\FSM\FSMAction.cs" />
      <Compile Include="Assets\Scripts\FSM\FSMContext.cs" />
      <Compile Include="Assets\Scripts\FSM\FSMState.cs" />
      <Compile Include="Assets\Scripts\FSM\FSMTransition.cs" />
-     <Compile Include="Assets\Scripts\GameManager.cs" />
+     <Compile Include="Assets\Scripts\Game\Field.cs" />
+     <Compile Include="Assets\Scripts\Game\GameManager.cs" />
+     <Compile Include="Assets\Scripts\Game\ICardContainer.cs" />
+     <Compile Include="Assets\Scripts\Game\Player.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
