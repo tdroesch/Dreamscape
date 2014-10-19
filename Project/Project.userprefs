@@ -1,16 +1,17 @@
 ﻿<Properties>
-  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Scripts\FSM\DSActionNextTurn.cs">
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="MonoDevelop.Default" />
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Scripts\FSM\DSStateMachine.cs">
     <Files>
-      <File FileName="Assets\Scripts\FSM\DSActionInit.cs" Line="14" Column="20" />
-      <File FileName="Assets\Scripts\FSM\DSStateMachine.cs" Line="38" Column="3" />
-      <File FileName="Assets\Scripts\FSM\FSMAction.cs" Line="21" Column="6" />
-      <File FileName="f:\AI Classes\Dreamscape\Dreamscape\Project\Assets\Scripts\FSM\FSMContext.cs" Line="55" Column="75" />
-      <File FileName="Assets\Scripts\Game\Field.cs" Line="5" Column="2" />
-      <File FileName="Assets\Scripts\Game\Player.cs" Line="5" Column="1" />
-      <File FileName="Assets\Scripts\Game\GameManager.cs" Line="28" Column="3" />
-      <File FileName="Assets\Scripts\Game\ICardContainer.cs" Line="4" Column="26" />
-      <File FileName="Assets\Scripts\FSM\DSActionNextTurn.cs" Line="13" Column="3" />
+      <File FileName="Assets\Scripts\FSM\DSStateMachine.cs" Line="34" Column="48" />
+      <File FileName="Assets\Scripts\FSM\DSActionInit.cs" Line="1" Column="1" />
+      <File FileName="Assets\Scripts\Game\Field.cs" Line="1" Column="1" />
+      <File FileName="Assets\Scripts\Game\Player.cs" Line="1" Column="1" />
+      <File FileName="Assets\Scripts\Game\GameManager.cs" Line="1" Column="1" />
+      <File FileName="Assets\Scripts\Game\ICardContainer.cs" Line="1" Column="1" />
+      <File FileName="Assets\Scripts\FSM\DSActionNextTurn.cs" Line="1" Column="1" />
+      <File FileName="Assets\Scripts\FSM\DSActionEndTurn.cs" Line="1" Column="1" />
+      <File FileName="Assets\Scripts\FSM\DSActionStartTurn.cs" Line="1" Column="1" />
+      <File FileName="Assets\Scripts\FSM\DSActionGameOver.cs" Line="1" Column="1" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>

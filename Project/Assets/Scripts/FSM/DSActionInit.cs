@@ -10,7 +10,7 @@ class DSActionInit : FSMAction {
 
 	}
 
-	DSActionInit(object data){
+	public DSActionInit(object data){
 		this.data = data;
 	}
 }
