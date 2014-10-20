@@ -5,49 +5,43 @@ using System.Collections.Generic;
 public class Deck : MonoBehaviour, ICardContainer 
 {
 	private Game game;
-	private Card cards;
-	private int deckCount;
-
-	public GameObject DeckOne;
-	public GameObject cardPrefab;
-
-	// create a "deck" of cards
-	public List<Card> deck = new List<Card>();
+	private Card card;
+	private int cardCount;
+	
+	public GameObject cardPrefab; // For demo testing
+	public List<Card> deckOne = new List<Card>();
 
 	void Awake()
 	{
 		game = GameObject.Find ("GameManager").GetComponent<Game>();
+		card = GameObject.Find ("GameManager").GetComponent<Card> ();
 	}
 
 	void Start()
 	{
-		deckCount = 0;
-		DeckOne = this.gameObject;
+		cardCount = 0;
+
+		// Get how many decks are on the table 
+		GameObject[] numofdecks = GameObject.FindGameObjectsWithTag ("Deck");
+		this.gameObject.tag = "Deck";
+		this.gameObject.name = "Deck " + numofdecks.Length;
+	}
+
+	void Update()
+	{
+		// Start of game - deal cards to both decks
+		if (game.startGame) {
+
+		}
 	}
 
 	public void AddCard()
 	{
-		// add some demo cards to the "table"
-		GameObject indCard = Instantiate(cardPrefab, DeckOne.transform.position, Quaternion.identity) as GameObject;
-		indCard.name = gameObject.name + "_" + deckCount;
-		deckCount += 1;
+		cardCount += 1;
 	}
 
 	public void RemoveCard()
 	{
 
-		deckCount -= 1;
-	}
-
-	void Update()
-	{
-		if (game.startGame && deckCount < 30) {
-			AddCard();
-		}
-
-		// demo
-		if (Input.GetKeyDown (KeyCode.DownArrow)) {
-			RemoveCard();
-		}
 	}
 }
