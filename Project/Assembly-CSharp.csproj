@@ -46,7 +46,18 @@
 	</Reference>
   </ItemGroup>
   <ItemGroup>
+     <Compile Include="Assets\Scripts\CardEffects\CardEffect.cs" />
+     <Compile Include="Assets\Scripts\CardEffects\CardEventManager.cs" />
+     <Compile Include="Assets\Scripts\CardEffects\DrawOnDeath.cs" />
+     <Compile Include="Assets\Scripts\CardEffects\TestClass.cs" />
      <Compile Include="Assets\Scripts\CardSelection.cs" />
+     <Compile Include="Assets\Scripts\FSM\DSActionInit.cs" />
+     <Compile Include="Assets\Scripts\FSM\DSStateMachine.cs" />
+     <Compile Include="Assets\Scripts\FSM\FSMAction.cs" />
+     <Compile Include="Assets\Scripts\FSM\FSMContext.cs" />
+     <Compile Include="Assets\Scripts\FSM\FSMState.cs" />
+     <Compile Include="Assets\Scripts\FSM\FSMTransition.cs" />
+     <Compile Include="Assets\Scripts\GameManager.cs" />
      <Compile Include="Assets\Scripts\Hand, Deck, Subconscious\Board.cs" />
      <Compile Include="Assets\Scripts\Hand, Deck, Subconscious\Card.cs" />
      <Compile Include="Assets\Scripts\Hand, Deck, Subconscious\Deck.cs" />
