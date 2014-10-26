@@ -3,9 +3,12 @@ using System.Collections;
 
 public class Card : MonoBehaviour 
 {
-	struct card {
-		public string Name;
-		public int ICost;
-		public int WCost;
-	};
+	public string Name;
+	public int ICost;
+	public int WCost;
+
+	void Start()
+	{
+		Name = gameObject.name;
+	}
 }
