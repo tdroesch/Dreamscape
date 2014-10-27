@@ -22,7 +22,7 @@ written I'm sure.
 
 #### **Game Play:**
 
-- Game
+- Game - Tyler
 - Player
 - Card
 - ICardContainer
