@@ -24,13 +24,13 @@ class DSStateMachine {
 	//The FSM Context
 	FSMContext context;
 
-	DSStateMachine (object data)
+	DSStateMachine (Player p1, Player p2, GameManager gm)
 	{
 		//Initialize the states
-		gameStart = new FSMState("Game Start", new DSActionStartTurn(), new DSActionEndTurn());
-		lightSleep = new FSMState("Light Sleep", new DSActionStartTurn(), new DSActionEndTurn());
-		deepSleep = new FSMState("Deep Sleep", new DSActionStartTurn(), new DSActionEndTurn());
-		remSleep = new FSMState("REM Sleep", new DSActionStartTurn(), new DSActionEndTurn());
+		gameStart = new FSMState("Game Start");
+		lightSleep = new FSMState("Light Sleep", new DSActionStartTurn(200), new DSActionEndTurn());
+		deepSleep = new FSMState("Deep Sleep", new DSActionStartTurn(500), new DSActionEndTurn());
+		remSleep = new FSMState("REM Sleep", new DSActionStartTurn(800), new DSActionEndTurn());
 		gameOver = new FSMState("Game Over", new DSActionGameOver());
 
 		nextTurn = new DSActionNextTurn();
@@ -60,7 +60,7 @@ class DSStateMachine {
 		remSleep.addTransition("Game Over", toGameOver);
 
 		//Initialize state and context
-		init = new DSActionInit(data);
+		init = new DSActionInit(p1, p2, gm);
 		context = new FSMContext(gameStart, init);
 	}
 
