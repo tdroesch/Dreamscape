@@ -18,15 +18,27 @@ written I'm sure.
 - ~~CardMaker~~ - SCRAPPED
 - Click/Select/Drag Cards
 - Game Settings
+<<<<<<< HEAD
 
 #### **Game Play:**
 
 - Game
+=======
+- XML Save Game Parser
+
+#### **Game Play:**
+
+- Game - Tyler
+>>>>>>> origin/master
 - Player
 - Card
 - ICardContainer
 -- Hand/Deck/SubConscious - Dori
+<<<<<<< HEAD
 - Turn
+=======
+- Turn - Tyler
+>>>>>>> origin/master
 - FSM - Tyler
 
 #### **Graphical:**
