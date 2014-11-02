@@ -7,6 +7,7 @@ public class Game : MonoBehaviour
 	public Player player2;
 	public Board board;
 	public bool startGame;
+	public bool resetGame;
 
 	public void FSM()
 	{
@@ -18,11 +19,8 @@ public class Game : MonoBehaviour
 		if (GUI.Button (new Rect (5, 5, 150, 30), "Start Game")) {
 			startGame = true;
 		}
-		if (GUI.Button (new Rect (5, 35, 150, 30), "Deal Cards")) {
-		
-		}
-		if (GUI.Button (new Rect (5, 65, 150, 30), "Restart")) {
-
+		if (GUI.Button (new Rect (5, 35, 150, 30), "Reset")) {
+			resetGame = true;
 		}
 	}
 }

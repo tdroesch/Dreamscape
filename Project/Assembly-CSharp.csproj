@@ -51,7 +51,6 @@
      <Compile Include="Assets\Scripts\CardEffects\DrawOnDeath.cs" />
      <Compile Include="Assets\Scripts\CardEffects\TestClass.cs" />
      <Compile Include="Assets\Scripts\CardSelection.cs" />
-     <Compile Include="Assets\Scripts\FSM\DSActionInit.cs" />
      <Compile Include="Assets\Scripts\FSM\DSStateMachine.cs" />
      <Compile Include="Assets\Scripts\FSM\FSMAction.cs" />
      <Compile Include="Assets\Scripts\FSM\FSMContext.cs" />
@@ -68,6 +67,7 @@
      <Compile Include="Assets\Scripts\Hand, Deck, Subconscious\IController.cs" />
      <Compile Include="Assets\Scripts\Hand, Deck, Subconscious\Player.cs" />
      <Compile Include="Assets\Scripts\Hand, Deck, Subconscious\Subconscious.cs" />
+     <None Include="Assets\Scripts\Hand, Deck, Subconscious\ChangeLog.txt" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

@@ -4,79 +4,86 @@ using System.Collections.Generic;
 
 public class Deck : MonoBehaviour, ICardContainer
 {
+	public string target;
+
 	public Game game;
 	public GameObject DeckOne;
 	public GameObject cardPrefab;
-	public int deckCount;
+	public int maxCards;
 	public bool isFull;
 	
 	public List<GameObject> deck = new List<GameObject>();
 
 	private Hand hand;
-	private Card card;
 
 	void Awake()
 	{
+		this.gameObject.tag = "Deck";
+		this.gameObject.name = "DeckOne";
+
+		// For demo purposes, only finds hand by tag
 		game = GameObject.Find ("GameManager").GetComponent<Game>();
 		hand = GameObject.Find ("Hand").GetComponent<Hand>();
-		card = GameObject.Find ("GameManager").GetComponent<Card> ();
 	}
 
 	void Start()
 	{
-		deckCount = 0;
+		maxCards = 50;
 		isFull = false;
-		this.gameObject.tag = "Deck";
-	}
 
-	public void AddCard()
-	{
-		for(int i = 1; i <= 50; i++) {
-			GameObject c = GameObject.Instantiate(cardPrefab, transform.position, transform.rotation) as GameObject;
-			c.name = "Card " + i;
-			deck.Add (c);
-			deckCount += 1;
-		}
-	}
-
-	public void RemoveCard()
-	{
-		int topCard = deckCount;
-
-		Debug.Log ("Removing card off the top of the deck...");
-		MoveCardToHand(topCard);
-
-		deck.RemoveAt(deckCount);
-	}
-
-	void MoveCardToHand(int _topCard)
-	{
-		GameObject c = GameObject.Find ("Card " + _topCard);
-		c.transform.Translate(Vector3.forward * 150 * Time.deltaTime); // TEST
-
-		hand.SendMessage("AddCard");
-		deckCount -= 1;
-	}
-
-	void InitialDeal()
-	{
-		// 5 cards are moved to hand off the top of the deck
-		for(int i = 1; i <= 5; i++) {
-			RemoveCard();
-		}
+		// For now, setting target to hand
+		target = hand.name;
 	}
 
 	void Update()
 	{
 		if(game.startGame && !isFull) {
 			Debug.Log ("Creating Deck...");
-			AddCard();
+			// Create the cards at the start of the game
+			for(int i = 1; i <= maxCards; i++) {
+				GameObject c = GameObject.Instantiate(cardPrefab, transform.position, transform.rotation) as GameObject;
+				c.transform.parent = this.gameObject.transform;
+				c.tag = "Deck";
+				c.name = "Card " + i;
+				// Add the cards to the list
+				deck.Add (c); 
+			}
 		}
-
+		
 		// Once deck has 50 cards, the deck is full and 5 cards are moved to hand
-		if(deckCount >= 50) {
+		if(deck.Count >= 50) {
 			isFull = true;
+			game.resetGame = false;
 			InitialDeal();
+		}
+	}
+
+	public void AddCard(GameObject _card)
+	{
+		// Parent the card under the deck
+		_card.transform.parent = this.gameObject.transform;
+		deck.Add (_card);
+		ChangeTag(_card);
+	}
+
+	public void RemoveCard(GameObject _card)
+	{
+		// Move the card to the deck's position
+		_card.transform.position = GameObject.Find(target).transform.position;
+		GameObject.Find (target).SendMessage("AddCard", _card);
+		deck.Remove(_card);
+	}
+
+	void ChangeTag(GameObject _card)
+	{
+		_card.tag = "Deck";
+	}
+
+	void InitialDeal()
+	{
+		// 5 cards are moved to hand off the top of the deck
+		for(int i = 1; i <= 5; i++) {
+			RemoveCard(GameObject.Find("Card " + i));
 		}
 	}
 }
