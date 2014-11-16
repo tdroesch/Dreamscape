@@ -50,6 +50,7 @@
      <Compile Include="Assets\Scripts\CardEffects\CardEventManager.cs" />
      <Compile Include="Assets\Scripts\CardEffects\DrawOnDeath.cs" />
      <Compile Include="Assets\Scripts\CardEffects\TestClass.cs" />
+     <Compile Include="Assets\Scripts\CardSelection.cs" />
      <Compile Include="Assets\Scripts\FSM\DSActionEndTurn.cs" />
      <Compile Include="Assets\Scripts\FSM\DSActionGameOver.cs" />
      <Compile Include="Assets\Scripts\FSM\DSActionInit.cs" />
@@ -62,8 +63,17 @@
      <Compile Include="Assets\Scripts\FSM\FSMTransition.cs" />
      <Compile Include="Assets\Scripts\Game\Field.cs" />
      <Compile Include="Assets\Scripts\Game\GameManager.cs" />
-     <Compile Include="Assets\Scripts\Game\ICardContainer.cs" />
-     <Compile Include="Assets\Scripts\Game\Player.cs" />
+     <Compile Include="Assets\Scripts\Hand, Deck, Subconscious\Board.cs" />
+     <Compile Include="Assets\Scripts\Hand, Deck, Subconscious\Card.cs" />
+     <Compile Include="Assets\Scripts\Hand, Deck, Subconscious\Deck.cs" />
+     <Compile Include="Assets\Scripts\Hand, Deck, Subconscious\Field.cs" />
+     <Compile Include="Assets\Scripts\Hand, Deck, Subconscious\Game.cs" />
+     <Compile Include="Assets\Scripts\Hand, Deck, Subconscious\Hand.cs" />
+     <Compile Include="Assets\Scripts\Hand, Deck, Subconscious\ICardContainer.cs" />
+     <Compile Include="Assets\Scripts\Hand, Deck, Subconscious\IController.cs" />
+     <Compile Include="Assets\Scripts\Hand, Deck, Subconscious\Player.cs" />
+     <Compile Include="Assets\Scripts\Hand, Deck, Subconscious\Subconscious.cs" />
+     <None Include="Assets\Scripts\Hand, Deck, Subconscious\ChangeLog.txt" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

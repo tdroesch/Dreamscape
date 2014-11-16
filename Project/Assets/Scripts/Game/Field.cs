@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-class Field {
+/*class Field {
 	ICardContainer p1Nightmares;
 	ICardContainer p1Dreams;
 	ICardContainer p1DEMs;
@@ -11,4 +11,4 @@ class Field {
 	ICardContainer p2DEMs;
 	ICardContainer p2Subconscious;
 
-}
+}*/
