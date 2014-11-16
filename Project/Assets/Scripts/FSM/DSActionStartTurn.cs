@@ -15,10 +15,10 @@ class DSActionStartTurn : FSMAction {
 		
 		//get the current player
 		GameManager gm = context.get ("Game Manager") as GameManager;
-		Player currentPlayer = context.get ("Player "+gm.getCurrentPlayer());
-		Player opposingPlayer = context.get ("Player "+(gm.getCurrentPlayer()+1)%2);
+		Player currentPlayer = (Player)context.get ("Player "+gm.getCurrentPlayer());
+		Player opposingPlayer = (Player)context.get ("Player "+(gm.getCurrentPlayer()+1)%2);
 		//opposing player cards do oppstart of turn effects.
-		foreach (Card card in opposingPlayer.getField())
+		/*foreach (Card card in opposingPlayer.getField())
 		{
 			card.getEventManager().OnOpponentStart();
 		}
@@ -30,7 +30,7 @@ class DSActionStartTurn : FSMAction {
 		//add imagination to the player
 		currentPlayer.addImagination(imaginationGain);
 		//player draws a card
-		currentPlayer.drawCard();
+		currentPlayer.drawCard();*/
 
 	}
 }

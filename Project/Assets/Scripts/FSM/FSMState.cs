@@ -11,7 +11,7 @@ namespace FSM
     /// Holds a Transition table the tranlates events into Transitions
     /// Instantiate with name and optional entry and exit actions.
     /// </summary>
-    sealed class FSMState
+	sealed class FSMState
     {
         private FSMAction entryAction;
         private FSMAction exitAction;
