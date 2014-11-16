@@ -24,7 +24,7 @@ class DSStateMachine {
 	//The FSM Context
 	FSMContext context;
 
-	DSStateMachine (Player p1, Player p2, GameManager gm)
+	public DSStateMachine (Player p1, Player p2, GameAttrManager gam)
 	{
 		//Initialize the states
 		gameStart = new FSMState("Game Start");
@@ -60,7 +60,7 @@ class DSStateMachine {
 		remSleep.addTransition("Game Over", toGameOver);
 
 		//Initialize state and context
-		init = new DSActionInit(p1, p2, gm);
+		init = new DSActionInit(p1, p2, gam);
 		context = new FSMContext(gameStart, init);
 	}
 

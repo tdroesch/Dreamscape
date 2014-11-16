@@ -5,10 +5,10 @@ class DSActionNextTurn : FSMAction {
 
 	public void execute (FSMContext context, object data)
 	{
-		GameManager gm = context.get("Game Manager") as GameManager;
-		if (gm != null) {
-			gm.nextPlayer ();
-			gm.PhaseTurns--;
+		GameAttrManager gam = context.get("Game Attribute Manager") as GameAttrManager;
+		if (gam != null) {
+			gam.nextPlayer ();
+			gam.PhaseTurns--;
 		}
 	}
 
