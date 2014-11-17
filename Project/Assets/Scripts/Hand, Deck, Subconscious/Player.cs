@@ -10,6 +10,11 @@ public class Player : MonoBehaviour
 	int will;
 	int imagination;
 
+	public int Imagination {
+		get{ return imagination; }
+		set{ imagination = value; }
+	}
+
 	public Player(int will, int imagination, Hand hand, Deck deck, Field field, Subconscious discard){
 		this.will = will;
 		this.imagination = imagination;
@@ -19,4 +24,9 @@ public class Player : MonoBehaviour
 		this.discard = discard;
 	}
 
+	public void DrawCard ()
+	{
+		hand.AddCard(deck.deck[0]);
+		deck.RemoveCard(deck.deck[0]);
+	}
 }

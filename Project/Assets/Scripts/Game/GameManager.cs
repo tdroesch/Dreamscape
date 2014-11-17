@@ -4,7 +4,8 @@ using FSM;
 using System;
 
 /// <summary>
-/// Game Manager to control game flow.
+/// Game Manager to control game initialization.
+/// Manages players connecting and input.
 /// </summary>
 
 
@@ -16,43 +17,12 @@ public class GameManager : MonoBehaviour {
 	/// <summary>
 	/// Player who plays first.
 	/// </summary>
-	Player player1;
+	IController player1;
 	/// <summary>
 	/// Player who plays second
 	/// </summary>
-	Player player2;
-	/// <summary>
-	/// The field that both players can see.
-	/// </summary>
-	Field field;
-	/// <summary>
-	/// Int represents who's turn it is
-	/// set to 0 or 1.
-	/// </summary>
-	int currentPlayer;
+	IController player2;
 
-	public int PhaseTurns {
-		get;
-		set;
-	}
-
-	public void init ()
-	{
-		throw new System.NotImplementedException ();
-	}
-/// <summary>
-/// Gets the current player as an Integer.
-/// </summary>
-/// <returns>0 or 1</returns>
-	public int getCurrentPlayer ()
-	{
-		throw new System.NotImplementedException ();
-	}
-
-	public void nextPlayer ()
-	{
-		throw new NotImplementedException ();
-	}
 
 	void Awake() {
 		stateMachine = new DSStateMachine(new Player(2000,0,new Hand(),new Deck(), new Field(),new Subconscious()),

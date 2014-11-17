@@ -16,10 +16,12 @@ class DSStateMachine {
 	FSMTransition toDeepSleep;
 	FSMTransition toRemSleep;
 	FSMTransition toGameOver;
+	FSMTransition gameStartToLightSleep;
 
 	//The Actions
 	FSMAction nextTurn;
 	FSMAction init;
+	FSMAction startGame;
 
 	//The FSM Context
 	FSMContext context;
@@ -34,7 +36,9 @@ class DSStateMachine {
 		gameOver = new FSMState("Game Over", new DSActionGameOver());
 
 		nextTurn = new DSActionNextTurn();
+		startGame = new DSActionGameStart(300,7);
 
+		gameStartToLightSleep = new FSMTransition(lightSleep, startGame);
 		toLightSleep = new FSMTransition(lightSleep, nextTurn);
 		toDeepSleep = new FSMTransition(deepSleep, nextTurn);
 		toRemSleep = new FSMTransition(remSleep, nextTurn);
@@ -42,7 +46,7 @@ class DSStateMachine {
 
 		//Regiser state Transitions
 		//Game Start
-		gameStart.addTransition("Start Game", toLightSleep);
+		gameStart.addTransition("Start Game", gameStartToLightSleep);
 
 		//Light Sleep
 		lightSleep.addTransition("Next Turn", toLightSleep);

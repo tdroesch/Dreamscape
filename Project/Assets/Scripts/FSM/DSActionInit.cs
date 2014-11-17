@@ -11,7 +11,7 @@ class DSActionInit : FSMAction {
 	public void execute (FSMContext context, object data){
 		context.put ("Player 1", p1);
 		context.put ("Player 2", p2);
-		this.gam.init();
+		this.gam.init(Random.Range(0,1),2);
 		context.put ("Game Attribute Manager", gam);
 	}
 

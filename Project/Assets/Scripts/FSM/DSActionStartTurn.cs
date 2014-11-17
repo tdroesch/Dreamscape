@@ -14,9 +14,9 @@ class DSActionStartTurn : FSMAction {
 		throw new System.NotImplementedException ();
 		
 		//get the current player
-		GameManager gm = context.get ("Game Manager") as GameManager;
-		Player currentPlayer = (Player)context.get ("Player "+gm.getCurrentPlayer());
-		Player opposingPlayer = (Player)context.get ("Player "+(gm.getCurrentPlayer()+1)%2);
+		GameAttrManager gam = context.get ("Game Attribute Manager") as GameAttrManager;
+		Player currentPlayer = (Player)context.get ("Player "+gam.CurrentPlayer);
+		Player opposingPlayer = (Player)context.get ("Player "+(gam.CurrentPlayer+1)%2);
 		//opposing player cards do oppstart of turn effects.
 		/*foreach (Card card in opposingPlayer.getField())
 		{

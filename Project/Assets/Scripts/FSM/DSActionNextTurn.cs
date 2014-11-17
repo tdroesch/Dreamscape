@@ -8,7 +8,7 @@ class DSActionNextTurn : FSMAction {
 		GameAttrManager gam = context.get("Game Attribute Manager") as GameAttrManager;
 		if (gam != null) {
 			gam.nextPlayer ();
-			gam.PhaseTurns--;
+			gam.PhaseTurns++;
 		}
 	}
 
