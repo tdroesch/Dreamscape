@@ -4,86 +4,97 @@ using System.Collections.Generic;
 
 public class Deck : MonoBehaviour, ICardContainer
 {
-	public string target;
+    public List<Card> deck = new List<Card>();
+    public CardSelection.Position _pos;
+    public int amount;
 
-	public Game game;
-	public GameObject DeckOne;
-	public GameObject cardPrefab;
-	public int maxCards;
-	public bool isFull;
-	
-	public List<GameObject> deck = new List<GameObject>();
+    public enum SortBy
+    {
+        Alpha,
+        Type,
+        Cost
+    };
 
-	private Hand hand;
+    void Update()
+    {
+        // INPUT FOR TESTING PURPOSES
+        if (Input.GetKeyDown(KeyCode.A))
+        {
+            // Add the selected card
+            AddCard();
+        }
 
-	void Awake()
-	{
-		this.gameObject.tag = "Deck";
-		this.gameObject.name = "DeckOne";
+        if (Input.GetKeyDown(KeyCode.S))
+        {
+            // Add card with a selection and position to pull from
+            AddCard(CardSelection.selectedCard, _pos);
+        }
 
-		// For demo purposes, only finds hand by tag
-		game = GameObject.Find ("GameManager").GetComponent<Game>();
-		hand = GameObject.Find ("Hand").GetComponent<Hand>();
-	}
+        if(Input.GetKeyDown(KeyCode.D))
+        {
+            // Add card with a selection, position, and amount of cards to pull
+            AddCard(CardSelection.selectedCard, _pos, amount);
+        }
 
-	void Start()
-	{
-		maxCards = 50;
-		isFull = false;
+        if(Input.GetKeyDown(KeyCode.F))
+        {
+            // Remove cards with only a selected card as the parameter
+        }
 
-		// For now, setting target to hand
-		target = hand.name;
-	}
+        // TESTING POSITION SELECTION
+        if(Input.GetKeyDown(KeyCode.Alpha1))
+        {
+            _pos = CardSelection.Position.top;
+        }
 
-	void Update()
-	{
-		if(game.startGame && !isFull) {
-			Debug.Log ("Creating Deck...");
-			// Create the cards at the start of the game
-			for(int i = 1; i <= maxCards; i++) {
-				GameObject c = GameObject.Instantiate(cardPrefab, transform.position, transform.rotation) as GameObject;
-				c.transform.parent = this.gameObject.transform;
-				c.tag = "Deck";
-				c.name = "Card " + i;
-				// Add the cards to the list
-				deck.Add (c); 
-			}
-		}
-		
-		// Once deck has 50 cards, the deck is full and 5 cards are moved to hand
-		if(deck.Count >= 50) {
-			isFull = true;
-			game.resetGame = false;
-			InitialDeal();
-		}
-	}
+        if (Input.GetKeyDown(KeyCode.Alpha2))
+        {
+            _pos = CardSelection.Position.middle;
+        }
 
-	public void AddCard(GameObject _card)
-	{
-		// Parent the card under the deck
-		_card.transform.parent = this.gameObject.transform;
-		deck.Add (_card);
-		ChangeTag(_card);
-	}
+        if (Input.GetKeyDown(KeyCode.Alpha3))
+        {
+            _pos = CardSelection.Position.bottom;
+        }
+    }
 
-	public void RemoveCard(GameObject _card)
-	{
-		// Move the card to the deck's position
-		_card.transform.position = GameObject.Find(target).transform.position;
-		GameObject.Find (target).SendMessage("AddCard", _card);
-		deck.Remove(_card);
-	}
+	public void AddCard()
+    {
+        Card card = new Card(name, Random.Range(0, 5), Random.Range(0, 10));
+        deck.Add(card);
+        card.Name = "Test Card " + deck.Count;
 
-	void ChangeTag(GameObject _card)
-	{
-		_card.tag = "Deck";
-	}
+        Debug.Log(card.Name + " has been added as the " + deck.Count + " item.");
+    }
 
-	void InitialDeal()
-	{
-		// 5 cards are moved to hand off the top of the deck
-		for(int i = 1; i <= 5; i++) {
-			RemoveCard(GameObject.Find("Card " + i));
-		}
-	}
+    public void AddCard(Card _card, CardSelection.Position _pos)
+    {
+        Card card = new Card(name, Random.Range(0, 5), Random.Range(0, 10));
+        Debug.Log(_pos);
+        int pos = deck.Count / (int)_pos;
+        deck.Insert(pos, card);
+        card.Name = "Test Card " + deck.Count;
+
+        Debug.Log (card.Name + " has been added at the " + pos + " position");
+    }
+
+    public void AddCard(Card _card, CardSelection.Position _pos, int _amount)
+    {
+
+    }
+
+    public void RemoveCard(Card _card)
+    {
+
+    }
+
+    void Shuffle()
+    {
+
+    }
+
+    void Sort()
+    {
+
+    }
 }

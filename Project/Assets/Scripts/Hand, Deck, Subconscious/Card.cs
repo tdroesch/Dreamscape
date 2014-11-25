@@ -1,14 +1,16 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class Card : MonoBehaviour 
+public class Card 
 {
 	public string Name;
-	public int ICost;
-	public int WCost;
+	public int iCost;
+	public int wCost;
 
-	void Start()
+	public Card(string name, int iCost, int wCost)
 	{
-		Name = gameObject.name;
+        this.Name = name;
+        this.iCost = iCost;
+        this.wCost = wCost;
 	}
 }

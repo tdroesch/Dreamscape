@@ -3,7 +3,9 @@ using System.Collections;
 
 public interface ICardContainer
 {
-	void AddCard(GameObject _data);
+	void AddCard();
+    void AddCard(Card _data, CardSelection.Position _pos);
+    void AddCard(Card _data, CardSelection.Position _pos, int _amount);
 
-	void RemoveCard(GameObject _data);
+	void RemoveCard(Card _data);
 }
