@@ -70,8 +70,21 @@ public class Deck : MonoBehaviour, ICardContainer
     public void AddCard(Card _card, CardSelection.Position _pos)
     {
         Card card = new Card(name, Random.Range(0, 5), Random.Range(0, 10));
+		int pos = 0;
         Debug.Log(_pos);
-        int pos = deck.Count / (int)_pos;
+
+		if((int)_pos == 0) {
+			pos = (deck.Count + 1) - deck.Count;
+		}
+
+		if((int)_pos == 1) {
+			pos = deck.Count / 2;
+		}
+
+		if((int)_pos == 2) {
+			pos = deck.Count;
+		}
+      
         deck.Insert(pos, card);
         card.Name = "Test Card " + deck.Count;
 
@@ -80,6 +93,26 @@ public class Deck : MonoBehaviour, ICardContainer
 
     public void AddCard(Card _card, CardSelection.Position _pos, int _amount)
     {
+		for(int i = 0; i <= _amount; i++) {
+			Card card = new Card(name, Random.Range(0, 5), Random.Range(0, 10));
+
+			int pos = 0;
+			Debug.Log(_pos);
+			
+			if((int)_pos == 0) {
+				pos = (deck.Count + 1) - deck.Count;
+			}
+			
+			if((int)_pos == 1) {
+				pos = deck.Count / 2;
+			}
+			
+			if((int)_pos == 2) {
+				pos = deck.Count;
+			}
+
+			deck.Insert(pos, card);
+		}
 
     }
 
@@ -87,6 +120,8 @@ public class Deck : MonoBehaviour, ICardContainer
     {
 
     }
+
+	// TODO Add RemoveCard overloaded functions
 
     void Shuffle()
     {

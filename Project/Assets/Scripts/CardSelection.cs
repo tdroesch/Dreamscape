@@ -15,8 +15,8 @@ public class CardSelection : MonoBehaviour
     public enum Position
     {
         top = 0,
-        middle = 2,
-        bottom
+        middle = 1,
+        bottom = 2
     };
 
 	void Awake()
