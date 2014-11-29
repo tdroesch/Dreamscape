@@ -47,7 +47,6 @@
   </ItemGroup>
   <ItemGroup>
      <Compile Include="Assets\Editor\CardCreatorWindow.cs" />
-     <None Include="Assets\Scripts\Hand, Deck, Subconscious\ChangeLog.txt" />
  <Reference Include="UnityEditor.Graphs">
  <HintPath>E:/Unity/Editor/Data/Managed/UnityEditor.Graphs.dll</HintPath>
  </Reference>

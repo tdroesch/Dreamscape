@@ -4,77 +4,28 @@ using System.Collections.Generic;
 
 public class Deck : MonoBehaviour, ICardContainer
 {
-    public List<Card> deck = new List<Card>();
-    public CardSelection.Position _pos;
-    public int amount;
+	public Card cardPrefab;
+	public List<Card> deck = new List<Card>();
 
-    public enum SortBy
-    {
-        Alpha,
-        Type,
-        Cost
-    };
-
-    void Update()
-    {
-        // INPUT FOR TESTING PURPOSES
-        if (Input.GetKeyDown(KeyCode.A))
-        {
-            // Add the selected card
-            AddCard();
-        }
-
-        if (Input.GetKeyDown(KeyCode.S))
-        {
-            // Add card with a selection and position to pull from
-            AddCard(CardSelection.selectedCard, _pos);
-        }
-
-        if(Input.GetKeyDown(KeyCode.D))
-        {
-            // Add card with a selection, position, and amount of cards to pull
-            AddCard(CardSelection.selectedCard, _pos, amount);
-        }
-
-        if(Input.GetKeyDown(KeyCode.F))
-        {
-            // Remove cards with only a selected card as the parameter
-        }
-
-        // TESTING POSITION SELECTION
-        if(Input.GetKeyDown(KeyCode.Alpha1))
-        {
-            _pos = CardSelection.Position.top;
-        }
-
-        if (Input.GetKeyDown(KeyCode.Alpha2))
-        {
-            _pos = CardSelection.Position.middle;
-        }
-
-        if (Input.GetKeyDown(KeyCode.Alpha3))
-        {
-            _pos = CardSelection.Position.bottom;
-        }
-    }
-
+	// Add a card to the top of the deck 
 	public void AddCard()
     {
-        Card card = new Card(name, Random.Range(0, 5), Random.Range(0, 10));
-        deck.Add(card);
-        card.Name = "Test Card " + deck.Count;
+		Card card = Instantiate(cardPrefab, transform.position, transform.rotation) as Card;
 
-        Debug.Log(card.Name + " has been added as the " + deck.Count + " item.");
+        deck.Add(card);
+		card.GetComponent<Card>().Name = "Test Card " + deck.Count;
+		card.transform.parent = this.gameObject.transform;
     }
 
-    public void AddCard(Card _card, CardSelection.Position _pos)
+	// Add a selected card to the top, middle, or bottom of the deck
+	public void AddCard(Card _card, Player.Position _pos)
     {
-        Card card = new Card(name, Random.Range(0, 5), Random.Range(0, 10));
+		Card card = Instantiate(cardPrefab, transform.position, transform.rotation) as Card;
 		int pos = 0;
         Debug.Log(_pos);
 
 		if((int)_pos == 0) {
-			pos = (deck.Count + 1) - deck.Count;
+			pos = (deck.Count - deck.Count);
 		}
 
 		if((int)_pos == 1) {
@@ -86,21 +37,22 @@ public class Deck : MonoBehaviour, ICardContainer
 		}
       
         deck.Insert(pos, card);
-        card.Name = "Test Card " + deck.Count;
-
+		card.GetComponent<Card>().Name = "Test Card " + deck.Count;
+		card.transform.parent = this.gameObject.transform;
         Debug.Log (card.Name + " has been added at the " + pos + " position");
     }
 
-    public void AddCard(Card _card, CardSelection.Position _pos, int _amount)
+	// Add an amount of cards at the top, middle, or bottom of the deck
+	public void AddCard(Card _card, Player.Position _pos, Player.Amount _amount)
     {
-		for(int i = 0; i <= _amount; i++) {
-			Card card = new Card(name, Random.Range(0, 5), Random.Range(0, 10));
+		for(int i = 1; i <= (int)_amount; i++) {
+			Card card = Instantiate(cardPrefab, transform.position, transform.rotation) as Card;
 
 			int pos = 0;
 			Debug.Log(_pos);
 			
 			if((int)_pos == 0) {
-				pos = (deck.Count + 1) - deck.Count;
+				pos = (deck.Count - deck.Count);
 			}
 			
 			if((int)_pos == 1) {
@@ -112,16 +64,71 @@ public class Deck : MonoBehaviour, ICardContainer
 			}
 
 			deck.Insert(pos, card);
+			card.GetComponent<Card>().Name = "Test Card " + deck.Count;
+			card.transform.parent = this.gameObject.transform;
+		}
+    }
+
+	// Remove a card from the top of the deck
+    public void RemoveCard()
+    {
+		if((deck.Count) != 0) {
+			Destroy(deck[deck.Count - 1].gameObject);
+			deck.RemoveAt (deck.Count - 1);
+		}
+    }
+
+	// Remove a card from the top, middle, or bottom of the deck
+	public void RemoveCard(Player.Position _pos) 
+	{
+		int pos = 0;
+		Debug.Log(_pos);
+		
+		if((int)_pos == 0) {
+			pos = (deck.Count - deck.Count);
+		}
+		
+		if((int)_pos == 1) {
+			pos = deck.Count / 2;
+		}
+		
+		if((int)_pos == 2) {
+			pos = deck.Count;
 		}
 
-    }
+		Destroy(deck[pos].gameObject);
+		deck.RemoveAt ((int)_pos);
+	}
 
-    public void RemoveCard(Card _card)
-    {
+	// Remove the selected card (_data sent from CardSelection script)
+	public void RemoveCard(Card _data)
+	{
+		Destroy(_data.gameObject);
+		deck.Remove(_data);
+	}
 
-    }
+	// Remove a number of cards from the top, middle, or bottom of the deck
+	public void RemoveCard(Player.Position _pos, Player.Amount _amount)
+	{
+		int pos = 0;
 
-	// TODO Add RemoveCard overloaded functions
+		for(int i = 1; i < (int)_amount; i++) {
+			if((int)_pos == 0) {
+				pos = (deck.Count - deck.Count);
+			}
+			
+			if((int)_pos == 1) {
+				pos = deck.Count / 2;
+			}
+			
+			if((int)_pos == 2) {
+				pos = deck.Count;
+			}
+
+			Destroy(deck[pos].gameObject);
+			deck.RemoveAt(pos);
+		}
+	}
 
     void Shuffle()
     {

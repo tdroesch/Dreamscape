@@ -56,14 +56,11 @@
      <Compile Include="Assets\Scripts\FSM\FSMContext.cs" />
      <Compile Include="Assets\Scripts\FSM\FSMState.cs" />
      <Compile Include="Assets\Scripts\FSM\FSMTransition.cs" />
-     <Compile Include="Assets\Scripts\GameManager.cs" />
      <Compile Include="Assets\Scripts\Hand, Deck, Subconscious\Board.cs" />
      <Compile Include="Assets\Scripts\Hand, Deck, Subconscious\Card.cs" />
      <Compile Include="Assets\Scripts\Hand, Deck, Subconscious\Deck.cs" />
      <Compile Include="Assets\Scripts\Hand, Deck, Subconscious\ICardContainer.cs" />
-     <Compile Include="Assets\Scripts\Hand, Deck, Subconscious\IController.cs" />
-     <Compile Include="Assets\Scripts\Hand, Deck, Subconscious\Player.cs" />
-     <None Include="Assets\Scripts\Hand, Deck, Subconscious\ChangeLog.txt" />
+     <Compile Include="Assets\Scripts\Player.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

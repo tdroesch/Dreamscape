@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class Card 
+public class Card : MonoBehaviour
 {
 	public string Name;
 	public int iCost;

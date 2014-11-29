@@ -1,6 +1,13 @@
 ﻿<Properties>
   <MonoDevelop.Ide.Workspace />
-  <MonoDevelop.Ide.Workbench />
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Scripts\Player.cs">
+    <Files>
+      <File FileName="Assets\Scripts\Hand, Deck, Subconscious\Deck.cs" Line="37" Column="4" />
+      <File FileName="Assets\Scripts\CardSelection.cs" Line="12" Column="1" />
+      <File FileName="Assets\Scripts\Player.cs" Line="35" Column="3" />
+      <File FileName="Assets\Scripts\Hand, Deck, Subconscious\ICardContainer.cs" Line="13" Column="46" />
+    </Files>
+  </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
     <BreakpointStore />
   </MonoDevelop.Ide.DebuggingService.Breakpoints>
