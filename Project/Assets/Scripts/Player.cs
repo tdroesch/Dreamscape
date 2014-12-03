@@ -1,12 +1,15 @@
 ﻿using UnityEngine;
 using System.Collections;
+using System.Collections.Generic;
 
 public class Player : MonoBehaviour 
 {
+	public List<Card> playerCreated = new List<Card>();
     public Deck deck;
 	public Position _pos;
 	public Amount _amount;
 	public SortBy _sort;
+	public Card cardPrefab;
 
 	public enum Position
 	{
@@ -31,6 +34,14 @@ public class Player : MonoBehaviour
 		Cost
 	};
 
+	public enum Target
+	{
+		Deck,
+		Hand,
+		Field,
+		Subconscious
+	};
+
 	void Awake()
 	{
 		deck = this.gameObject.transform.FindChild("Deck").GetComponent<Deck>();
@@ -42,7 +53,7 @@ public class Player : MonoBehaviour
 		if (Input.GetKeyDown(KeyCode.A))
 		{
 			// Add the selected card
-			deck.AddCard();
+			deck.AddCard(CardSelection.selectedCard);
 		}
 		
 		if (Input.GetKeyDown(KeyCode.S))
@@ -60,7 +71,7 @@ public class Player : MonoBehaviour
 		if(Input.GetKeyDown(KeyCode.F))
 		{
 			// Remove a card off the top of the deck
-			deck.RemoveCard();
+			deck.RemoveCard(CardSelection.selectedCard);
 		}
 		
 		if(Input.GetKeyDown(KeyCode.G))
@@ -95,6 +106,23 @@ public class Player : MonoBehaviour
 		if (Input.GetKeyDown(KeyCode.Alpha3))
 		{
 			_pos = Position.bottom;
+		}
+	}
+
+	void OnGUI()
+	{
+		if(GUI.Button(new Rect(20, 20, 170, 20), "Create Fifty Cards")) {
+			for(int i = 0; i <= 50; i++) {
+				Card card = Instantiate(cardPrefab, transform.position, transform.rotation) as Card;
+				card.transform.parent = this.gameObject.transform;
+				playerCreated.Add (card);
+			}
+		}
+
+		if(GUI.Button(new Rect(20, 40, 170, 20), "Move a Card to the Deck")) {
+			deck.AddCard(playerCreated[0]);
+			playerCreated.Remove(playerCreated[0]);
+	
 		}
 	}
 }

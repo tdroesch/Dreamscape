@@ -59,6 +59,7 @@
      <Compile Include="Assets\Scripts\Hand, Deck, Subconscious\Board.cs" />
      <Compile Include="Assets\Scripts\Hand, Deck, Subconscious\Card.cs" />
      <Compile Include="Assets\Scripts\Hand, Deck, Subconscious\Deck.cs" />
+     <Compile Include="Assets\Scripts\Hand, Deck, Subconscious\Hand.cs" />
      <Compile Include="Assets\Scripts\Hand, Deck, Subconscious\ICardContainer.cs" />
      <Compile Include="Assets\Scripts\Player.cs" />
   </ItemGroup>
