@@ -6,17 +6,18 @@ class DSStateMachine {
 
 	//The States
 	FSMState gameStart;
-	FSMState lightSleep;
-	FSMState deepSleep;
-	FSMState remSleep;
+	FSMState turnStart;
+	FSMState turnDraw;
+	FSMState turnPlay;
+	FSMState turnEnd;
 	FSMState gameOver;
 
 	//The Transitions
-	FSMTransition toLightSleep;
-	FSMTransition toDeepSleep;
-	FSMTransition toRemSleep;
+	FSMTransition toTurnStart;
+	FSMTransition toTurnDraw;
+	FSMTransition toTurnPlay;
+	FSMTransition toTurnEnd;
 	FSMTransition toGameOver;
-	FSMTransition gameStartToLightSleep;
 
 	//The Actions
 	FSMAction nextTurn;
@@ -29,39 +30,37 @@ class DSStateMachine {
 	public DSStateMachine (Player p1, Player p2, GameAttrManager gam)
 	{
 		//Initialize the states
-		gameStart = new FSMState("Game Start");
-		lightSleep = new FSMState("Light Sleep", new DSActionStartTurn(200), new DSActionEndTurn());
-		deepSleep = new FSMState("Deep Sleep", new DSActionStartTurn(500), new DSActionEndTurn());
-		remSleep = new FSMState("REM Sleep", new DSActionStartTurn(800), new DSActionEndTurn());
+		gameStart = new FSMState("Game Start", new DSActionGameStart(0, 5));
+		turnStart = new FSMState ("Turn Start", new DSActionTurnStart());
+		turnDraw = new FSMState ("Turn Draw", new DSActionTurnDraw ());
+		turnPlay = new FSMState ("Turn Play", new DSActionTurnPlay ());
+		turnEnd = new FSMState ("Turn End", new DSActionTurnEnd ());
 		gameOver = new FSMState("Game Over", new DSActionGameOver());
 
-		nextTurn = new DSActionNextTurn();
-		startGame = new DSActionGameStart(300,7);
-
-		gameStartToLightSleep = new FSMTransition(lightSleep, startGame);
-		toLightSleep = new FSMTransition(lightSleep, nextTurn);
-		toDeepSleep = new FSMTransition(deepSleep, nextTurn);
-		toRemSleep = new FSMTransition(remSleep, nextTurn);
+		//Initialize the transitions
+		toTurnStart = new FSMTransition(turnStart);
+		toTurnDraw = new FSMTransition(turnDraw);
+		toTurnPlay = new FSMTransition(turnPlay);
+		toTurnEnd = new FSMTransition(turnEnd, new DSActionNextTurn());
 		toGameOver = new FSMTransition(gameOver);
 
 		//Regiser state Transitions
 		//Game Start
-		gameStart.addTransition("Start Game", gameStartToLightSleep);
+		gameStart.addTransition("Start Game", toTurnStart);
 
-		//Light Sleep
-		lightSleep.addTransition("Next Turn", toLightSleep);
-		lightSleep.addTransition("Next Phase", toDeepSleep);
-		lightSleep.addTransition("Game Over", toGameOver);
+		//Main Game Loop
+		turnStart.addTransition ("Start Draw", toTurnDraw);
+		turnDraw.addTransition ("Start Play", toTurnPlay);
+		turnPlay.addTransition ("Start End", toTurnEnd);
+		turnEnd.addTransition ("Next Turn", toTurnStart);
 
-		//Deep Sleep
-		deepSleep.addTransition("Next Turn", toDeepSleep);
-		deepSleep.addTransition("Next Phase", toRemSleep);
-		deepSleep.addTransition("Game Over", toGameOver);
+		//EndGame transitions
+		turnStart.addTransition ("End Game", toGameOver);
+		turnDraw.addTransition ("End Game", toGameOver);
+		turnPlay.addTransition ("End Game", toGameOver);
+		turnEnd.addTransition ("End Game", toGameOver);
 
-		//REM Sleep
-		remSleep.addTransition("Next Turn", toRemSleep);
-		remSleep.addTransition("Next Phase", toLightSleep);
-		remSleep.addTransition("Game Over", toGameOver);
+
 
 		//Initialize state and context
 		init = new DSActionInit(p1, p2, gam);

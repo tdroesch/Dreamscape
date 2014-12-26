@@ -9,7 +9,7 @@ public class DrawOnDeath : CardEffect {
 	/// </summary>
 	/// <param name="CEM">The CardEventManager that will be handling the effects.</param>
 	public override void RegisterEffects(CardEventManager CEM){
-		CEM.Death += DrawCard;
+		CEM.Discard += DrawCard;
 	}
 	/// <summary>
 	/// Has the player draw a card.
