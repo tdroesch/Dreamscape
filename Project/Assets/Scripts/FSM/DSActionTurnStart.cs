@@ -2,12 +2,7 @@ using UnityEngine;
 using System.Collections;
 using FSM;
 
-class DSActionStartTurn : FSMAction {
-	int imaginationGain;
-
-	public DSActionStartTurn(int ig){
-		imaginationGain = ig;
-	}
+class DSActionTurnStart : FSMAction {
 
 	public void execute (FSMContext context, object data)
 	{
