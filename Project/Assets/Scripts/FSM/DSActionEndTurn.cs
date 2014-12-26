@@ -2,7 +2,7 @@ using UnityEngine;
 using System.Collections;
 using FSM;
 
-class DSActionTurnEnd : FSMAction {
+class DSActionEndTurn : FSMAction {
 	public void execute (FSMContext context, object data)
 	{
 		throw new System.NotImplementedException ();

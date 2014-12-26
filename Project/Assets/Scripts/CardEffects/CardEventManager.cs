@@ -20,8 +20,7 @@ public class CardEventManager : MonoBehaviour {
 	/// </summary>
 	public event CardEvent 	TurnStart, TurnEnd, OpponentStart, OpponentEnd,
 							Attack, DealDamage, RecieveDamage,
-							Play, Discard, Draw,
-							AllyCardPlay, OpponentCardPlay, ChangeField,
+							Play, Death,
 							AbilityUse;
 	// Use this for initialization
 	void Start () {
@@ -80,32 +79,8 @@ public class CardEventManager : MonoBehaviour {
 	/// <summary>
 	/// Raises the death event.
 	/// </summary>
-	public void OnDiscard(){
-		Discard();
-	}
-	/// <summary>
-	/// Raises the draw event.
-	/// </summary>
-	public void OnDraw(){
-		Draw();
-	}
-	/// <summary>
-	/// Raises the ally card play event.
-	/// </summary>
-	public void OnAllyCardPlay(){
-		AllyCardPlay();
-	}
-	/// <summary>
-	/// Raises the opponent card play event.
-	/// </summary>
-	public void OnOpponentCardPlay(){
-		OpponentCardPlay();
-	}
-	/// <summary>
-	/// Raises the change field event.
-	/// </summary>
-	public void OnChangeField(){
-		ChangeField();
+	public void OnDeath(){
+		Death();
 	}
 	/// <summary>
 	/// Raises the ability use event.
