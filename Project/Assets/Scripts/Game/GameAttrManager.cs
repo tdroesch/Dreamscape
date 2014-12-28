@@ -5,38 +5,44 @@ using FSM;
 class GameAttrManager
 {
 	int currentPlayer;
-	int phaseTurns;
-	int turnsPerPhase;
+	int nextPlayer;
 
-	public int CurrentPlayer{
-		get{return currentPlayer;}
-		set{currentPlayer = value;}
+	/// <summary>
+	/// Gets or sets the current player.
+	/// </summary>
+	/// <value>The current player.</value>
+	public int CurrentPlayer {
+		get{ return currentPlayer;}
+		set{ currentPlayer = value;}
 	}
 
-	public int PhaseTurns{
-		get{return phaseTurns;}
-		set{phaseTurns = value;}
+	/// <summary>
+	/// Gets or sets the next player.
+	/// </summary>
+	/// <value>The next player.</value>
+	public int NextPlayer {
+		get{ return nextPlayer;}
+		set{ nextPlayer = value;}
 	}
+
 
 	/// <summary>
 	/// Initalize the GameAttrManager values.
 	/// </summary>
 	/// <param name="firstPlayer">The Player who plays first.</param>
-	/// <param name="turnsPerPhase">How many turns in each phase of the game.</param>
-	public void init (int firstPlayer, int turnsPerPhase)
+	public void init (int firstPlayer)
 	{
-		currentPlayer = firstPlayer;
-		this.turnsPerPhase = turnsPerPhase;
-		phaseTurns = 0;
+		nextPlayer = firstPlayer;
 	}
 
 	/// <summary>
 	/// Alternates player turns.
 	/// Adds one to the currentPlayer then sets the currentPlayer to the remaider of currentPlayer/2
 	/// </summary>
-	public void nextPlayer ()
+	public void GoNextPlayer ()
 	{
-		currentPlayer = (currentPlayer + 1) % 2;
+		currentPlayer = nextPlayer;
+		nextPlayer = (currentPlayer + 1) % 2;
 	}
 }
 

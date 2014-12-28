@@ -17,17 +17,17 @@ public class GameManager : MonoBehaviour {
 	/// <summary>
 	/// Player who plays first.
 	/// </summary>
-	IController player1;
+	public HumanController player1;
 	/// <summary>
 	/// Player who plays second
 	/// </summary>
-	IController player2;
+	public HumanController player2;
 
 
 	void Awake() {
-		stateMachine = new DSStateMachine(new Player(2000,0,new Hand(),new Deck(), new Field(),new Subconscious()),
-		                                  new Player(2000,0,new Hand(),new Deck(), new Field(),new Subconscious()),
-		                                  new GameAttrManager());
+		Player p1 = new Player (2000, 0, new Hand (), new Deck (), new Field (), new Subconscious (), player1);
+		Player p2 = new Player (2000, 0, new Hand (), new Deck (), new Field (), new Subconscious (), player2);
+		stateMachine = new DSStateMachine(p1, p2, new GameAttrManager());
 	}
 
 	// Use this for initialization
@@ -38,5 +38,10 @@ public class GameManager : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 	
+	}
+
+	public void stateMessage (string msg, object data)
+	{
+		stateMachine.message(msg, data);
 	}
 }

@@ -30,7 +30,7 @@ class DSStateMachine {
 	public DSStateMachine (Player p1, Player p2, GameAttrManager gam)
 	{
 		//Initialize the states
-		gameStart = new FSMState("Game Start", new DSActionGameStart(0, 5));
+		gameStart = new FSMState("Game Start", null, new DSActionGameStart(0, 5));
 		turnStart = new FSMState ("Turn Start", new DSActionTurnStart());
 		turnDraw = new FSMState ("Turn Draw", new DSActionTurnDraw ());
 		turnPlay = new FSMState ("Turn Play", new DSActionTurnPlay ());
@@ -38,10 +38,10 @@ class DSStateMachine {
 		gameOver = new FSMState("Game Over", new DSActionGameOver());
 
 		//Initialize the transitions
-		toTurnStart = new FSMTransition(turnStart);
+		toTurnStart = new FSMTransition(turnStart, new DSActionNextTurn());
 		toTurnDraw = new FSMTransition(turnDraw);
 		toTurnPlay = new FSMTransition(turnPlay);
-		toTurnEnd = new FSMTransition(turnEnd, new DSActionNextTurn());
+		toTurnEnd = new FSMTransition(turnEnd);
 		toGameOver = new FSMTransition(gameOver);
 
 		//Regiser state Transitions
@@ -68,4 +68,14 @@ class DSStateMachine {
 	}
 
 	//Functions call context.dispatch(event name, data)
+	public void message(string msg, object data){
+		
+		//Get the current Player
+		GameAttrManager gam = context.get ("Game Attribute Manager") as GameAttrManager;
+		int currentPlayer = gam.CurrentPlayer;
+		//Check to see it the current player is issueing the command
+		if (((Player)context.get ("Player " + (currentPlayer+1))).Controller.Equals (data)) {
+			context.dispatch (msg, data);
+		}
+	}
 }

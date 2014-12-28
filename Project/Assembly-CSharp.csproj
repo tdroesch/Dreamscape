@@ -73,6 +73,7 @@
      <Compile Include="Assets\Scripts\Hand, Deck, Subconscious\Field.cs" />
      <Compile Include="Assets\Scripts\Hand, Deck, Subconscious\Game.cs" />
      <Compile Include="Assets\Scripts\Hand, Deck, Subconscious\Hand.cs" />
+     <Compile Include="Assets\Scripts\Hand, Deck, Subconscious\HumanController.cs" />
      <Compile Include="Assets\Scripts\Hand, Deck, Subconscious\ICardContainer.cs" />
      <Compile Include="Assets\Scripts\Hand, Deck, Subconscious\IController.cs" />
      <Compile Include="Assets\Scripts\Hand, Deck, Subconscious\Player.cs" />
