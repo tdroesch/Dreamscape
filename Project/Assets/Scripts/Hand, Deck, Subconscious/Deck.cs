@@ -10,11 +10,9 @@ public class Deck : MonoBehaviour, ICardContainer
 	public void AddCard(Card _card)
     {
 		if(_card != null) {
-			_card.transform.position = this.gameObject.transform.position;
-
 	        deck.Add(_card);
-			_card.GetComponent<Card>().Name = "Test Card " + deck.Count;
 			_card.transform.parent = this.gameObject.transform;
+			Debug.Log (_card.Name + " has been added. iCost: " + _card.iCost + " wCost: " + _card.wCost);
 		}
 
 		CardSelection.selectedCard = null;
@@ -24,8 +22,6 @@ public class Deck : MonoBehaviour, ICardContainer
 	public void AddCard(Card _card, Player.Position _pos)
     {
 		if(_card != null) {
-			_card.transform.position = this.gameObject.transform.position;
-
 			int pos = 0;
 	        Debug.Log(_pos);
 
@@ -42,7 +38,6 @@ public class Deck : MonoBehaviour, ICardContainer
 			}
 	      
 	        deck.Insert(pos, _card);
-			_card.GetComponent<Card>().Name = "Test Card " + deck.Count;
 			_card.transform.parent = this.gameObject.transform;
 	        Debug.Log (_card.Name + " has been added at the " + pos + " position");
 		}
@@ -70,7 +65,6 @@ public class Deck : MonoBehaviour, ICardContainer
 			}
 
 			deck.Insert(pos, _card);
-			_card.GetComponent<Card>().Name = "Test Card " + deck.Count;
 			_card.transform.parent = this.gameObject.transform;
 		}
     }
@@ -87,7 +81,6 @@ public class Deck : MonoBehaviour, ICardContainer
 	// Remove the selected card (_data sent from CardSelection script)
 	public void RemoveCard(Card _card)
 	{
-		Destroy(_card.gameObject);
 		deck.Remove(_card);
 	}
 
