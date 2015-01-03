@@ -4,22 +4,23 @@ using System.Collections.Generic;
 
 public class Deck : MonoBehaviour, ICardContainer
 {
-	public List<Card> deck = new List<Card>();
+	public List<GameObject> deck = new List<GameObject>();
 
 	// Add a card to the top of the deck 
-	public void AddCard(Card _card)
+	public void AddCard(GameObject _card)
     {
 		if(_card != null) {
 	        deck.Add(_card);
 			_card.transform.parent = this.gameObject.transform;
-			Debug.Log (_card.Name + " has been added. iCost: " + _card.iCost + " wCost: " + _card.wCost);
+			Debug.Log (_card.GetComponent<Card>().Name + " has been added. iCost: " 
+			           + _card.GetComponent<Card>().iCost + " wCost: " + _card.GetComponent<Card>().wCost);
 		}
 
 		CardSelection.selectedCard = null;
     }
 
 	// Add a selected card to the top, middle, or bottom of the deck
-	public void AddCard(Card _card, Player.Position _pos)
+	public void AddCard(GameObject _card, Player.Position _pos)
     {
 		if(_card != null) {
 			int pos = 0;
@@ -39,14 +40,14 @@ public class Deck : MonoBehaviour, ICardContainer
 	      
 	        deck.Insert(pos, _card);
 			_card.transform.parent = this.gameObject.transform;
-	        Debug.Log (_card.Name + " has been added at the " + pos + " position");
+	        Debug.Log (_card.GetComponent<Card>().Name + " has been added at the " + pos + " position");
 		}
 
 		CardSelection.selectedCard = null;
     }
 
 	// Add an amount of cards at the top, middle, or bottom of the deck
-	public void AddCard(Card _card, Player.Position _pos, Player.Amount _amount)
+	public void AddCard(GameObject _card, Player.Position _pos, Player.Amount _amount)
     {
 		for(int i = 1; i <= (int)_amount; i++) {
 			int pos = 0;
@@ -79,7 +80,7 @@ public class Deck : MonoBehaviour, ICardContainer
 //	}
 
 	// Remove the selected card (_data sent from CardSelection script)
-	public void RemoveCard(Card _card)
+	public void RemoveCard(GameObject _card)
 	{
 		deck.Remove(_card);
 	}
@@ -129,7 +130,7 @@ public class Deck : MonoBehaviour, ICardContainer
 		}
 	}
 
-	public void RemoveCard(Card _card, Player.Position _pos, Player.Target _target)
+	public void RemoveCard(GameObject _card, Player.Position _pos, Player.Target _target)
 	{
 
 	}

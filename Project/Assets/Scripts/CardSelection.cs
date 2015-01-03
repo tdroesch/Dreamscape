@@ -3,11 +3,11 @@ using System.Collections;
 
 public class CardSelection : MonoBehaviour 
 {
-//	public int click; // For later use when using double-click
-//	public float clickTimer; // So that the double-click doesn't register if the second click is too late
-//	public bool startTimer;
+	public int click; // For later use when using double-click
+	public float clickTimer; // So that the double-click doesn't register if the second click is too late
+	public bool startTimer;
 	public static int amount;
-	public static Card selectedCard;
+	public static GameObject selectedCard;
 	
 	void Start()
 	{
@@ -38,16 +38,17 @@ public class CardSelection : MonoBehaviour
         RaycastHit hit;
         if(Physics.Raycast(ray, out hit)) {
             if(Input.GetMouseButtonDown(0)) {
-				selectedCard = hit.transform.GetComponent<Card>();
-				Debug.Log ("Selected Card: " + selectedCard.name);
+				selectedCard = hit.transform.gameObject;
+				Debug.Log ("Selected Card: " + selectedCard.GetComponent<Card>().Name + " Stats: " 
+				           + selectedCard.GetComponent<Card>().iCost + ", " + selectedCard.GetComponent<Card>().wCost);
 //                click += 1;
 //                startTimer = true;
-
+//
 //                // If the card is selected twice, call OnClick() to move it
 //                if(click == 2 && selectedCard == hit.transform.gameObject) {
 //                    OnClick ();
 //                    click = 0;
-//                }
+                }
             }
         }
 
@@ -62,5 +63,5 @@ public class CardSelection : MonoBehaviour
 //                selectedCard = null;
 //            }
 //        }
-    }
+//    }
 }

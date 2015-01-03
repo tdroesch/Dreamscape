@@ -4,13 +4,13 @@ using System.Collections.Generic;
 
 public class Player : MonoBehaviour 
 {
-	public List<Card> playerCreated = new List<Card>();
+	public List<GameObject> playerCreated = new List<GameObject>();
     public Deck deck;
 	public Hand hand;
 	public Position _pos;
 	public Amount _amount;
 	public SortBy _sort;
-	public Card cardPrefab;
+	public GameObject cardPrefab;
 
 	public enum Position
 	{
@@ -52,10 +52,12 @@ public class Player : MonoBehaviour
 	{
 		if(GUI.Button(new Rect(20, 20, 170, 20), "Create Fifty Cards")) {
 			for(int i = 0; i <= 50; i++) {
-				Card card = gameObject.AddComponent<Card>();
-				card.Name = "Card " + playerCreated.Count;
-				card.iCost = Random.Range (0, 5);
-				card.wCost = Random.Range (0, 5);
+//				Card card = gameObject.AddComponent<Card>();
+				GameObject card = Instantiate(cardPrefab, transform.position, transform.rotation) as GameObject;
+				card.GetComponent<MeshRenderer>().enabled = false;
+				card.GetComponent<Card>().Name = "Card " + playerCreated.Count;
+				card.GetComponent<Card>().iCost = Random.Range (0, 5);
+				card.GetComponent<Card>().wCost = Random.Range (0, 5);
 				playerCreated.Add (card);
 			}
 		}
