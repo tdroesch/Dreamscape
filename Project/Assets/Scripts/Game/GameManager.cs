@@ -1,4 +1,4 @@
-﻿using UnityEngine;
+using UnityEngine;
 using System.Collections;
 using FSM;
 using System;
@@ -15,19 +15,19 @@ public class GameManager : MonoBehaviour {
 	/// </summary>
 	DSStateMachine stateMachine;
 	/// <summary>
-	/// Player who plays first.
+	/// The Agent who plays first.
 	/// </summary>
-	public HumanController player1;
+	public IController player1;
 	/// <summary>
-	/// Player who plays second
+	/// The Agent who plays second
 	/// </summary>
-	public HumanController player2;
+	public IController player2;
 
 
 	void Awake() {
 		Player p1 = new Player (2000, 0, new Hand (), new Deck (), new Field (), new Subconscious (), player1);
 		Player p2 = new Player (2000, 0, new Hand (), new Deck (), new Field (), new Subconscious (), player2);
-		stateMachine = new DSStateMachine(p1, p2, new GameAttrManager());
+		stateMachine = new DSStateMachine(p1, p2, new BoardManager());
 	}
 
 	// Use this for initialization

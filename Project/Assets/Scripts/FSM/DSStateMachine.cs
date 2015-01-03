@@ -1,4 +1,4 @@
-﻿using UnityEngine;
+using UnityEngine;
 using System.Collections;
 using FSM;
 
@@ -27,7 +27,7 @@ class DSStateMachine {
 	//The FSM Context
 	FSMContext context;
 
-	public DSStateMachine (Player p1, Player p2, GameAttrManager gam)
+	public DSStateMachine (Player p1, Player p2, BoardManager bm)
 	{
 		//Initialize the states
 		gameStart = new FSMState("Game Start", null, new DSActionGameStart(0, 5));
@@ -63,7 +63,7 @@ class DSStateMachine {
 
 
 		//Initialize state and context
-		init = new DSActionInit(p1, p2, gam);
+		init = new DSActionInit(p1, p2, bm);
 		context = new FSMContext(gameStart, init);
 	}
 
@@ -71,8 +71,8 @@ class DSStateMachine {
 	public void message(string msg, object data){
 		
 		//Get the current Player
-		GameAttrManager gam = context.get ("Game Attribute Manager") as GameAttrManager;
-		int currentPlayer = gam.CurrentPlayer;
+		BoardManager bm = context.get ("Game Attribute Manager") as BoardManager;
+		int currentPlayer = bm.CurrentPlayer;
 		//Check to see it the current player is issueing the command
 		if (((Player)context.get ("Player " + (currentPlayer+1))).Controller.Equals (data)) {
 			context.dispatch (msg, data);

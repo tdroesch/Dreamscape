@@ -6,13 +6,13 @@ class DSActionNextTurn : FSMAction {
 
 	public void execute (FSMContext context, object data)
 	{
-		GameAttrManager gam = context.get("Game Attribute Manager") as GameAttrManager;
-		if (gam != null) {
-			gam.GoNextPlayer ();
+		BoardManager bm = context.get("Game Attribute Manager") as BoardManager;
+		if (bm != null) {
+			bm.GoNextPlayer ();
 		}
 
 		Debug.Log ("Next Players Turn");
-		Debug.Log ("Current Player: " + gam.CurrentPlayer);
+		Debug.Log ("Current Player: " + bm.CurrentPlayer);
 		Debug.Log ("Player 1 Stats - Will: " + ((Player)context.get ("Player 1")).Will +
 		           ", Imagination: " + ((Player)context.get ("Player 1")).Imagination +
 		           ", Hand Size: " + ((Player)context.get ("Player 1")).HandSize);

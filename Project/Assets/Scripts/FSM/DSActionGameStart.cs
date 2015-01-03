@@ -10,9 +10,9 @@ class DSActionGameStart : FSMAction {
 	{
 		//throw new System.NotImplementedException ();
 		// Get the who players.
-		GameAttrManager gam = context.get ("Game Attribute Manager") as GameAttrManager;
-		Player currentPlayer = (Player)context.get ("Player "+(gam.CurrentPlayer+1));
-		Player opposingPlayer = (Player)context.get ("Player "+((gam.CurrentPlayer+1)%2+1));
+		BoardManager bm = context.get ("Game Attribute Manager") as BoardManager;
+		Player currentPlayer = (Player)context.get ("Player "+(bm.CurrentPlayer+1));
+		Player opposingPlayer = (Player)context.get ("Player "+((bm.CurrentPlayer+1)%2+1));
 		// Set each players starting Imagination
 		currentPlayer.Imagination+=startingImagination;
 		opposingPlayer.Imagination+=startingImagination;
@@ -22,7 +22,7 @@ class DSActionGameStart : FSMAction {
 			opposingPlayer.DrawCard();
 		}
 		Debug.Log ("Game Start");
-		Debug.Log ("Current Player: " + gam.CurrentPlayer);
+		Debug.Log ("Current Player: " + bm.CurrentPlayer);
 		Debug.Log ("Player 1 Stats - Will: " + ((Player)context.get ("Player 1")).Will +
 			", Imagination: " + ((Player)context.get ("Player 1")).Imagination +
 		           ", Hand Size: " + ((Player)context.get ("Player 1")).HandSize);

@@ -2,6 +2,10 @@ using UnityEngine;
 using System.Collections;
 using FSM;
 
+/// <summary>
+/// Finite State Machine Action
+/// Triggered on entering the Game over State
+/// </summary>
 class DSActionGameOver : FSMAction {
 	public void execute (FSMContext context, object data)
 	{

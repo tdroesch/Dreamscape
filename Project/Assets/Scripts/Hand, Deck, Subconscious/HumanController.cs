@@ -3,7 +3,8 @@ using System.Collections;
 
 //[System.Serializable]
 public class HumanController : MonoBehaviour, IController {
-
+	//***********************************************
+	//This is almost entirely for testing purposes.
 	GameManager gm;
 
 	// Use this for initialization
@@ -20,10 +21,10 @@ public class HumanController : MonoBehaviour, IController {
 			gm.stateMessage("Start Draw", this);
 		}
 		else if(Input.GetKeyDown(KeyCode.E)){
-			gm.stateMessage("Start Play", this);
+			PlayCard(null);
 		}
 		else if(Input.GetKeyDown(KeyCode.R)){
-			gm.stateMessage("Start End", this);
+			EndTurn();
 		}
 		else if(Input.GetKeyDown(KeyCode.T)){
 			gm.stateMessage("Next Turn", this);
@@ -31,5 +32,17 @@ public class HumanController : MonoBehaviour, IController {
 		else if(Input.GetKeyDown(KeyCode.Y)){
 			gm.stateMessage("End Game", this);
 		}
+	}
+	//***********************************************
+
+	public void PlayCard(Card card){
+		gm.stateMessage("Start Play", this);
+	}
+
+	public void UseCardAbility(Ability ability){
+	}
+
+	public void EndTurn(){
+		gm.stateMessage("Start End", this);
 	}
 }
