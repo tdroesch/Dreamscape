@@ -6,11 +6,24 @@ public class Deck : MonoBehaviour, ICardContainer
 {
 	public List<GameObject> deck = new List<GameObject>();
 
+	private Hand hand;
+	private Field field;
+	private Subconscious subconscious;
+
+	void Awake()
+	{
+		hand = GameObject.FindGameObjectWithTag ("Hand").GetComponent<Hand> ();
+		field = GameObject.FindGameObjectWithTag ("Field").GetComponent<Field> ();
+		subconscious = GameObject.FindGameObjectWithTag ("Subconscious").GetComponent<Subconscious> ();
+	}
+
 	// Add a card to the top of the deck 
 	public void AddCard(GameObject _card)
     {
 		if(_card != null) {
 	        deck.Add(_card);
+			_card.GetComponent<MeshRenderer>().enabled = false;
+			_card.transform.position = this.gameObject.transform.position;
 			_card.transform.parent = this.gameObject.transform;
 			Debug.Log (_card.GetComponent<Card>().Name + " has been added. iCost: " 
 			           + _card.GetComponent<Card>().iCost + " wCost: " + _card.GetComponent<Card>().wCost);
@@ -39,6 +52,8 @@ public class Deck : MonoBehaviour, ICardContainer
 			}
 	      
 	        deck.Insert(pos, _card);
+			_card.GetComponent<MeshRenderer>().enabled = false;
+			_card.transform.position = this.gameObject.transform.position;
 			_card.transform.parent = this.gameObject.transform;
 	        Debug.Log (_card.GetComponent<Card>().Name + " has been added at the " + pos + " position");
 		}
@@ -66,19 +81,12 @@ public class Deck : MonoBehaviour, ICardContainer
 			}
 
 			deck.Insert(pos, _card);
+			_card.GetComponent<MeshRenderer>().enabled = false;
+			_card.transform.position = this.gameObject.transform.position;
 			_card.transform.parent = this.gameObject.transform;
 		}
     }
-
-	// Remove a card from the top of the deck
-//	public void RemoveCard()
-//	{
-//		if((deck.Count) != 0) {
-//			Destroy(deck[deck.Count - 1].gameObject);
-//			deck.RemoveAt (deck.Count - 1);
-//		}
-//	}
-
+	
 	// Remove the selected card (_data sent from CardSelection script)
 	public void RemoveCard(GameObject _card)
 	{
@@ -130,9 +138,20 @@ public class Deck : MonoBehaviour, ICardContainer
 		}
 	}
 
-	public void RemoveCard(GameObject _card, Player.Position _pos, Player.Target _target)
+	public void RemoveCard(GameObject _card, Player.Position _position, Player.Target _target)
 	{
-
+		if((int)_target == 1) {
+			hand.AddCard(_card);
+			deck.Remove(_card);
+		}
+		if((int)_target == 2) {
+			field.AddCard(_card);
+			deck.Remove(_card);
+		}
+		if((int)_target == 3) {
+			subconscious.AddCard(_card);
+			deck.Remove(_card);
+		}
 	}
 
     void Shuffle()

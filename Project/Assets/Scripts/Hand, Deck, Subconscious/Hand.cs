@@ -6,6 +6,17 @@ public class Hand : MonoBehaviour, ICardContainer
 {
 	public List<GameObject> hand = new List<GameObject> ();
 
+	private Deck deck;
+	private Field field;
+	private Subconscious subconscious;
+
+	void Awake()
+	{
+		deck = GameObject.FindGameObjectWithTag ("Deck").GetComponent<Deck> ();
+		field = GameObject.FindGameObjectWithTag ("Field").GetComponent<Field> ();
+		subconscious = GameObject.FindGameObjectWithTag ("Subconscious").GetComponent<Subconscious> ();
+	}
+
 	public void AddCard(GameObject _card)
 	{
 		if(_card != null) {
@@ -19,7 +30,10 @@ public class Hand : MonoBehaviour, ICardContainer
 		CardSelection.selectedCard = null;
 	}
 
-	public void AddCard(GameObject _card, Player.Position _pos) { }
+	public void AddCard(GameObject _card, Player.Position _pos) 
+	{ 
+	
+	}
 
 	public void AddCard(GameObject _card, Player.Position _pos, Player.Amount _amount)
 	{
@@ -33,10 +47,12 @@ public class Hand : MonoBehaviour, ICardContainer
 	
 	public void RemoveCard(GameObject _card)
 	{
-		// Remove the selected card from the hand to the field
+		// Removes the selected card from the hand and into the player's field
+		if(_card != null) {
+			field.AddCard(_card);
+			hand.Remove(_card);
+		}
 	}
-
-	public void RemoveCard(Player.Position _pos) { }
 
 	public void RemoveCard(Player.Position _pos, Player.Amount _amount) 
 	{ 
@@ -48,9 +64,20 @@ public class Hand : MonoBehaviour, ICardContainer
 		}
 	}
 
-	public void RemoveCard(GameObject _card, Player.Position _pos, Player.Target _target)
+	public void RemoveCard(GameObject _card, Player.Position _position, Player.Target _target)
 	{
-		// Remove the selected card and send the card to a different destination than the field, like the subconscious or back into the deck
+		if((int)_target == 0) {
+			deck.AddCard(_card);
+			hand.Remove (_card);
+		}
+		if((int)_target == 2) {
+			field.AddCard(_card);
+			hand.Remove(_card);
+		}
+		if((int)_target == 3) {
+			subconscious.AddCard(_card);
+			hand.Remove(_card);
+		}
 	}
 
 	void Sort()

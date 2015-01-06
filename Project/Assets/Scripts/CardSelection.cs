@@ -3,65 +3,39 @@ using System.Collections;
 
 public class CardSelection : MonoBehaviour 
 {
-	public int click; // For later use when using double-click
-	public float clickTimer; // So that the double-click doesn't register if the second click is too late
-	public bool startTimer;
-	public static int amount;
+	public RaycastHit hit;
 	public static GameObject selectedCard;
+
+	private Hand hand;
+	private Player player;
 	
-	void Start()
+	void Awake()
 	{
-		selectedCard = null;
+		hand = GameObject.FindGameObjectWithTag ("Hand").GetComponent<Hand> ();
+		player = GameObject.FindGameObjectWithTag ("Player").GetComponent<Player> ();
 	}
 
-//	void OnClick()
-//	{
-//		RaycastHit hit;
-//		Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
-//		Debug.DrawRay(ray.origin, ray.direction * 10, Color.blue);
-//
-//		if(Physics.Raycast(ray, out hit)) {
-//			if(hit.collider.tag == "Card" && deck.deck.Count != 0) {
-//				// Send a message to the deck to remove the selected card
-//				deck.SendMessage("RemoveCard", hit.transform.gameObject);
-//				clickTimer = 0.0f;
-//				selectedCard = null;
-//				startTimer = false;
-//			}
-//		}
-//	}
+	void Update()
+	{
+		if(Input.GetButtonDown("Fire1")) {
+			Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+			if(Physics.Raycast (ray, out hit)) {
+				OnClick(hit.transform.gameObject);
+			}
+		}
+	}
 
-    void Update()
-    {
-        // Get the card that the player is currently selecting
-        Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
-        RaycastHit hit;
-        if(Physics.Raycast(ray, out hit)) {
-            if(Input.GetMouseButtonDown(0)) {
-				selectedCard = hit.transform.gameObject;
-				Debug.Log ("Selected Card: " + selectedCard.GetComponent<Card>().Name + " Stats: " 
-				           + selectedCard.GetComponent<Card>().iCost + ", " + selectedCard.GetComponent<Card>().wCost);
-//                click += 1;
-//                startTimer = true;
-//
-//                // If the card is selected twice, call OnClick() to move it
-//                if(click == 2 && selectedCard == hit.transform.gameObject) {
-//                    OnClick ();
-//                    click = 0;
-                }
-            }
-        }
-
-//        // No action if the player doesn't click a card a second time within one second
-//        if(startTimer) {
-//            clickTimer += 1.0f * Time.deltaTime;
-//
-//            if(clickTimer >= 1.0f) {
-//                click = 0;
-//                clickTimer = 0.0f;
-//                startTimer = false;
-//                selectedCard = null;
-//            }
-//        }
-//    }
+	void OnClick(GameObject _hit)
+	{
+		if (_hit.renderer.enabled == true) {
+			selectedCard = _hit;
+			Debug.Log ("Selected Card: " + selectedCard.GetComponent<Card> ().Name);
+			
+			if(player._target == Player.Target.field) {
+				hand.RemoveCard (selectedCard);
+			} else {
+				hand.RemoveCard(selectedCard, player._pos, player._target);
+			}
+		}
+	}
 }

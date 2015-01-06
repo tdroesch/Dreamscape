@@ -10,6 +10,7 @@ public class Player : MonoBehaviour
 	public Position _pos;
 	public Amount _amount;
 	public SortBy _sort;
+	public Target _target;
 	public GameObject cardPrefab;
 
 	public enum Position
@@ -30,22 +31,31 @@ public class Player : MonoBehaviour
 
 	public enum SortBy
 	{
-		Alphabetically,
-		Type
+		alphabetically = 0,
+		type = 1
 	};
 
 	public enum Target
 	{
-		Deck,
-		Hand,
-		Field,
-		Subconscious
+		deck = 0,
+		hand = 1,
+		field = 2,
+		subconscious = 3
 	};
 
 	void Awake()
 	{
 		deck = this.gameObject.transform.FindChild("Deck").GetComponent<Deck> ();
 		hand = this.gameObject.transform.FindChild ("Hand").GetComponent<Hand> ();
+	}
+
+	void Start()
+	{
+		// Setting default values
+		_pos = Position.top;
+		_amount = Amount.one;
+		_sort = SortBy.type;
+		_target = Target.field;
 	}
 
 	void OnGUI()
@@ -95,6 +105,19 @@ public class Player : MonoBehaviour
 		}
 		if(GUI.Button(new Rect(20, 240, 170, 20), "Set Amount to 5")) {
 			_amount = Amount.five;
+		}
+
+		if(GUI.Button(new Rect(20, 280, 170, 20), "Set target to deck")) {
+			_target = Target.deck;
+		}
+		if(GUI.Button(new Rect(20, 300, 170, 20), "Set target to hand")) {
+			_target = Target.hand;
+		}
+		if(GUI.Button(new Rect(20, 320, 170, 20), "Set target to field")) {
+			_target = Target.field;
+		}
+		if(GUI.Button(new Rect(20, 340, 170, 20), "Set target to subconscious")) {
+			_target = Target.subconscious;
 		}
 	}
 }
