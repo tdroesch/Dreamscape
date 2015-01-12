@@ -32,7 +32,25 @@ public class Hand : MonoBehaviour, ICardContainer
 
 	public void AddCard(GameObject _card, Player.Position _pos) 
 	{ 
-	
+		int pos = 0;
+		Debug.Log(_pos);
+		
+		if((int)_pos == 0) {
+			pos = (hand.Count - hand.Count);
+		}
+		
+		if((int)_pos == 1) {
+			pos = hand.Count / 2;
+		}
+		
+		if((int)_pos == 2) {
+			pos = hand.Count;
+		}
+
+		if(_card != null) {
+			field.AddCard(_card);
+			hand.RemoveAt(pos);
+		}
 	}
 
 	public void AddCard(GameObject _card, Player.Position _pos, Player.Amount _amount)
