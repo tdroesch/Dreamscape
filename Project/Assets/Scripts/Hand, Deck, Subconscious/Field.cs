@@ -4,64 +4,96 @@ using System.Collections.Generic;
 
 public class Field : MonoBehaviour, ICardContainer
 {
-	public string target;
+	public List<GameObject> field = new List<GameObject> ();
 
-	private Subconscious subconscious;
 	private Deck deck;
-	private Game game;
-
-	public List <GameObject> field = new List<GameObject>();
+	private Hand hand;
+	private Subconscious subconscious;
 
 	void Awake()
 	{
-		this.gameObject.tag = "Field";
-		this.gameObject.name = "FieldOne"; 
-	}
-	
-	void Start()
-	{
-		// For demo purposes, only finds subconscious by tag
-		subconscious = GameObject.FindWithTag ("Subconscious").GetComponent<Subconscious>();
-		deck = GameObject.FindWithTag("Deck").GetComponent<Deck>();
-		game = GameObject.FindWithTag("GameManager").GetComponent<Game>();
-
-		// For now, setting target to subconscious
-		target = subconscious.name;
+		deck = GameObject.FindGameObjectWithTag ("Deck").GetComponent<Deck> ();
+		hand = GameObject.FindGameObjectWithTag ("Hand").GetComponent<Hand> ();
+		subconscious = GameObject.FindGameObjectWithTag ("Subconscious").GetComponent<Subconscious> ();
 	}
 
-	void Update()
-	{
-		if(game.resetGame) {
-			// Return the cards in the field to the deck
-			target = deck.name;
-			foreach(GameObject c in field.ToArray()) {
-				if(field.Count != 0) {
-					RemoveCard(c);
-				}
-			}
-		}
-
-		// Reset the target
-		target = subconscious.name;
-	}
-	
 	public void AddCard(GameObject _card)
 	{
-		_card.transform.parent = this.gameObject.transform;
-		field.Add (_card);
-		ChangeTag(_card);
+		if(_card != null) {
+			_card.transform.position = this.gameObject.transform.position;
+			_card.GetComponent<MeshRenderer>().enabled = true;
+			
+			field.Add(_card);
+			_card.transform.parent = this.gameObject.transform;
+		}
+		
+		CardSelection.selectedCard = null;
+	}
+
+	public void AddCard(GameObject _card, Player.Position _pos) 
+	{ 
+		int pos = 0;
+		Debug.Log(_pos);
+		
+		if((int)_pos == 0) {
+			pos = (field.Count - field.Count);
+		}
+		
+		if((int)_pos == 1) {
+			pos = field.Count / 2;
+		}
+		
+		if((int)_pos == 2) {
+			pos = field.Count;
+		}
+		
+		if(_card != null) {
+			subconscious.AddCard(_card);
+			field.RemoveAt(pos);
+		}
+	} 
+
+	public void AddCard(GameObject _card, Player.Position _pos, Player.Amount _amount) 
+	{
+		for(int i = 1; i <= (int)_amount; i++) {
+			int pos = 0;
+			
+			field.Insert(pos, _card);
+			_card.transform.parent = this.gameObject.transform;
+		}
 	}
 	
 	public void RemoveCard(GameObject _card)
 	{
-		// Move the card to the target's position
-		_card.transform.position = GameObject.Find(target).transform.position;
-		GameObject.Find (target).SendMessage("AddCard", _card);
-		field.Remove(_card);
+		if(_card != null) {
+			subconscious.AddCard(_card);
+			field.Remove(_card);
+		}
+	}
+	
+	public void RemoveCard(Player.Position _pos, Player.Amount _amount)
+	{
+		int pos = 0;
+		
+		for(int i = 1; i < (int)_amount; i++) {
+			Destroy(field[pos].gameObject);
+			field.RemoveAt(pos);
+		}
 	}
 
-	void ChangeTag(GameObject _card)
+	public void RemoveCard(GameObject _card, Player.Position _position, Player.Target _target)
 	{
-		_card.tag = "Field";
+		if((int)_target == 0) {
+			deck.AddCard(_card);
+			field.Remove (_card);
+		}
+		if((int)_target == 1) {
+			hand.AddCard(_card);
+			field.Remove(_card);
+		}
+		if((int)_target == 3) {
+			subconscious.AddCard(_card);
+			field.Remove(_card);
+		}
 	}
 }
