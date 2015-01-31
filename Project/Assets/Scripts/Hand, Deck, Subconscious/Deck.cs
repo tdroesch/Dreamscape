@@ -21,7 +21,7 @@ public class Deck : MonoBehaviour, ICardContainer
 	public void AddCard(GameObject _card)
     {
 		if(_card != null) {
-	        deck.Add(_card);
+	        	deck.Add(_card);
 			_card.GetComponent<MeshRenderer>().enabled = false;
 			_card.transform.position = this.gameObject.transform.position;
 			_card.transform.parent = this.gameObject.transform;
