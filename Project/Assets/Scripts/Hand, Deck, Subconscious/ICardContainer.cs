@@ -4,10 +4,11 @@ using System.Collections;
 public interface ICardContainer
 {
 	void AddCard(GameObject _card);
-	void AddCard(GameObject _card, Player.Position _pos);
-	void AddCard(GameObject _card, Player.Position _pos, Player.Amount _amount);
+	void AddCard(GameObject _card, Demo.Position _pos);
+	void AddCard(GameObject _card, int _amount);
 	
 	void RemoveCard(GameObject _card);
-	void RemoveCard(Player.Position _pos, Player.Amount _amount);
-	void RemoveCard(GameObject _card, Player.Position _pos, Player.Target _target);
+	void RemoveCard(GameObject _card, int _amount);
+	void RemoveCard(Demo.Position _pos, int _amount);
+	void RemoveCard(GameObject _card, Demo.Position _pos, Demo.Target _target);
 }

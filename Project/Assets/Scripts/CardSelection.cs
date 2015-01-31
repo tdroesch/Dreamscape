@@ -7,12 +7,12 @@ public class CardSelection : MonoBehaviour
 	public static GameObject selectedCard;
 
 	private Hand hand;
-	private Player player;
+	private Demo player;
 	
 	void Awake()
 	{
 		hand = GameObject.FindGameObjectWithTag ("Hand").GetComponent<Hand> ();
-		player = GameObject.FindGameObjectWithTag ("Player").GetComponent<Player> ();
+		player = GameObject.FindGameObjectWithTag ("Player").GetComponent<Demo> ();
 	}
 
 	void Update()
@@ -31,7 +31,7 @@ public class CardSelection : MonoBehaviour
 			selectedCard = _hit;
 			Debug.Log ("Selected Card: " + selectedCard.GetComponent<Card> ().Name);
 			
-			if(player._target == Player.Target.field) {
+			if(player._target == Demo.Target.field) {
 				hand.RemoveCard (selectedCard);
 			} else {
 				hand.RemoveCard(selectedCard, player._pos, player._target);

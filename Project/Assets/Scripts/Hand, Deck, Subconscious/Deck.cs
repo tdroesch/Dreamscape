@@ -5,7 +5,7 @@ using System.Collections.Generic;
 public class Deck : MonoBehaviour, ICardContainer
 {
 	public List<GameObject> deck = new List<GameObject>();
-
+	
 	private Hand hand;
 	private Field field;
 	private Subconscious subconscious;
@@ -33,7 +33,7 @@ public class Deck : MonoBehaviour, ICardContainer
     }
 
 	// Add a selected card to the top, middle, or bottom of the deck
-	public void AddCard(GameObject _card, Player.Position _pos)
+	public void AddCard(GameObject _card, Demo.Position _pos)
     {
 		if(_card != null) {
 			int pos = 0;
@@ -62,25 +62,24 @@ public class Deck : MonoBehaviour, ICardContainer
     }
 
 	// Add an amount of cards at the top, middle, or bottom of the deck
-	public void AddCard(GameObject _card, Player.Position _pos, Player.Amount _amount)
+	public void AddCard(GameObject _card, int _amount)
     {
-		for(int i = 1; i <= (int)_amount; i++) {
-			int pos = 0;
-			Debug.Log(_pos);
-			
-			if((int)_pos == 0) {
-				pos = (deck.Count - deck.Count);
-			}
-			
-			if((int)_pos == 1) {
-				pos = deck.Count / 2;
-			}
-			
-			if((int)_pos == 2) {
-				pos = deck.Count;
-			}
+		for(int i = 1; i <= _amount; i++) {
+//			int pos = (int)_pos;
+//
+//			if((int)_pos == 0) {
+//				pos = 0;
+//			}
+//			
+//			if((int)_pos == 1) {
+//				pos = deck.Count / 2;
+//			}
+//			
+//			if((int)_pos == 2) {
+//				pos = deck.Count;
+//			}
 
-			deck.Insert(pos, _card);
+			deck.Add (_card);
 			_card.GetComponent<MeshRenderer>().enabled = false;
 			_card.transform.position = this.gameObject.transform.position;
 			_card.transform.parent = this.gameObject.transform;
@@ -90,17 +89,25 @@ public class Deck : MonoBehaviour, ICardContainer
 	// Remove the selected card (_data sent from CardSelection script)
 	public void RemoveCard(GameObject _card)
 	{
-		deck.Remove(_card);
+		if(_card != null) {
+			deck.Remove(_card);
+		}
+	}
+
+	public void RemoveCard(GameObject _card, int _amount) {
+		for (int i = 1; i <= _amount; i++) {
+			deck.Remove (_card);
+		}
 	}
 
 	// Remove a card from the top, middle, or bottom of the deck
-	public void RemoveCard(Player.Position _pos) 
+	public void RemoveCard(Demo.Position _pos) 
 	{
-		int pos = 0;
+		int pos = (int)_pos;
 		Debug.Log(_pos);
 		
 		if((int)_pos == 0) {
-			pos = (deck.Count - deck.Count);
+			pos = 0;
 		}
 		
 		if((int)_pos == 1) {
@@ -116,13 +123,13 @@ public class Deck : MonoBehaviour, ICardContainer
 	}
 
 	// Remove a number of cards from the top, middle, or bottom of the deck
-	public void RemoveCard(Player.Position _pos, Player.Amount _amount)
+	public void RemoveCard(Demo.Position _pos, int _amount)
 	{
-		int pos = 0;
+		int pos = (int)_pos;
 
 		for(int i = 1; i < (int)_amount; i++) {
 			if((int)_pos == 0) {
-				pos = (deck.Count - deck.Count);
+				pos = 0;
 			}
 			
 			if((int)_pos == 1) {
@@ -138,7 +145,7 @@ public class Deck : MonoBehaviour, ICardContainer
 		}
 	}
 
-	public void RemoveCard(GameObject _card, Player.Position _position, Player.Target _target)
+	public void RemoveCard(GameObject _card, Demo.Position _position, Demo.Target _target)
 	{
 		if((int)_target == 1) {
 			hand.AddCard(_card);

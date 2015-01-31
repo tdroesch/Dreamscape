@@ -51,6 +51,7 @@
      <Compile Include="Assets\Scripts\CardEffects\DrawOnDeath.cs" />
      <Compile Include="Assets\Scripts\CardEffects\TestClass.cs" />
      <Compile Include="Assets\Scripts\CardSelection.cs" />
+     <Compile Include="Assets\Scripts\Demo.cs" />
      <Compile Include="Assets\Scripts\FSM\DSStateMachine.cs" />
      <Compile Include="Assets\Scripts\FSM\FSMAction.cs" />
      <Compile Include="Assets\Scripts\FSM\FSMContext.cs" />
@@ -63,7 +64,6 @@
      <Compile Include="Assets\Scripts\Hand, Deck, Subconscious\Hand.cs" />
      <Compile Include="Assets\Scripts\Hand, Deck, Subconscious\ICardContainer.cs" />
      <Compile Include="Assets\Scripts\Hand, Deck, Subconscious\Subconscious.cs" />
-     <Compile Include="Assets\Scripts\Player.cs" />
  <Reference Include="UnityEngine.UI">
  <HintPath>E:/Unity/Editor/Data/UnityExtensions/Unity/GUISystem/4.6.1/UnityEngine.UI.dll</HintPath>
  </Reference>
