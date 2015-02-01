@@ -4,14 +4,14 @@ using System.Collections.Generic;
 
 public class Demo : MonoBehaviour 
 {
-	public List<GameObject> playerCreated = new List<GameObject>();
+	public List<Card> playerCreated = new List<Card>();
     public Deck deck;
 	public Hand hand;
 	public Position _pos;
 	public int _amount;
 	public SortBy _sort;
 	public Target _target;
-	public GameObject cardPrefab;
+	public Card cardPrefab;
 
 	public enum Position
 	{
@@ -53,9 +53,7 @@ public class Demo : MonoBehaviour
 	{
 		if(GUI.Button(new Rect(20, 20, 170, 20), "Create Fifty Cards")) {
 			for(int i = 0; i <= 50; i++) {
-//				Card card = gameObject.AddComponent<Card>();
-				GameObject card = Instantiate(cardPrefab, transform.position, transform.rotation) as GameObject;
-				card.GetComponent<MeshRenderer>().enabled = false;
+				Card card = Instantiate(cardPrefab, transform.position, transform.rotation) as Card;
 				card.GetComponent<Card>().Name = "Card " + playerCreated.Count;
 				card.GetComponent<Card>().iCost = Random.Range (0, 5);
 				card.GetComponent<Card>().wCost = Random.Range (0, 5);
@@ -98,8 +96,8 @@ public class Demo : MonoBehaviour
 		if(GUI.Button(new Rect(20, 220, 170, 20), "Set Amount to 2")) {
 			_amount = 2;
 		}
-		if(GUI.Button(new Rect(20, 240, 170, 20), "Set Amount to 5")) {
-			_amount = 5;
+		if(GUI.Button(new Rect(20, 240, 170, 20), "Set Amount to 3")) {
+			_amount = 3;
 		}
 
 		if(GUI.Button(new Rect(20, 280, 170, 20), "Set target to deck")) {

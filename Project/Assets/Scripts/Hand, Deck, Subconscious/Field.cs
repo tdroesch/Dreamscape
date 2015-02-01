@@ -4,7 +4,7 @@ using System.Collections.Generic;
 
 public class Field : MonoBehaviour, ICardContainer
 {
-	public List<GameObject> field = new List<GameObject> ();
+	public List<Card> field = new List<Card> ();
 
 	private Deck deck;
 	private Hand hand;
@@ -17,7 +17,7 @@ public class Field : MonoBehaviour, ICardContainer
 		subconscious = GameObject.FindGameObjectWithTag ("Subconscious").GetComponent<Subconscious> ();
 	}
 
-	public void AddCard(GameObject _card)
+	public void AddCard(Card _card)
 	{
 		if(_card != null) {
 			_card.transform.position = this.gameObject.transform.position;
@@ -30,7 +30,7 @@ public class Field : MonoBehaviour, ICardContainer
 		CardSelection.selectedCard = null;
 	}
 
-	public void AddCard(GameObject _card, Demo.Position _pos) 
+	public void AddCard(Card _card, Demo.Position _pos) 
 	{ 
 		int pos = 0;
 		Debug.Log(_pos);
@@ -53,7 +53,7 @@ public class Field : MonoBehaviour, ICardContainer
 		}
 	} 
 
-	public void AddCard(GameObject _card, int _amount) 
+	public void AddCard(Card _card, int _amount) 
 	{
 		for(int i = 1; i <= (int)_amount; i++) {
 //			int pos = 0;
@@ -63,7 +63,7 @@ public class Field : MonoBehaviour, ICardContainer
 		}
 	}
 	
-	public void RemoveCard(GameObject _card)
+	public void RemoveCard(Card _card)
 	{
 		if(_card != null) {
 			subconscious.AddCard(_card);
@@ -71,7 +71,7 @@ public class Field : MonoBehaviour, ICardContainer
 		}
 	}
 
-	public void RemoveCard(GameObject _card, int _amount) {
+	public void RemoveCard(Card _card, int _amount) {
 		for (int i = 0; i <= _amount; i++) {
 			field.Remove (_card);
 		}
@@ -87,7 +87,7 @@ public class Field : MonoBehaviour, ICardContainer
 		}
 	}
 
-	public void RemoveCard(GameObject _card, Demo.Position _position, Demo.Target _target)
+	public void RemoveCard(Card _card, Demo.Position _position, Demo.Target _target)
 	{
 		if((int)_target == 0) {
 			deck.AddCard(_card);

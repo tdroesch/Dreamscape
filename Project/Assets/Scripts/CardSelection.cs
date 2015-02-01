@@ -4,7 +4,7 @@ using System.Collections;
 public class CardSelection : MonoBehaviour 
 {
 	public RaycastHit hit;
-	public static GameObject selectedCard;
+	public static Card selectedCard;
 
 	private Hand hand;
 	private Demo player;
@@ -20,12 +20,12 @@ public class CardSelection : MonoBehaviour
 		if(Input.GetButtonDown("Fire1")) {
 			Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
 			if(Physics.Raycast (ray, out hit)) {
-				OnClick(hit.transform.gameObject);
+				OnClick(hit.transform.GetComponent<Card>());
 			}
 		}
 	}
 
-	void OnClick(GameObject _hit)
+	void OnClick(Card _hit)
 	{
 		if (_hit.renderer.enabled == true) {
 			selectedCard = _hit;
