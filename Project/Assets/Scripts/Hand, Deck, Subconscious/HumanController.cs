@@ -1,15 +1,15 @@
-﻿using UnityEngine;
+using UnityEngine;
 using System.Collections;
 
 //[System.Serializable]
 public class HumanController : MonoBehaviour, IController {
 	//***********************************************
 	//This is almost entirely for testing purposes.
-	GameManager gm;
+	ServerGameManager gm;
 
 	// Use this for initialization
 	void Start () {
-		gm = GetComponent<GameManager> ();
+		gm = GetComponent<ServerGameManager> ();
 	}
 	
 	// Update is called once per frame

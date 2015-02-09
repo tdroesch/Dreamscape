@@ -9,7 +9,7 @@ using System;
 /// </summary>
 
 
-public class GameManager : MonoBehaviour {
+public class ServerGameManager : MonoBehaviour {
 	/// <summary>
 	/// The state machine.
 	/// </summary>
