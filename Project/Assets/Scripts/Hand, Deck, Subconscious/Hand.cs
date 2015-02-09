@@ -4,7 +4,7 @@ using System.Collections.Generic;
 
 public class Hand : MonoBehaviour, ICardContainer
 {
-	public List<GameObject> hand = new List<GameObject> ();
+	public List<Card> hand = new List<Card> ();
 
 	private Deck deck;
 	private Field field;
@@ -17,7 +17,7 @@ public class Hand : MonoBehaviour, ICardContainer
 		subconscious = GameObject.FindGameObjectWithTag ("Subconscious").GetComponent<Subconscious> ();
 	}
 
-	public void AddCard(GameObject _card)
+	public void AddCard(Card _card)
 	{
 		if(_card != null) {
 			_card.transform.position = this.gameObject.transform.position;
@@ -30,13 +30,13 @@ public class Hand : MonoBehaviour, ICardContainer
 		CardSelection.selectedCard = null;
 	}
 
-	public void AddCard(GameObject _card, Player.Position _pos) 
+	public void AddCard(Card _card, Demo.Position _pos) 
 	{ 
-		int pos = 0;
+		int pos = (int)_pos;
 		Debug.Log(_pos);
 		
 		if((int)_pos == 0) {
-			pos = (hand.Count - hand.Count);
+			pos = 0;
 		}
 		
 		if((int)_pos == 1) {
@@ -53,17 +53,19 @@ public class Hand : MonoBehaviour, ICardContainer
 		}
 	}
 
-	public void AddCard(GameObject _card, Player.Position _pos, Player.Amount _amount)
+	public void AddCard(Card _card, int _amount)
 	{
 		for(int i = 1; i <= (int)_amount; i++) {
-			int pos = 0;
+//			int pos = (int)_pos;
 
-			hand.Insert(pos, _card);
+			hand.Add(_card);
+			_card.transform.position = this.gameObject.transform.position;
+			_card.GetComponent<MeshRenderer>().enabled = true;
 			_card.transform.parent = this.gameObject.transform;
 		}
 	}
 	
-	public void RemoveCard(GameObject _card)
+	public void RemoveCard(Card _card)
 	{
 		// Removes the selected card from the hand and into the player's field
 		if(_card != null) {
@@ -72,7 +74,13 @@ public class Hand : MonoBehaviour, ICardContainer
 		}
 	}
 
-	public void RemoveCard(Player.Position _pos, Player.Amount _amount) 
+	public void RemoveCard(Card _card, int _amount) {
+		for (int i = 1; i <= _amount; i++) {
+			hand.Remove (_card);
+		}
+	}
+
+	public void RemoveCard(Demo.Position _pos, int _amount) 
 	{ 
 		int pos = 0;
 		
@@ -82,7 +90,7 @@ public class Hand : MonoBehaviour, ICardContainer
 		}
 	}
 
-	public void RemoveCard(GameObject _card, Player.Position _position, Player.Target _target)
+	public void RemoveCard(Card _card, Demo.Position _position, Demo.Target _target)
 	{
 		if((int)_target == 0) {
 			deck.AddCard(_card);

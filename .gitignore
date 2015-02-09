@@ -28,3 +28,6 @@ Project/*.sln
 .Trashes
 ehthumbs.db
 Thumbs.db
+Project/Assembly-CSharp-vs.csproj
+Project/Assembly-CSharp-vs.csproj
+Project/Assembly-CSharp.csproj

@@ -4,7 +4,7 @@ using System.Collections.Generic;
 
 public class Subconscious : MonoBehaviour, ICardContainer 
 {
-	public List<GameObject> subconscious = new List<GameObject> ();
+	public List<Card> subconscious = new List<Card> ();
 
 	private Deck deck;
 	private Hand hand;
@@ -17,7 +17,7 @@ public class Subconscious : MonoBehaviour, ICardContainer
 		field = GameObject.FindGameObjectWithTag ("Field").GetComponent<Field> ();
 	}
 
-	public void AddCard(GameObject _card)
+	public void AddCard(Card _card)
 	{
 		if(_card != null) {
 			_card.transform.position = this.gameObject.transform.position;
@@ -30,13 +30,13 @@ public class Subconscious : MonoBehaviour, ICardContainer
 		CardSelection.selectedCard = null;
 	}
 	
-	public void AddCard(GameObject _card, Player.Position _pos) 
+	public void AddCard(Card _card, Demo.Position _pos) 
 	{ 
 		int pos = 0;
 		Debug.Log(_pos);
 		
 		if((int)_pos == 0) {
-			pos = (subconscious.Count - subconscious.Count);
+			pos = 0;
 		}
 		
 		if((int)_pos == 1) {
@@ -53,17 +53,17 @@ public class Subconscious : MonoBehaviour, ICardContainer
 		}
 	} 
 	
-	public void AddCard(GameObject _card, Player.Position _pos, Player.Amount _amount) 
+	public void AddCard(Card _card, int _amount) 
 	{
 		for(int i = 1; i <= (int)_amount; i++) {
-			int pos = 0;
+//			int pos = 0;
 			
-			subconscious.Insert(pos, _card);
+			subconscious.Add(_card);
 			_card.transform.parent = this.gameObject.transform;
 		}
 	}
 	
-	public void RemoveCard(GameObject _card)
+	public void RemoveCard(Card _card)
 	{
 		if(_card != null) {
 			deck.AddCard(_card);
@@ -71,7 +71,13 @@ public class Subconscious : MonoBehaviour, ICardContainer
 		}
 	}
 
-	public void RemoveCard(Player.Position _pos, Player.Amount _amount)
+	public void RemoveCard(Card _card, int _amount) {
+		for (int i = 0; i <= _amount; i++) {
+			subconscious.Remove (_card);
+		}
+	}
+
+	public void RemoveCard(Demo.Position _pos, int _amount)
 	{
 		int pos = 0;
 		
@@ -81,7 +87,7 @@ public class Subconscious : MonoBehaviour, ICardContainer
 		}
 	}
 	
-	public void RemoveCard(GameObject _card, Player.Position _position, Player.Target _target)
+	public void RemoveCard(Card _card, Demo.Position _position, Demo.Target _target)
 	{
 		if((int)_target == 0) {
 			deck.AddCard(_card);
