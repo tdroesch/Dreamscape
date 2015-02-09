@@ -2,7 +2,9 @@
 using System.Collections;
 using System.Collections.Generic;
 
-public class Player : MonoBehaviour 
+//Leave commented untily the concept and use of player has been defined
+
+/*public class Player : MonoBehaviour 
 {
 	public List<GameObject> playerCreated = new List<GameObject>();
     public Deck deck;
@@ -120,4 +122,4 @@ public class Player : MonoBehaviour
 			_target = Target.subconscious;
 		}
 	}
-}
+}*/
