@@ -1,14 +1,16 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public interface ICardContainer
+namespace Dreamscape
 {
-	void AddCard(Card _card);
-	void AddCard(Card _card, Demo.Position _pos);
-	void AddCard(Card _card, int _amount);
-	
-	void RemoveCard(Card _card);
-	void RemoveCard(Card _card, int _amount);
-	void RemoveCard(Demo.Position _pos, int _amount);
-	void RemoveCard(Card _card, Demo.Position _pos, Demo.Target _target);
+	public interface ICardContainer {
+		void AddCard (Card _card);
+		void AddCard (Card _card, Position _pos);
+		void AddCard (Card _card, int _amount);
+		
+		void RemoveCard (Card _card);
+		void RemoveCard (Card _card, int _amount);
+		void RemoveCard (Position _pos, int _amount);
+		void RemoveCard (Card _card, Position _pos, Target _target);
+	}
 }

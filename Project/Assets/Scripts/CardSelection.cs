@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
+using Dreamscape;
 
 public class CardSelection : MonoBehaviour 
 {
@@ -11,7 +12,7 @@ public class CardSelection : MonoBehaviour
 	
 	void Awake()
 	{
-		hand = GameObject.FindGameObjectWithTag ("Hand").GetComponent<Hand> ();
+//		hand = GameObject.FindGameObjectWithTag ("Hand").GetComponent<Hand> ();
 		player = GameObject.FindGameObjectWithTag ("Player").GetComponent<Demo> ();
 	}
 
@@ -31,7 +32,7 @@ public class CardSelection : MonoBehaviour
 			selectedCard = _hit;
 			Debug.Log ("Selected Card: " + selectedCard.GetComponent<Card> ().Name);
 			
-			if(player._target == Demo.Target.field) {
+			if(player._target == Target.field) {
 				hand.RemoveCard (selectedCard);
 			} else {
 				hand.RemoveCard(selectedCard, player._pos, player._target);

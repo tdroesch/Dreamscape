@@ -1,6 +1,7 @@
 using UnityEngine;
 using System.Collections;
 using FSM;
+using Dreamscape;
 
 class DSActionTurnEnd : FSMAction {
 	public void execute (FSMContext context, object data)

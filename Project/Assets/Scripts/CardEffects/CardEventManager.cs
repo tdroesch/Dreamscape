@@ -19,6 +19,7 @@ public class CardEventManager : MonoBehaviour {
 	/// The event types for each card.
 	/// </summary>
 	public event CardEvent 	TurnStart, TurnEnd, OpponentStart, OpponentEnd,
+							PhaseChange, OpponentPhaseChange,
 							Attack, DealDamage, RecieveDamage,
 							Play, Discard, Draw,
 							AllyCardPlay, OpponentCardPlay, ChangeField,
@@ -52,6 +53,18 @@ public class CardEventManager : MonoBehaviour {
 	/// </summary>
 	public void OnOpponentEnd(){
 		OpponentEnd();
+	}
+	/// <summary>
+	/// Raises the phase change event.
+	/// </summary>
+	public void OnPhaseChange(){
+		PhaseChange();
+	}
+	/// <summary>
+	/// Raises the opponent phase chage event.
+	/// </summary>
+	public void OnOpponentPhaseChage(){
+		OpponentPhaseChange();
 	}
 	/// <summary>
 	/// Raises the attack event.

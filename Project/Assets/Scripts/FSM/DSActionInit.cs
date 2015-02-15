@@ -1,6 +1,7 @@
 using UnityEngine;
 using System.Collections;
 using FSM;
+using Dreamscape;
 /// <summary>
 /// Initialize the Dreamscape Finite State Machine.
 /// </summary>

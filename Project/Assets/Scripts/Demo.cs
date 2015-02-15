@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
+using Dreamscape;
 
 
 public class Demo : MonoBehaviour 
@@ -14,31 +15,10 @@ public class Demo : MonoBehaviour
 	public Target _target;
 	public Card cardPrefab;
 
-	public enum Position
-	{
-		top = 0,
-		middle = 1,
-		bottom = 2
-	};
-	
-	public enum SortBy
-	{
-		alphabetically = 0,
-		type = 1
-	};
-
-	public enum Target
-	{
-		deck = 0,
-		hand = 1,
-		field = 2,
-		subconscious = 3
-	};
-
 	void Awake()
 	{
-		deck = this.gameObject.transform.FindChild("Deck").GetComponent<Deck> ();
-		hand = this.gameObject.transform.FindChild ("Hand").GetComponent<Hand> ();
+//		deck = this.gameObject.transform.FindChild("Deck").GetComponent<Deck> ();
+//		hand = this.gameObject.transform.FindChild ("Hand").GetComponent<Hand> ();
 	}
 
 	void Start()
