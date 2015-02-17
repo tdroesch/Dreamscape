@@ -24,9 +24,9 @@ class DSActionTurnStart : FSMAction {
 			card.getEventManager().OnTurnStart();
 		}*/
 
-		Debug.Log ("Turn Start");
+		Debug.LogWarning ("Turn Start");
 		Debug.Log ("Start of Turn Card Effects");
-		Debug.Log ("Current Player: " + bm.CurrentPlayer);
+		Debug.Log ("Current Player: " + (bm.CurrentPlayer+1));
 		Debug.Log ("Player 1 Stats - Will: " + ((Player)context.get ("Player 1")).Will +
 			", Imagination: " + ((Player)context.get ("Player 1")).Imagination +
 		           ", Hand Size: " + ((Player)context.get ("Player 1")).HandSize);

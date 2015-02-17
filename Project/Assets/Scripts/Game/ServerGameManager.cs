@@ -19,11 +19,13 @@ namespace Dreamscape
 		/// <summary>
 		/// The Agent who plays first.
 		/// </summary>
-		public IController player1;
+//		public IController player1;
+		public LocalController player1;//Temporary for testing.  Remove and uncomment above line.
 		/// <summary>
 		/// The Agent who plays second
 		/// </summary>
-		public IController player2;
+//		public IController player2;
+		public LocalController player2;//Temporary for testing.  Remove and uncommment above line.
 	
 	
 		void Awake ()

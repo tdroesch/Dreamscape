@@ -16,8 +16,8 @@ class DSActionTurnDraw : FSMAction {
 		//Draw Cards
 		currentPlayer.DrawCard ();
 		
-		Debug.Log ("Turn Draw");
-		Debug.Log ("Current Player: " + bm.CurrentPlayer);
+		Debug.LogWarning ("Turn Draw");
+		Debug.Log ("Current Player: " + (bm.CurrentPlayer+1));
 		Debug.Log ("Player 1 Stats - Will: " + ((Player)context.get ("Player 1")).Will +
 		           ", Imagination: " + ((Player)context.get ("Player 1")).Imagination +
 		           ", Hand Size: " + ((Player)context.get ("Player 1")).HandSize);

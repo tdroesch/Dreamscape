@@ -22,8 +22,8 @@ class DSActionGameStart : FSMAction {
 			currentPlayer.DrawCard();
 			opposingPlayer.DrawCard();
 		}
-		Debug.Log ("Game Start");
-		Debug.Log ("Current Player: " + bm.CurrentPlayer);
+		Debug.LogWarning ("Game Start");
+		Debug.Log ("Current Player: " + (bm.CurrentPlayer+1));
 		Debug.Log ("Player 1 Stats - Will: " + ((Player)context.get ("Player 1")).Will +
 			", Imagination: " + ((Player)context.get ("Player 1")).Imagination +
 		           ", Hand Size: " + ((Player)context.get ("Player 1")).HandSize);

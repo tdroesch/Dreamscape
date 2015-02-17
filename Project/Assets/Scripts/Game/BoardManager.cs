@@ -143,6 +143,7 @@ namespace Dreamscape
 		public void init (int firstPlayer)
 		{
 			nextPlayer = firstPlayer;
+			currentPlayer = firstPlayer;
 		}
 	
 		/// <summary>

@@ -23,9 +23,9 @@ class DSActionTurnEnd : FSMAction {
 		}*/
 
 		
-		Debug.Log ("Turn End");
+		Debug.LogWarning ("Turn End");
 		Debug.Log ("End of Turn Card Effects");
-		Debug.Log ("Current Player: " + bm.CurrentPlayer);
+		Debug.Log ("Current Player: " + (bm.CurrentPlayer+1));
 		Debug.Log ("Player 1 Stats - Will: " + ((Player)context.get ("Player 1")).Will +
 		           ", Imagination: " + ((Player)context.get ("Player 1")).Imagination +
 		           ", Hand Size: " + ((Player)context.get ("Player 1")).HandSize);

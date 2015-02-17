@@ -12,13 +12,12 @@ class DSActionTurnPlay : FSMAction {
 		Player currentPlayer = (Player)context.get ("Player "+(bm.CurrentPlayer+1));
 		Player opposingPlayer = (Player)context.get ("Player "+((bm.CurrentPlayer+1)%2+1));
 
-		//Wait for player to play cards and stuff
-		currentPlayer.PlayCard ();
-		currentPlayer.Imagination -= 100;
+
 		
-		Debug.Log ("Turn Play");
-		Debug.Log ("Player plays a 100i card");
-		Debug.Log ("Current Player: " + bm.CurrentPlayer);
+		Debug.LogWarning ("Turn Play");
+		Debug.Log ("Current Player: " + (bm.CurrentPlayer+1));
+		//Wait for player to play cards and stuff
+		currentPlayer.PlayCards ();
 		Debug.Log ("Player 1 Stats - Will: " + ((Player)context.get ("Player 1")).Will +
 		           ", Imagination: " + ((Player)context.get ("Player 1")).Imagination +
 		           ", Hand Size: " + ((Player)context.get ("Player 1")).HandSize);

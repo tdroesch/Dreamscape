@@ -46,7 +46,7 @@ namespace Dreamscape
 		/// </summary>
 		/// <value>The size of the hand.</value>
 		public int HandSize {
-			get{ return handsize; }//hand.hand.Count;}
+			get{ return hand.Count;}
 		}
 	
 		/// <summary>
@@ -54,7 +54,7 @@ namespace Dreamscape
 		/// </summary>
 		/// <value>The size of the deck.</value>
 		public int DeckSize {
-			get{ return deckSize; }//deck.deck.Count;}
+			get{ return deck.Count;}
 		}
 	
 		/// <summary>
@@ -107,18 +107,24 @@ namespace Dreamscape
 		/// </summary>
 		public void DrawCard ()
 		{
-			//hand.AddCard(deck.deck[0]);
-			//deck.RemoveCard(deck.deck[0]);
-			handsize++;
+			hand.AddCard(deck.RemoveCard(Position.top));
 		}
 	
 		/// <summary>
-		/// Plays a card.
+		/// Plays all cards that can be played.
+		/// This is temporary.
+		/// Replace with PlayCard(Card _card) that will be called through user interface.
 		/// </summary>
-		public void PlayCard ()
+		public void PlayCards ()
 		{
-			//hand.RemoveCard (hand.hand [0]);
-			handsize--;
+			Card[] cards = hand.Peak();
+			foreach (Card c in cards){
+				if (c.iCost <= this.imagination){
+					this.field.AddCard(hand.RemoveCard(c));
+					imagination -= c.iCost;
+					Debug.Log("Current Player Plays " + c.Name + " for " + c.iCost + ".");
+				}
+			}
 		}
 	}
 }

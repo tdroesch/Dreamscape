@@ -10,13 +10,14 @@ class DSActionInit : FSMAction {
 	BoardManager bm;
 
 	public void execute (FSMContext context, object data){
+		Random.seed = System.DateTime.Today.Millisecond;
 		context.put ("Player 1", p1);
 		context.put ("Player 2", p2);
 		this.bm.init(Random.Range(0,1));
 		context.put ("Game Attribute Manager", bm);
 
-		Debug.Log ("Game Initialized");
-		Debug.Log ("Current Player: " + bm.CurrentPlayer);
+		Debug.LogWarning ("Game Initialized");
+		Debug.Log ("Current Player: " + (bm.CurrentPlayer+1));
 		Debug.Log ("Player 1 Stats - Will: " + ((Player)context.get ("Player 1")).Will +
 		           ", Imagination: " + ((Player)context.get ("Player 1")).Imagination +
 		           ", Hand Size: " + ((Player)context.get ("Player 1")).HandSize);
