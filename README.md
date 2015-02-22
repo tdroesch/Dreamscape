@@ -18,7 +18,6 @@ written I'm sure.
 - ~~CardMaker~~ - SCRAPPED
 - Click/Select/Drag Cards
 - Game Settings
-<<<<<<< HEAD
 
 #### **Game Play:**
 
@@ -29,16 +28,13 @@ written I'm sure.
 #### **Game Play:**
 
 - Game - Tyler
->>>>>>> origin/master
-- Player
+- Player - Tyler
 - Card
 - ICardContainer
 -- Hand/Deck/SubConscious - Dori
-<<<<<<< HEAD
 - Turn
 =======
 - Turn - Tyler
->>>>>>> origin/master
 - FSM - Tyler
 
 #### **Graphical:**
