@@ -140,10 +140,12 @@ namespace Dreamscape
 		/// Initalize the BoardManager values.
 		/// </summary>
 		/// <param name="firstPlayer">The Player who plays first.</param>
-		public void init (int firstPlayer)
+		public void init (int firstPlayer, Player player1, Player player2)
 		{
 			nextPlayer = firstPlayer;
 			currentPlayer = firstPlayer;
+			this.player1 = player1;
+			this.player2 = player2;
 		}
 	
 		/// <summary>

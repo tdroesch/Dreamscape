@@ -13,7 +13,7 @@ class DSActionInit : FSMAction {
 		Random.seed = System.DateTime.Today.Millisecond;
 		context.put ("Player 1", p1);
 		context.put ("Player 2", p2);
-		this.bm.init(Random.Range(0,1));
+		this.bm.init(Random.Range(0,1), p1, p2);
 		context.put ("Game Attribute Manager", bm);
 
 		Debug.LogWarning ("Game Initialized");

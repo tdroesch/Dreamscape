@@ -1,14 +1,15 @@
-﻿using System.Collections;
-
+using UnityEngine;
+using System;
 
 namespace Dreamscape
 {
 	/// <summary>
-	/// DEPRICATED
-	/// Functionallity built into BaseClientGameManager
-	/// Interface for controllers that send commands to the ServerGameManager.
+	/// Abstarct Base Class for managing clientside gameobjects.
 	/// </summary>
-	public interface IController {
+	public abstract class BaseClientGameManager : MonoBehaviour {
+		// Write functions to move, create, destroy, and modify game objects in the scene.
+
+
 		//**********************************
 		// Messages to the ServerGameManager
 		
@@ -18,7 +19,7 @@ namespace Dreamscape
 		/// <param name="_cardID">ID of the card being played.</param>
 		/// <param name="_targets">The targets of the card.</param>
 		/// <param name="_destination">ID of the container it is moved to.</param>
-		void PlayCard (int _cardID, int[] _targets, int _destination);
+		public abstract void PlayCard (int _cardID, int[] _targets, int _destination);
 		
 		/// <summary>
 		/// Uses the card ability.
@@ -26,19 +27,20 @@ namespace Dreamscape
 		/// <param name="_cardID">ID of the card being used.</param>
 		/// <param name="_abilityID">ID of the ability being used.</param>
 		/// <param name="_targets">The targets of the ability.</param>
-		void UseCardAbility (int _cardID, int _abilityID, int[] _targets);
+		public abstract void UseCardAbility (int _cardID, int _abilityID, int[] _targets);
 		
 		/// <summary>
 		/// Rearange cards possitions on the board
 		/// </summary>
 		/// <param name="_cardID">ID of the card being moved.</param>
 		/// <param name="_destination">ID of the container it is moved to.</param>
-		void MoveCardToField (int _cardID, int _destination);
+		public abstract void MoveCardToField (int _cardID, int _destination);
 		
 		/// <summary>
 		/// Ends the phase.
 		/// </summary>
-		void EndPhase ();
+		public abstract void EndPhase ();
 		//**********************************
 	}
 }
+

@@ -17,7 +17,7 @@ namespace Dreamscape
 		Subconscious discard;
 		int will;
 		int imagination;
-		IController controller;
+		IClient client;
 	
 		//Temporary for testing purposes
 		int handsize;
@@ -77,8 +77,8 @@ namespace Dreamscape
 		/// Gets the controller.
 		/// </summary>
 		/// <value>The controller.</value>
-		public IController Controller {
-			get{ return controller;}
+		public IClient Client {
+			get{ return client;}
 		}
 	
 		/// <summary>
@@ -90,8 +90,8 @@ namespace Dreamscape
 		/// <param name="deck">Deck.</param>
 		/// <param name="field">Field.</param>
 		/// <param name="discard">Discard.</param>
-		/// <param name="controller">Controller.</param>
-		public Player (int will, int imagination, Hand hand, Deck deck, Field field, Subconscious discard, IController controller)
+		/// <param name="client">Client.</param>
+		public Player (int will, int imagination, Hand hand, Deck deck, Field field, Subconscious discard, IClient client)
 		{
 			this.will = will;
 			this.imagination = imagination;
@@ -99,7 +99,7 @@ namespace Dreamscape
 			this.deck = deck;
 			this.field = field;
 			this.discard = discard;
-			this.controller = controller;
+			this.client = client;
 		}
 	
 		/// <summary>

@@ -75,7 +75,7 @@ class DSStateMachine {
 		BoardManager bm = context.get ("Game Attribute Manager") as BoardManager;
 		int currentPlayer = bm.CurrentPlayer;
 		//Check to see it the current player is issueing the command
-		if (((Player)context.get ("Player " + (currentPlayer+1))).Controller.Equals (data)) {
+		if (((Player)context.get ("Player " + (currentPlayer+1))).Client.Equals (data)) {
 			context.dispatch (msg, data);
 		}
 	}

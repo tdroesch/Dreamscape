@@ -19,13 +19,13 @@ namespace Dreamscape
 		/// <summary>
 		/// The Agent who plays first.
 		/// </summary>
-//		public IController player1;
-		public LocalController player1;//Temporary for testing.  Remove and uncomment above line.
+//		public IClient player1;
+		public LocalClientGameManager player1;//Temporary for testing.  Remove and uncomment above line.
 		/// <summary>
 		/// The Agent who plays second
 		/// </summary>
-//		public IController player2;
-		public LocalController player2;//Temporary for testing.  Remove and uncommment above line.
+//		public IClient player2;
+		public LocalClientGameManager player2;//Temporary for testing.  Remove and uncommment above line.
 	
 	
 		void Awake ()
@@ -44,9 +44,55 @@ namespace Dreamscape
 		// Update is called once per frame
 		void Update ()
 		{
-		
+
 		}
-	
+		
+		//**********************************
+		// Messages to the ServerGameManager
+		
+		/// <summary>
+		/// Plays the card.
+		/// </summary>
+		/// <param name="_cardID">ID of the card being played.</param>
+		/// <param name="_targets">The targets of the card.</param>
+		/// <param name="_destination">ID of the container it is moved to.</param>
+		/// <param name="_player">Player who requested command.</param>
+		public void PlayCard (int _cardID, int[] _targets, int _destination, IClient _player)
+		{
+			stateMessage ("Start Play", _player);
+		}
+		
+		/// <summary>
+		/// Uses the card ability.
+		/// </summary>
+		/// <param name="_cardID">ID of the card being used.</param>
+		/// <param name="_abilityID">ID of the ability being used.</param>
+		/// <param name="_targets">The targets of the ability.</param>
+		/// <param name="_player">Player who requested command.</param>
+		public void UseCardAbility (int _cardID, int _abilityID, int[] _targets, IClient _player){}
+		
+		/// <summary>
+		/// Rearange cards possitions on the board
+		/// </summary>
+		/// <param name="_cardID">ID of the card being moved.</param>
+		/// <param name="_destination">ID of the container it is moved to.</param>
+		/// <param name="_player">Player who requested command.</param>
+		public void MoveCardToField (int _cardID, int _destination, IClient _player)
+		{
+
+		}
+		
+		/// <summary>
+		/// Ends the phase.
+		/// </summary>
+		/// <param name="_player">Player who requested command.</param>
+		public void EndPhase (IClient _player)
+		{
+			stateMessage ("Start End", _player);
+		}
+		//**********************************
+
+		// Will be replace by the above functions	
 		public void stateMessage (string msg, object data)
 		{
 			stateMachine.message (msg, data);
