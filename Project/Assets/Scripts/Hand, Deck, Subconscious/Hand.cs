@@ -106,8 +106,57 @@ public class Hand : MonoBehaviour, ICardContainer
 		}
 	}
 
-	void Sort()
+	public void Sort(Demo.SortBy _category)
 	{
-
+		switch (_category) {
+			case (Demo.SortBy.type):
+				SortByType ();
+				break;
+			case (Demo.SortBy.iCost):
+				SortByICost ();	
+				break;
+			case (Demo.SortBy.wCost):
+				SortByWCost();
+				break;
+		}
+	}
+	
+	private void SortByType()
+	{
+		for (int i = 1; i < hand.Count; i++) {
+			// TODO I forgot what types we have.
+		}
+	}
+	
+	private void SortByICost()
+	{
+		for (int i = 1; i < hand.Count; i++) {
+			Card currentCard = hand[i];
+			int cardValue = currentCard.GetComponent<Card>().iCost;
+			int index = i - 1;
+			
+			while ((index > -1) && (hand[index].GetComponent<Card>().iCost > cardValue)) {
+				hand[index+1] = hand[index];
+				index = index - 1;
+			}
+			
+			hand[index+1] = currentCard;
+		}
+	}
+	
+	private void SortByWCost()
+	{
+		for (int i = 1; i < hand.Count; i++) {
+			Card currentCard = hand[i];
+			int cardValue = currentCard.GetComponent<Card>().wCost;
+			int index = i - 1;
+			
+			while ((index > -1) && (hand[index].GetComponent<Card>().wCost > cardValue)) {
+				hand[index+1] = hand[index];
+				index = index - 1;
+			}
+			
+			hand[index+1] = currentCard;
+		}
 	}
 }

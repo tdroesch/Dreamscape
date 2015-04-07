@@ -4,8 +4,8 @@ using System.Collections.Generic;
 
 public class Deck : MonoBehaviour, ICardContainer
 {
-	public List<Card> deck = new List<Card>();
-	
+	public List<Card> deck = new List<Card> ();
+
 	private Hand hand;
 	private Field field;
 	private Subconscious subconscious;
@@ -61,31 +61,6 @@ public class Deck : MonoBehaviour, ICardContainer
 		CardSelection.selectedCard = null;
     }
 
-	// Add an amount of cards at the top, middle, or bottom of the deck
-	public void AddCard(Card _card, int _amount)
-    {
-		for(int i = 1; i <= _amount; i++) {
-//			int pos = (int)_pos;
-//
-//			if((int)_pos == 0) {
-//				pos = 0;
-//			}
-//			
-//			if((int)_pos == 1) {
-//				pos = deck.Count / 2;
-//			}
-//			
-//			if((int)_pos == 2) {
-//				pos = deck.Count;
-//			}
-
-			deck.Add (_card);
-			_card.GetComponent<MeshRenderer>().enabled = false;
-			_card.transform.position = this.gameObject.transform.position;
-			_card.transform.parent = this.gameObject.transform;
-		}
-    }
-	
 	// Remove the selected card (_data sent from CardSelection script)
 	public void RemoveCard(Card _card)
 	{
@@ -161,13 +136,69 @@ public class Deck : MonoBehaviour, ICardContainer
 		}
 	}
 
-    void Shuffle()
+    public void Shuffle()
     {
-
+		for (int i = 0; i < deck.Count; i++) {
+			int rand = i + (int)(Random.value * (deck.Count - i));
+		
+			Card temp = null;
+			temp = deck[rand];
+			deck[rand] = deck[i];
+			deck[i] = temp;
+		}
     }
 
-    void Sort()
+    public void Sort(Demo.SortBy _category)
     {
+		switch (_category) {
+			case (Demo.SortBy.type):
+				SortByType ();
+				break;
+			case (Demo.SortBy.iCost):
+				SortByICost ();	
+				break;
+			case (Demo.SortBy.wCost):
+				SortByWCost();
+				break;
+		}
+	}
 
-    }
+	private void SortByType()
+	{
+		for (int i = 1; i < deck.Count; i++) {
+			// TODO I forgot what types we have.
+		}
+	}
+
+	private void SortByICost()
+	{
+		for (int i = 1; i < deck.Count; i++) {
+			Card currentCard = deck[i];
+			int cardValue = currentCard.GetComponent<Card>().iCost;
+			int index = i - 1;
+
+			while ((index > -1) && (deck[index].GetComponent<Card>().iCost > cardValue)) {
+				deck[index+1] = deck[index];
+				index = index - 1;
+			}
+
+			deck[index+1] = currentCard;
+		}
+	}
+
+	private void SortByWCost()
+	{
+		for (int i = 1; i < deck.Count; i++) {
+			Card currentCard = deck[i];
+			int cardValue = currentCard.GetComponent<Card>().wCost;
+			int index = i - 1;
+			
+			while ((index > -1) && (deck[index].GetComponent<Card>().wCost > cardValue)) {
+				deck[index+1] = deck[index];
+				index = index - 1;
+			}
+			
+			deck[index+1] = currentCard;
+		}
+	}
 }

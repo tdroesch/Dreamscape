@@ -102,4 +102,70 @@ public class Subconscious : MonoBehaviour, ICardContainer
 			subconscious.Remove(_card);
 		}
 	}
+
+	public void Shuffle()
+	{
+		for (int i = 0; i < subconscious.Count; i++) {
+			int rand = i + (int)(Random.value * (subconscious.Count - i));
+			
+			Card temp = null;
+			temp = subconscious[rand];
+			subconscious[rand] = subconscious[i];
+			subconscious[i] = temp;
+		}
+	}
+
+	public void Sort(Demo.SortBy _category)
+	{
+		switch (_category) {
+			case (Demo.SortBy.type):
+				SortByType ();
+				break;
+			case (Demo.SortBy.iCost):
+				SortByICost ();	
+				break;
+			case (Demo.SortBy.wCost):
+				SortByWCost();
+				break;
+		}
+	}
+	
+	private void SortByType()
+	{
+		for (int i = 1; i < subconscious.Count; i++) {
+			// TODO I forgot what types we have.
+		}
+	}
+	
+	private void SortByICost()
+	{
+		for (int i = 1; i < subconscious.Count; i++) {
+			Card currentCard = subconscious[i];
+			int cardValue = currentCard.GetComponent<Card>().iCost;
+			int index = i - 1;
+			
+			while ((index > -1) && (subconscious[index].GetComponent<Card>().iCost > cardValue)) {
+				subconscious[index+1] = subconscious[index];
+				index = index - 1;
+			}
+			
+			subconscious[index+1] = currentCard;
+		}
+	}
+	
+	private void SortByWCost()
+	{
+		for (int i = 1; i < subconscious.Count; i++) {
+			Card currentCard = subconscious[i];
+			int cardValue = currentCard.GetComponent<Card>().wCost;
+			int index = i - 1;
+			
+			while ((index > -1) && (subconscious[index].GetComponent<Card>().wCost > cardValue)) {
+				subconscious[index+1] = subconscious[index];
+				index = index - 1;
+			}
+			
+			subconscious[index+1] = currentCard;
+		}
+	}
 }

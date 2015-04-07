@@ -5,7 +5,6 @@ public interface ICardContainer
 {
 	void AddCard(Card _card);
 	void AddCard(Card _card, Demo.Position _pos);
-	void AddCard(Card _card, int _amount);
 	
 	void RemoveCard(Card _card);
 	void RemoveCard(Card _card, int _amount);
