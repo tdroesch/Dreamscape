@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 
 public class Deck : MonoBehaviour, ICardContainer
 {
@@ -148,7 +149,7 @@ public class Deck : MonoBehaviour, ICardContainer
 		}
     }
 
-    public void Sort(Demo.SortBy _category)
+    public void doSort(Demo.SortBy _category)
     {
 		switch (_category) {
 			case (Demo.SortBy.type):
@@ -166,7 +167,16 @@ public class Deck : MonoBehaviour, ICardContainer
 	private void SortByType()
 	{
 		for (int i = 1; i < deck.Count; i++) {
-			// TODO I forgot what types we have.
+			Card currentCard = deck[i];
+			string cardType = currentCard.GetComponent<Card>().Type;
+			int index = i - 1;
+
+			while((index > -1) && (deck[index].GetComponent<Card>().Type != cardType)) {
+				deck[index+1] = deck[index];
+				index = index - 1;
+			}
+
+			deck[index+1] = currentCard;
 		}
 	}
 

@@ -102,4 +102,67 @@ public class Field : MonoBehaviour, ICardContainer
 			field.Remove(_card);
 		}
 	}
+
+	public void Sort(Demo.SortBy _category)
+	{
+		switch (_category) {
+		case (Demo.SortBy.type):
+			SortByType ();
+			break;
+		case (Demo.SortBy.iCost):
+			SortByICost ();	
+			break;
+		case (Demo.SortBy.wCost):
+			SortByWCost();
+			break;
+		}
+	}
+	
+	private void SortByType()
+	{
+		for (int i = 1; i < field.Count; i++) {
+			Card currentCard = field[i];
+			string cardType = currentCard.GetComponent<Card>().Type;
+			int index = i - 1;
+			
+			while((index > -1) && (field[index].GetComponent<Card>().Type != cardType)) {
+				field[index+1] = field[index];
+				index = index - 1;
+			}
+			
+			field[index+1] = currentCard;
+		}
+	}
+	
+	private void SortByICost()
+	{
+		for (int i = 1; i < field.Count; i++) {
+			Card currentCard = field[i];
+			int cardValue = currentCard.GetComponent<Card>().iCost;
+			int index = i - 1;
+			
+			while ((index > -1) && (field[index].GetComponent<Card>().iCost > cardValue)) {
+				field[index+1] = field[index];
+				index = index - 1;
+			}
+			
+			field[index+1] = currentCard;
+		}
+	}
+	
+	private void SortByWCost()
+	{
+		for (int i = 1; i < field.Count; i++) {
+			Card currentCard = field[i];
+			int cardValue = currentCard.GetComponent<Card>().wCost;
+			int index = i - 1;
+			
+			while ((index > -1) && (field[index].GetComponent<Card>().wCost > cardValue)) {
+				field[index+1] = field[index];
+				index = index - 1;
+			}
+			
+			field[index+1] = currentCard;
+		}
+	}
 }

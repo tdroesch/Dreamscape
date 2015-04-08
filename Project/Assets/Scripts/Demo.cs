@@ -75,17 +75,17 @@ public class Demo : MonoBehaviour
 
 		if(GUI.Button (new Rect(20, 60, 170, 20), "Sort Cards (type)")) {
 			_sort = SortBy.type;
-			deck.Sort(_sort);
+			deck.doSort(_sort);
 		}
 
 		if(GUI.Button (new Rect(20, 80, 170, 20), "Sort Cards (iCost)")) {
 			_sort = SortBy.iCost;
-			deck.Sort(_sort);
+			deck.doSort(_sort);
 		}
 
 		if(GUI.Button (new Rect(20, 100, 170, 20), "Sort Cards (wCost)")) {
 			_sort = SortBy.wCost;
-			deck.Sort(_sort);
+			deck.doSort(_sort);
 		}
 
 //		if(GUI.Button(new Rect(20, 40, 170, 20), "Card to Deck")) {

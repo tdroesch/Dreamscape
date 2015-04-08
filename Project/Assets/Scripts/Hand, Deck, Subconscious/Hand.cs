@@ -124,7 +124,16 @@ public class Hand : MonoBehaviour, ICardContainer
 	private void SortByType()
 	{
 		for (int i = 1; i < hand.Count; i++) {
-			// TODO I forgot what types we have.
+			Card currentCard = hand[i];
+			string cardType = currentCard.GetComponent<Card>().Type;
+			int index = i - 1;
+			
+			while((index > -1) && (hand[index].GetComponent<Card>().Type != cardType)) {
+				hand[index+1] = hand[index];
+				index = index - 1;
+			}
+			
+			hand[index+1] = currentCard;
 		}
 	}
 	

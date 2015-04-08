@@ -133,7 +133,16 @@ public class Subconscious : MonoBehaviour, ICardContainer
 	private void SortByType()
 	{
 		for (int i = 1; i < subconscious.Count; i++) {
-			// TODO I forgot what types we have.
+			Card currentCard = subconscious[i];
+			string cardType = currentCard.GetComponent<Card>().Type;
+			int index = i - 1;
+			
+			while((index > -1) && (subconscious[index].GetComponent<Card>().Type != cardType)) {
+				subconscious[index+1] = subconscious[index];
+				index = index - 1;
+			}
+			
+			subconscious[index+1] = currentCard;
 		}
 	}
 	
