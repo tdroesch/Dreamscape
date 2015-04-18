@@ -38,6 +38,15 @@ namespace Dreamscape
 		//**********************************
 		// Messages to the ServerGameManager
 		// These messages will be sent directly to the ServerGameManager
+		
+		/// <summary>
+		/// Initialize a client in the state machine.
+		/// </summary>
+		/// <param name="_player">The player being initialized.</param>
+		public override void InitClient (/*There will be paramaters in here*/)
+		{
+			gm.InitClient(this);
+		}
 
 		/// <summary>
 		/// Plays the card.
@@ -78,6 +87,15 @@ namespace Dreamscape
 		{
 			gm.EndPhase(this);
 		}
+		
+		/// <summary>
+		/// Resign the specified _player.
+		/// </summary>
+		/// <param name="_player">Player who requested the command.</param>
+		public override void Resign ()
+		{
+			gm.Resign(this);
+		}
 		//**********************************
 
 
@@ -114,6 +132,12 @@ namespace Dreamscape
 		/// <param name="_playerID">ID of the player.</param>
 		/// <param name="_value">Value change to the player's imagination.</param>
 		public void ChangePlayerImagination (int _playerID, int _value){}
+		
+		/// <summary>
+		/// Ends the game with a winner.
+		/// </summary>
+		/// <param name="_playerID">ID of the player that wins.</param>
+		public void EndGame(int _playerID){}
 		//**********************************
 	}
 }

@@ -31,7 +31,16 @@ namespace Dreamscape
 		//**********************************
 		// Messages to the ServerGameManager
 		// These messages will be sent through the network.
-		
+
+		/// <summary>
+		/// Initialize a client in the state machine.
+		/// </summary>
+		/// <param name="_player">The player being initialized.</param>
+		public override void InitClient (/*There will be paramaters in here*/)
+		{
+			
+		}
+
 		/// <summary>
 		/// Plays the card.
 		/// </summary>
@@ -59,6 +68,15 @@ namespace Dreamscape
 		/// Ends the phase.
 		/// </summary>
 		public override void EndPhase (){}
+
+		/// <summary>
+		/// Resign the specified _player.
+		/// </summary>
+		/// <param name="_player">Player who requested the command.</param>
+		public override void Resign ()
+		{
+
+		}
 		//**********************************
 	}
 }

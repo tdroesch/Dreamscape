@@ -54,6 +54,12 @@ namespace Dreamscape
 		/// <param name="_playerID">ID of the player.</param>
 		/// <param name="_value">Value change to the player's imagination.</param>
 		public void ChangePlayerImagination (int _playerID, int _value){}
+		
+		/// <summary>
+		/// Ends the game with a winner.
+		/// </summary>
+		/// <param name="_playerID">ID of the player that wins.</param>
+		public void EndGame(int _playerID){}
 		//**********************************
 	}
 }

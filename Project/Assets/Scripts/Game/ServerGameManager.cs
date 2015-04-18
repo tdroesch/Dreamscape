@@ -9,8 +9,6 @@ namespace Dreamscape
 	/// Game Manager to control game initialization.
 	/// Manages players connecting and input.
 	/// </summary>
-	
-	
 	public class ServerGameManager : MonoBehaviour {
 		/// <summary>
 		/// The state machine.
@@ -49,6 +47,16 @@ namespace Dreamscape
 		
 		//**********************************
 		// Messages to the ServerGameManager
+
+
+		/// <summary>
+		/// Initialize a client in the state machine.
+		/// </summary>
+		/// <param name="_player">The player being initialized.</param>
+		public void InitClient (IClient _player/*There will be more paramaters in here*/)
+		{
+
+		}
 		
 		/// <summary>
 		/// Plays the card.
@@ -56,7 +64,7 @@ namespace Dreamscape
 		/// <param name="_cardID">ID of the card being played.</param>
 		/// <param name="_targets">The targets of the card.</param>
 		/// <param name="_destination">ID of the container it is moved to.</param>
-		/// <param name="_player">Player who requested command.</param>
+		/// <param name="_player">Player who requested the command.</param>
 		public void PlayCard (int _cardID, int[] _targets, int _destination, IClient _player)
 		{
 			stateMessage ("Start Play", _player);
@@ -68,15 +76,17 @@ namespace Dreamscape
 		/// <param name="_cardID">ID of the card being used.</param>
 		/// <param name="_abilityID">ID of the ability being used.</param>
 		/// <param name="_targets">The targets of the ability.</param>
-		/// <param name="_player">Player who requested command.</param>
-		public void UseCardAbility (int _cardID, int _abilityID, int[] _targets, IClient _player){}
+		/// <param name="_player">Player who requested the command.</param>
+		public void UseCardAbility (int _cardID, int _abilityID, int[] _targets, IClient _player)
+		{
+		}
 		
 		/// <summary>
 		/// Rearange cards possitions on the board
 		/// </summary>
 		/// <param name="_cardID">ID of the card being moved.</param>
 		/// <param name="_destination">ID of the container it is moved to.</param>
-		/// <param name="_player">Player who requested command.</param>
+		/// <param name="_player">Player who requested the command.</param>
 		public void MoveCardToField (int _cardID, int _destination, IClient _player)
 		{
 
@@ -85,10 +95,19 @@ namespace Dreamscape
 		/// <summary>
 		/// Ends the phase.
 		/// </summary>
-		/// <param name="_player">Player who requested command.</param>
+		/// <param name="_player">Player who requested the command.</param>
 		public void EndPhase (IClient _player)
 		{
 			stateMessage ("Start End", _player);
+		}
+
+		/// <summary>
+		/// Resign the specified _player.
+		/// </summary>
+		/// <param name="_player">Player who requested the command.</param>
+		public void Resign (IClient _player)
+		{
+			stateMessage ("Resign", _player);
 		}
 		//**********************************
 

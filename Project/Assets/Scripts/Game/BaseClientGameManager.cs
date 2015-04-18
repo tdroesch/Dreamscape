@@ -13,6 +13,13 @@ namespace Dreamscape
 		//**********************************
 		// Messages to the ServerGameManager
 		
+		
+		/// <summary>
+		/// Initialize a client in the state machine.
+		/// </summary>
+		/// <param name="_player">The player being initialized.</param>
+		public abstract void InitClient ();
+
 		/// <summary>
 		/// Plays the card.
 		/// </summary>
@@ -40,6 +47,12 @@ namespace Dreamscape
 		/// Ends the phase.
 		/// </summary>
 		public abstract void EndPhase ();
+		
+		/// <summary>
+		/// Resign the specified _player.
+		/// </summary>
+		/// <param name="_player">Player who requested the command.</param>
+		public abstract void Resign ();
 		//**********************************
 	}
 }
