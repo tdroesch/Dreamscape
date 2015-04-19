@@ -67,7 +67,7 @@ namespace Dreamscape
 		/// <param name="_player">Player who requested the command.</param>
 		public void PlayCard (int _cardID, int[] _targets, int _destination, IClient _player)
 		{
-			stateMessage ("Start Play", _player);
+			stateMessage ("Turn Action", new TurnActionData (TurnActionType.PlayCard, _cardID, -1, _targets, _destination, _player, WaitForResponse));
 		}
 		
 		/// <summary>
@@ -79,6 +79,7 @@ namespace Dreamscape
 		/// <param name="_player">Player who requested the command.</param>
 		public void UseCardAbility (int _cardID, int _abilityID, int[] _targets, IClient _player)
 		{
+			stateMessage ("Turn Action", new TurnActionData (TurnActionType.UseAbility, _cardID, _abilityID, _targets, -1, _player, WaitForResponse));
 		}
 		
 		/// <summary>
@@ -89,7 +90,7 @@ namespace Dreamscape
 		/// <param name="_player">Player who requested the command.</param>
 		public void MoveCardToField (int _cardID, int _destination, IClient _player)
 		{
-
+			stateMessage ("Turn Action", new TurnActionData (TurnActionType.MoveCard, _cardID, -1, null, _destination, _player, WaitForResponse));
 		}
 		
 		/// <summary>
@@ -99,6 +100,9 @@ namespace Dreamscape
 		public void EndPhase (IClient _player)
 		{
 			stateMessage ("Start End", _player);
+			stateMessage ("Next Turn", null);
+			stateMessage ("Start Draw", null);
+			stateMessage ("Start Play", null);
 		}
 
 		/// <summary>
@@ -107,7 +111,7 @@ namespace Dreamscape
 		/// <param name="_player">Player who requested the command.</param>
 		public void Resign (IClient _player)
 		{
-			stateMessage ("Resign", _player);
+			stateMessage ("End Game", _player);
 		}
 		//**********************************
 
@@ -116,5 +120,62 @@ namespace Dreamscape
 		{
 			stateMachine.message (msg, data);
 		}
+
+		/// <summary>
+		/// Waits for response.
+		/// </summary>
+		/// <param name="_time">Time.</param>
+		void WaitForResponse(float _time){
+			StartCoroutine(ResponseRoutine(_time));
+		}
+
+		/// <summary>
+		/// Response coroutine.
+		/// </summary>
+		/// <returns>The routine.</returns>
+		/// <param name="_time">Ttime.</param>
+		IEnumerator ResponseRoutine(float _time){
+			yield return new WaitForSeconds(_time);
+			stateMachine.message("End Response", null);
+		}
 	}
+
+	/// <summary>
+	/// Turn action data.
+	/// Class used to pass actions into the state machine.
+	/// </summary>
+	class TurnActionData {
+		public TurnActionType turnActionType;
+		public int cardID;
+		public int abilityID;
+		public int[] targets;
+		public int destination;
+		public IClient player;
+		public ResponseTimeCallback responseTimeCallback;
+
+		public TurnActionData (TurnActionType _turnActionType, int _cardID, int _abilityID, int[] _targets, int _destination, IClient _player, ResponseTimeCallback _responseTimeCallback)
+		{
+			turnActionType = _turnActionType;
+			cardID = _cardID;
+			abilityID = _abilityID;
+			targets = _targets;
+			destination = _destination;
+			player = _player;
+			responseTimeCallback = _responseTimeCallback;
+		}
+	}
+
+	/// <summary>
+	/// Turn action type.
+	/// </summary>
+	enum TurnActionType {
+		PlayCard,
+		UseAbility,
+		MoveCard
+	}
+
+	/// <summary>
+	/// Response time callback.
+	/// </summary>
+	delegate void ResponseTimeCallback(float _time);
 }
