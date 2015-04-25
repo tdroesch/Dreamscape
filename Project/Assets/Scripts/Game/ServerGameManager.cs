@@ -55,7 +55,7 @@ namespace Dreamscape
 		/// <param name="_player">The player being initialized.</param>
 		public void InitClient (IClient _player/*There will be more paramaters in here*/)
 		{
-
+			stateMessage ("Start Game", _player);
 		}
 		
 		/// <summary>
@@ -100,9 +100,6 @@ namespace Dreamscape
 		public void EndPhase (IClient _player)
 		{
 			stateMessage ("Start End", _player);
-			stateMessage ("Next Turn", null);
-			stateMessage ("Start Draw", null);
-			stateMessage ("Start Play", null);
 		}
 
 		/// <summary>
@@ -125,8 +122,8 @@ namespace Dreamscape
 		/// Waits for response.
 		/// </summary>
 		/// <param name="_time">Time.</param>
-		void WaitForResponse(float _time){
-			StartCoroutine(ResponseRoutine(_time));
+		void WaitForResponse(float _time, IClient _player){
+			StartCoroutine(ResponseRoutine(_time, _player));
 		}
 
 		/// <summary>
@@ -134,9 +131,11 @@ namespace Dreamscape
 		/// </summary>
 		/// <returns>The routine.</returns>
 		/// <param name="_time">Ttime.</param>
-		IEnumerator ResponseRoutine(float _time){
+		IEnumerator ResponseRoutine(float _time, IClient _player){
+			Debug.LogWarning ("Response Time Started.  Wait " + _time + " seconds.");
 			yield return new WaitForSeconds(_time);
-			stateMachine.message("End Response", null);
+			Debug.LogWarning ("Response Time Ended.");
+			stateMachine.message("End Response", _player);
 		}
 	}
 
@@ -177,5 +176,5 @@ namespace Dreamscape
 	/// <summary>
 	/// Response time callback.
 	/// </summary>
-	delegate void ResponseTimeCallback(float _time);
+	delegate void ResponseTimeCallback(float _time, IClient _player);
 }

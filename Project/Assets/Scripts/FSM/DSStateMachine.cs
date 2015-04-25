@@ -89,11 +89,25 @@ class DSStateMachine {
 			//Get the current Player
 			BoardManager bm = context.get ("Game Attribute Manager") as BoardManager;
 			int currentPlayer = bm.CurrentPlayer;
+
+			//*****TEMPORARY*************
+			if (data.GetType() == typeof(TurnActionData)){
+				TurnActionData actionData = (TurnActionData)data;
+				if (((Player)context.get ("Player " + (currentPlayer + 1))).Client.Equals (actionData.player)) {
+					context.dispatch (msg, actionData);
+				}
+			} else
+			//*****DELETE BLOCK**********
+
 			//Check to see it the current player is issueing the command
 			if (((Player)context.get ("Player " + (currentPlayer + 1))).Client.Equals (data)) {
 				context.dispatch (msg, data);
 			}
 			checkForEndGame ();
+			
+			context.dispatch ("Next Turn", null);
+			context.dispatch ("Start Draw", null);
+			context.dispatch ("Start Play", null);
 		}
 	}
 
