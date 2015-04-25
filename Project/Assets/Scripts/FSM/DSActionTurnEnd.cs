@@ -32,8 +32,7 @@ class DSActionTurnEnd : FSMAction {
 		Debug.Log ("Player 2 Stats - Will: " + ((Player)context.get ("Player 2")).Will +
 		           ", Imagination: " + ((Player)context.get ("Player 2")).Imagination +
 		           ", Hand Size: " + ((Player)context.get ("Player 2")).HandSize);
-		Debug.Log ("Press T to end turn.");
-		Debug.Log ("Press Y to end Game.");
+		Debug.Log ("Next phase starts automatically.");
 	}
 }
 

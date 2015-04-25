@@ -9,7 +9,9 @@ class DSActionResponseToggle : FSMAction {
 		BoardManager bm = context.get ("Game Attribute Manager") as BoardManager;
 		bm.WaitingForResponse = !bm.WaitingForResponse;
 		if (bm.WaitingForResponse){
-			((TurnActionData)data).responseTimeCallback(15.0f);
+			if (data.GetType() == typeof(TurnActionData)) {
+				((TurnActionData)data).responseTimeCallback(15.0f, ((TurnActionData)data).player);
+			}
 		}
 	}
 }

@@ -18,6 +18,7 @@ class DSActionTurnPlay : FSMAction {
 		//Pop all actions off the action stack
 		while (bm.ActionsOnStack()){
 			bm.PopStack();
+			currentPlayer.PlayCards();
 		}
 		Debug.Log ("Player 1 Stats - Will: " + ((Player)context.get ("Player 1")).Will +
 		           ", Imagination: " + ((Player)context.get ("Player 1")).Imagination +
@@ -25,6 +26,8 @@ class DSActionTurnPlay : FSMAction {
 		Debug.Log ("Player 2 Stats - Will: " + ((Player)context.get ("Player 2")).Will +
 		           ", Imagination: " + ((Player)context.get ("Player 2")).Imagination +
 		           ", Hand Size: " + ((Player)context.get ("Player 2")).HandSize);
-		Debug.Log ("Press R to continue turn.");
+		Debug.Log ("Press W to play cards turn.");
+		Debug.Log ("Press E to end turn.");
+		Debug.Log ("Press R to end Game.");
 	}
 }

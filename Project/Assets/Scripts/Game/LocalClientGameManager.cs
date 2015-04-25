@@ -19,17 +19,13 @@ namespace Dreamscape
 		void Update ()
 		{
 			if (Input.GetKeyDown (KeyCode.Q)) {
-				gm.stateMessage ("Start Game", this);
+				gm.InitClient(this);
 			} else if (Input.GetKeyDown (KeyCode.W)) {
-				gm.stateMessage ("Start Draw", this);
-			} else if (Input.GetKeyDown (KeyCode.E)) {
 				gm.PlayCard (0, null, 0, this);
-			} else if (Input.GetKeyDown (KeyCode.R)) {
+			} else if (Input.GetKeyDown (KeyCode.E)) {
 				gm.EndPhase (this);
-			} else if (Input.GetKeyDown (KeyCode.T)) {
-				gm.stateMessage ("Next Turn", this);
-			} else if (Input.GetKeyDown (KeyCode.Y)) {
-				gm.stateMessage ("End Game", this);
+			} else if (Input.GetKeyDown (KeyCode.R)) {
+				gm.Resign (this);
 			}
 		}
 		//***********************************************

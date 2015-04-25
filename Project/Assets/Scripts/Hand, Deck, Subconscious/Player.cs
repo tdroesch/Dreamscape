@@ -127,6 +127,9 @@ namespace Dreamscape
 			this.field = field;
 			this.discard = discard;
 			this.client = client;
+			this.sleepCycles = 3;
+			this.sleepStage = 1;
+			this.sleepActions = 0;
 		}
 	
 		/// <summary>
