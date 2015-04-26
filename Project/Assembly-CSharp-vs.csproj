@@ -46,6 +46,7 @@
 	</Reference>
   </ItemGroup>
   <ItemGroup>
+     <Compile Include="Assets\Clouds\Scripts\CloudsMovement.cs" />
      <Compile Include="Assets\Scripts\CardEffects\CardEffect.cs" />
      <Compile Include="Assets\Scripts\CardEffects\CardEventManager.cs" />
      <Compile Include="Assets\Scripts\CardEffects\DrawOnDeath.cs" />
