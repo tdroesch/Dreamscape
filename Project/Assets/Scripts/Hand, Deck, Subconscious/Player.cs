@@ -17,6 +17,9 @@ namespace Dreamscape
 		Subconscious discard;
 		int will;
 		int imagination;
+		int sleepCycles;
+		int sleepStage;
+		int sleepActions;
 		IClient client;
 	
 		//Temporary for testing purposes
@@ -39,6 +42,30 @@ namespace Dreamscape
 		/// <value>The will.</value>
 		public int Will {
 			get{ return will;}
+		}
+
+		/// <summary>
+		/// Gets the remaining sleep cycles.
+		/// </summary>
+		/// <value>The sleep cycles.</value>
+		public int SleepCycles {
+			get{ return sleepCycles;}
+		}
+
+		/// <summary>
+		/// Gets the sleep stage.
+		/// </summary>
+		/// <value>The sleep stage.</value>
+		public int SleepStage{
+			get{ return sleepStage;}
+		}
+
+		/// <summary>
+		/// Gets the sleep actions.
+		/// </summary>
+		/// <value>The sleep actions.</value>
+		public int SleepActions{
+			get{ return sleepActions;}
 		}
 	
 		/// <summary>
@@ -100,6 +127,9 @@ namespace Dreamscape
 			this.field = field;
 			this.discard = discard;
 			this.client = client;
+			this.sleepCycles = 3;
+			this.sleepStage = 1;
+			this.sleepActions = 0;
 		}
 	
 		/// <summary>

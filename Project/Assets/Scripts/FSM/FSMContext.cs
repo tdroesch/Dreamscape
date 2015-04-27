@@ -41,7 +41,6 @@ namespace FSM
         /// </summary>
         /// <param name="eventName"></param>
         /// <param name="data"></param>
-
         public void dispatch(string eventName, object data)
         {
             currentState = currentState.dispatch(this, eventName, data);

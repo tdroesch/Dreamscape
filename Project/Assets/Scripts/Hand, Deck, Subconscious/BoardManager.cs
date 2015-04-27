@@ -17,6 +17,7 @@ namespace Dreamscape
 		//Player Turn data
 		int currentPlayer;
 		int nextPlayer;
+		bool waitingForResponse;
 	
 		/// <summary>
 		/// Gets the current player.
@@ -34,11 +35,21 @@ namespace Dreamscape
 			get{ return nextPlayer;}
 			set{ nextPlayer = value;}
 		}
+
+		/// <summary>
+		/// Gets or sets a value indicating whether this <see cref="Dreamscape.BoardManager"/> waiting for response.
+		/// </summary>
+		/// <value><c>true</c> if waiting for response; otherwise, <c>false</c>.</value>
+		public bool WaitingForResponse {
+			get{ return waitingForResponse;}
+			set{ waitingForResponse = value;}
+		}
 	
 	
 		//Board Data
 		Player player1;
 		Player player2;
+		Stack actionStack;
 	
 		/// <summary>
 		/// Gets the Players current health.
@@ -144,8 +155,10 @@ namespace Dreamscape
 		{
 			nextPlayer = firstPlayer;
 			currentPlayer = firstPlayer;
+			waitingForResponse = false;
 			this.player1 = player1;
 			this.player2 = player2;
+			actionStack = new Stack();
 		}
 	
 		/// <summary>
@@ -156,6 +169,30 @@ namespace Dreamscape
 		{
 			currentPlayer = nextPlayer;
 			nextPlayer = (currentPlayer + 1) % 2;
+		}
+
+		/// <summary>
+		/// Pushs the stack.
+		/// </summary>
+		/// <param name="_turnActionData">Action data added to the stack.</param>
+		public void PushStack(TurnActionData _turnActionData){
+			actionStack.Push(_turnActionData);
+		}
+
+		/// <summary>
+		/// Pops the stack.
+		/// </summary>
+		/// <returns>Action data from the top of the stack.</returns>
+		public TurnActionData PopStack(){
+			return (TurnActionData)actionStack.Pop();
+		}
+
+		/// <summary>
+		/// Check for actions on the stack.
+		/// </summary>
+		/// <returns><c>true</c>, if stack has actions, <c>false</c> otherwise.</returns>
+		public bool ActionsOnStack(){
+			return actionStack.Count > 0;
 		}
 	}
 }
