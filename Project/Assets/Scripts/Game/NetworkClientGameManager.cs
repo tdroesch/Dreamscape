@@ -26,7 +26,50 @@ namespace Dreamscape
 		}
 		//***********************************************
 
-
+		
+		//Receivers
+		[RPC]
+		void NetPlayerCard(string _info){
+			string[] args = _info.Split (';');
+			
+			int cardID = int.Parse(args[0]);
+			int source = int.Parse(args[1]);
+			int destination = int.Parse(args[2]);
+			
+			//MoveCard(cardID, source, destination);
+			
+		}
+		
+		[RPC]
+		void NetChangeCardAttribute(string _info){
+			string[] args = _info.Split (';');
+			
+			int cardID = int.Parse(args[0]);
+			CardAttribute cardAttribute = (CardAttribute)System.Enum.Parse(typeof(CardAttribute),args[1]);
+			int destination = int.Parse(args[2]);
+			
+			//ChangeCardAttribute(cardID, cardAttribute, destination);
+			
+		}
+		
+		[RPC]
+		void NetChangePlayerAttribute(string _info){
+			string[] args = _info.Split (';');
+			
+			int cardID = int.Parse(args[0]);
+			PlayerAttribute playerAttribute = (PlayerAttribute)System.Enum.Parse(typeof(PlayerAttribute),args[1]);
+			int value = int.Parse(args[2]);
+			
+			//ChangePlayerAttribute(cardID, playerAttribute, value);
+			
+		}
+		
+		[RPC]
+		void NetEndGame(int _playerID){
+			//EndGame(_playerID);
+		}
+		
+		
 
 		//**********************************
 		// Messages to the ServerGameManager
