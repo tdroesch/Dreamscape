@@ -3,7 +3,6 @@
 # =============== #
 Project/Temp/
 Project/Library/
-
 # ===================================== #
 # Visual Studio / MonoDevelop generated #
 # ===================================== #
@@ -17,7 +16,6 @@ Project/*.sln
 *.user
 *.unityproj
 *.booproj
-
 # ============ #
 # OS generated #
 # ============ #
@@ -30,4 +28,8 @@ ehthumbs.db
 Thumbs.db
 Project/Assembly-CSharp-vs.csproj
 Project/Assembly-CSharp-vs.csproj
+<<<<<<< d2c4f229bd9cde213627e75cf7906b46fbb039be
 Project/Assembly-CSharp.csproj
+=======
+Project/Assembly-CSharp.csproj
+>>>>>>> 7e24950cd703045a59d0beb1e8176b13b6250ea9
