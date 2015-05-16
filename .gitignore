@@ -1,7 +1,31 @@
-Project/Library/metadata/fa/fa96754c7330a6c418347452efaa7c3a
-Project/Library/metadata/f5/f5f67c52d1564df4a8936ccd202a3bd8
-Project/Library/metadata/eb/eb55293253b750f439bbb159e4c068ba
-Project/Library/metadata/00/00000000000000006100000000000000
-Project/Library/metadata/00/00000000000000006100000000000000
-Project/Library/metadata/06/069a8c401020c1c4fac66341dbbfd71f
-Project/Library/metadata/00/00000000000000006100000000000000
+# =============== #
+# Unity generated #
+# =============== #
+Project/Temp/
+Project/Library/
+# ===================================== #
+# Visual Studio / MonoDevelop generated #
+# ===================================== #
+Project/ExportedObj/
+Project/obj/
+*.svd
+*.userprefs
+Project/*.csproj
+*.suo
+Project/*.sln
+*.user
+*.unityproj
+*.booproj
+# ============ #
+# OS generated #
+# ============ #
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+Project/Assembly-CSharp-vs.csproj
+Project/Assembly-CSharp-vs.csproj
+Project/Assembly-CSharp.csproj
