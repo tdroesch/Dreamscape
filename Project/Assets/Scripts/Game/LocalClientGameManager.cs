@@ -19,17 +19,13 @@ namespace Dreamscape
 		void Update ()
 		{
 			if (Input.GetKeyDown (KeyCode.Q)) {
-				gm.stateMessage ("Start Game", this);
+				gm.InitClient(this);
 			} else if (Input.GetKeyDown (KeyCode.W)) {
-				gm.stateMessage ("Start Draw", this);
-			} else if (Input.GetKeyDown (KeyCode.E)) {
 				gm.PlayCard (0, null, 0, this);
-			} else if (Input.GetKeyDown (KeyCode.R)) {
+			} else if (Input.GetKeyDown (KeyCode.E)) {
 				gm.EndPhase (this);
-			} else if (Input.GetKeyDown (KeyCode.T)) {
-				gm.stateMessage ("Next Turn", this);
-			} else if (Input.GetKeyDown (KeyCode.Y)) {
-				gm.stateMessage ("End Game", this);
+			} else if (Input.GetKeyDown (KeyCode.R)) {
+				gm.Resign (this);
 			}
 		}
 		//***********************************************
@@ -117,21 +113,15 @@ namespace Dreamscape
 		/// <param name="_cardID">ID of the card being changed.</param>
 		/// <param name="_attribute">Name of the attribute being changed.</param>
 		/// <param name="_value">Value of the change.</param>
-		public void ChangeCardAttribute (int _cardID, string _attribute, int _value){}
+		public void ChangeCardAttribute (int _cardID, CardAttribute _attribute, int _value){}
 		
 		/// <summary>
-		/// Changes the player's will.
+		/// Changes one of the player's attributes.
 		/// </summary>
 		/// <param name="_playerID">ID of the player.</param>
+		/// <param name="_attribute">Name of the attribute being changed.</param>
 		/// <param name="_value">Value change to the player's will.</param>
-		public void ChangePlayerWill (int _playerID, int _value){}
-		
-		/// <summary>
-		/// Changes the player's imagination.
-		/// </summary>
-		/// <param name="_playerID">ID of the player.</param>
-		/// <param name="_value">Value change to the player's imagination.</param>
-		public void ChangePlayerImagination (int _playerID, int _value){}
+		public void ChangePlayerAttribute (int _playerID, PlayerAttribute _attribute, int _value){}
 		
 		/// <summary>
 		/// Ends the game with a winner.

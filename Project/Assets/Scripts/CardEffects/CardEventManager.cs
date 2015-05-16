@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
+
 /// <summary>
 /// Card event manager.
 /// Handles events and effects related to cards.

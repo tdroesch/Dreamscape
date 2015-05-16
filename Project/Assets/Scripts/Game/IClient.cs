@@ -24,27 +24,24 @@ namespace Dreamscape
 		/// <param name="_cardID">ID of the card being changed.</param>
 		/// <param name="_attribute">Name of the attribute being changed.</param>
 		/// <param name="_value">Value of the change.</param>
-		void ChangeCardAttribute (int _cardID, string _attribute, int _value);
+		void ChangeCardAttribute (int _cardID, CardAttribute _attribute, int _value);
 		
 		/// <summary>
-		/// Changes the player's will.
+		/// Changes one of the player's attributes.
 		/// </summary>
 		/// <param name="_playerID">ID of the player.</param>
+		/// <param name="_attribute">Name of the attribute being changed.</param>
 		/// <param name="_value">Value change to the player's will.</param>
-		void ChangePlayerWill (int _playerID, int _value);
-		
-		/// <summary>
-		/// Changes the player's imagination.
-		/// </summary>
-		/// <param name="_playerID">ID of the player.</param>
-		/// <param name="_value">Value change to the player's imagination.</param>
-		void ChangePlayerImagination (int _playerID, int _value);
+		void ChangePlayerAttribute (int _playerID, PlayerAttribute _attribute, int _value);
 
 		/// <summary>
 		/// Ends the game with a winner.
 		/// </summary>
 		/// <param name="_playerID">ID of the player that wins.</param>
 		void EndGame(int _playerID);
+
+		//Need to add function to promp the player for input.
+
 		//**********************************
 	}
 }
