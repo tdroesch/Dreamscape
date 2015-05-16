@@ -10,7 +10,7 @@ namespace FSM
     /// Pass an init action in the constructor to configure
     /// the context map data
     /// </summary>
-    sealed class FSMContext
+	sealed class FSMContext
     {
         private FSMState currentState;
         private FSMAction initAction;
@@ -41,7 +41,6 @@ namespace FSM
         /// </summary>
         /// <param name="eventName"></param>
         /// <param name="data"></param>
-
         public void dispatch(string eventName, object data)
         {
             currentState = currentState.dispatch(this, eventName, data);

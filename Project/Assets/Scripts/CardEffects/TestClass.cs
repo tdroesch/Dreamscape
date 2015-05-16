@@ -11,7 +11,7 @@ public class TestClass : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 		if (Input.GetButtonDown("Jump") && CEM != null){
-			CEM.OnDeath();
+			CEM.OnDiscard();
 		}
 	}
 }

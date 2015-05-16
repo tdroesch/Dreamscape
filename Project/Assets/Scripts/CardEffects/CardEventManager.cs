@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
+
 /// <summary>
 /// Card event manager.
 /// Handles events and effects related to cards.
@@ -19,8 +20,10 @@ public class CardEventManager : MonoBehaviour {
 	/// The event types for each card.
 	/// </summary>
 	public event CardEvent 	TurnStart, TurnEnd, OpponentStart, OpponentEnd,
+							PhaseChange, OpponentPhaseChange,
 							Attack, DealDamage, RecieveDamage,
-							Play, Death,
+							Play, Discard, Draw,
+							AllyCardPlay, OpponentCardPlay, ChangeField,
 							AbilityUse;
 	// Use this for initialization
 	void Start () {
@@ -53,6 +56,18 @@ public class CardEventManager : MonoBehaviour {
 		OpponentEnd();
 	}
 	/// <summary>
+	/// Raises the phase change event.
+	/// </summary>
+	public void OnPhaseChange(){
+		PhaseChange();
+	}
+	/// <summary>
+	/// Raises the opponent phase chage event.
+	/// </summary>
+	public void OnOpponentPhaseChage(){
+		OpponentPhaseChange();
+	}
+	/// <summary>
 	/// Raises the attack event.
 	/// </summary>
 	public void OnAttack(){
@@ -79,8 +94,32 @@ public class CardEventManager : MonoBehaviour {
 	/// <summary>
 	/// Raises the death event.
 	/// </summary>
-	public void OnDeath(){
-		Death();
+	public void OnDiscard(){
+		Discard();
+	}
+	/// <summary>
+	/// Raises the draw event.
+	/// </summary>
+	public void OnDraw(){
+		Draw();
+	}
+	/// <summary>
+	/// Raises the ally card play event.
+	/// </summary>
+	public void OnAllyCardPlay(){
+		AllyCardPlay();
+	}
+	/// <summary>
+	/// Raises the opponent card play event.
+	/// </summary>
+	public void OnOpponentCardPlay(){
+		OpponentCardPlay();
+	}
+	/// <summary>
+	/// Raises the change field event.
+	/// </summary>
+	public void OnChangeField(){
+		ChangeField();
 	}
 	/// <summary>
 	/// Raises the ability use event.
