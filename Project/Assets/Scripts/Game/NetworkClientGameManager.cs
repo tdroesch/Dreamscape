@@ -29,7 +29,7 @@ namespace Dreamscape
 		
 		//Receivers
 		[RPC]
-		void NetPlayerCard(string _info){
+		void NetMoveCard(string _info){
 			string[] args = _info.Split (';');
 			
 			int cardID = int.Parse(args[0]);
