@@ -8,7 +8,7 @@ namespace Dreamscape
 		//***********************************************
 		//This is almost entirely for testing purposes.
 		ServerGameManager gm;
-	
+
 		// Use this for initialization
 		void Start ()
 		{
@@ -28,6 +28,7 @@ namespace Dreamscape
 				gm.Resign (this);
 			}
 		}
+
 		//***********************************************
 
 
@@ -93,6 +94,7 @@ namespace Dreamscape
 			gm.Resign(this);
 		}
 		//**********************************
+
 
 
 		//**********************************

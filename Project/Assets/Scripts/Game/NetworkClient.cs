@@ -7,11 +7,13 @@ namespace Dreamscape
 	/// Sends messages to the network controller
 	/// </summary>
 	public class NetworkClient : MonoBehaviour, IClient {
-	
+		
+		ServerGameManager gm;
+		
 		// Use this for initialization
 		void Start ()
 		{
-		
+			gm = GetComponent<ServerGameManager> ();
 		}
 		
 		// Update is called once per frame
@@ -19,7 +21,56 @@ namespace Dreamscape
 		{
 		
 		}
-
+		
+		//***********************************************
+		//Network messages
+		
+		[RPC]
+		void NetInitClient(){
+			gm.InitClient(this);
+		}
+		
+		[RPC]
+		void NetPlayCard(string _info){
+			string[] args = _info.Split (';');
+			
+			int cardID = int.Parse(args[0]);
+			int[] targets = Utility.StringToIntArray(args[1]);
+			int destination = int.Parse(args[2]);
+			
+			gm.PlayCard(cardID, targets, destination,this);
+		}
+		
+		[RPC]
+		void NetUseCardAbility(string _info){
+			string[] args = _info.Split (';');
+			
+			int cardID = int.Parse(args[0]);
+			int abilityID = int.Parse(args[1]);
+			int[] targets = Utility.StringToIntArray(args[2]);
+			
+			gm.UseCardAbility(cardID, abilityID, targets,this);
+		}
+		
+		[RPC]
+		void NetMoveCardToField(string _info){
+			string[] args = _info.Split (';');
+			
+			int cardID = int.Parse(args[0]);
+			int destination = int.Parse(args[1]);
+			
+			gm.MoveCardToField(cardID, destination,this);
+		}
+		
+		[RPC]
+		void NetEndPhase(){
+			gm.EndPhase(this);
+		}
+		
+		[RPC]
+		void NetResign(){
+			gm.Resign(this);
+		}
 		
 		//**********************************
 		// Messages from the ServerGameManager
