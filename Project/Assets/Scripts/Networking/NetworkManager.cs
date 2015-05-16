@@ -8,7 +8,7 @@ public class NetworkManager : MonoBehaviour {
 	//Server's port. Probably don't need to bother changing this ever unless we got some sick LAN parties going
 	public int connectionPort = 25001;
 	
-	
+
 	void OnGUI(){
 			
 		//Three states that the network can be in
