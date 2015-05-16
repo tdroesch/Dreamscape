@@ -2,170 +2,144 @@
 using System.Collections;
 using System.Collections.Generic;
 
-public class Hand : MonoBehaviour, ICardContainer
-{
-	public List<Card> hand = new List<Card> ();
-
-	private Deck deck;
-	private Field field;
-	private Subconscious subconscious;
-
-	void Awake()
+namespace Dreamscape {
+	public class Hand : CardContainer
 	{
-		deck = GameObject.FindGameObjectWithTag ("Deck").GetComponent<Deck> ();
-		field = GameObject.FindGameObjectWithTag ("Field").GetComponent<Field> ();
-		subconscious = GameObject.FindGameObjectWithTag ("Subconscious").GetComponent<Subconscious> ();
-	}
+//		public List<Card> hand = new List<Card> ();
+//	
+//		public void AddCard(Card _card)
+//		{
+//			if(_card != null) {
+//				hand.Add(_card);
+//			}
+//		} 
+//	
+//		public void AddCard(Card _card, Position _pos) 
+//		{
+//			if(_card != null) {	
+//				int pos;
+//
+//				if((int)_pos == 0) {
+//					pos = 0;
+//				}
+//				
+//				if((int)_pos == 1) {
+//					pos = hand.Count / 2;
+//				}
+//				
+//				if((int)_pos == 2) {
+//					pos = hand.Count;
+//				}
+//				hand.Insert(pos, _card);
+//			}
+//		}
+//	
+//		public void AddCard(Card _card, int _amount)
+//		{
+//			if (_card != null) {
+//				for (int i = 0; i < _amount; i++) {
+//					//			int pos = (int)_pos;
+//					hand.Add (new Card (_card));
+//				}
+//			}
+//		}
+//
+//		
+//		public void AddCard (Card _card, int _amount, Position _pos){
+//			if(_card != null) {
+//				int pos;
+//				//		Debug.Log(_pos);
+//				
+//				if((int)_pos == 0) {
+//					pos = 0;
+//				}
+//				
+//				if((int)_pos == 1) {
+//					pos = hand.Count / 2;
+//				}
+//				
+//				if((int)_pos == 2) {
+//					pos = hand.Count;
+//				}
+//				for (int i = 0; i < _amount; i++) {
+//					//			int pos = (int)_pos;
+//					hand.Insert (pos, new Card (_card));
+//				}
+//			}
+//		}
+//		
+//		public Card RemoveCard(Card _card)
+//		{
+//			// Removes the selected card from the hand and into the player's field
+//			if(_card != null) {
+//				hand.Remove(_card);
+//				return _card;
+//			}
+//			else return null;
+//		}
+//
+//		
+//		public Card RemoveCard (Position _pos){
+//			int pos = 0;
+//			if((int)_pos == 0) {
+//				pos = 0;
+//			}
+//			
+//			if((int)_pos == 1) {
+//				pos = hand.Count / 2;
+//			}
+//			
+//			if((int)_pos == 2) {
+//				pos = hand.Count;
+//			}
+//			Card c = hand[pos];
+//			hand.RemoveAt(pos);
+//			return c;
+//		}
+//	
+//		public Card[] RemoveCard(Card _card, int _amount) {
+//			List<Card> removedcards = new List<Card>();
+//			Card temp = null;
+//			for (int i = 0; i < _amount; i++) {
+//				if(hand.RemoveCard (_card.Name, out temp)){
+//					removedcards.Add(temp);
+//				}
+//			}
+//			return removedcards.ToArray();
+//		}
+//	
+//		public Card[] RemoveCard(Position _pos, int _amount) 
+//		{ 
+//			List<Card> removedcards = new List<Card>();
+//			int pos = 0;
+//			if((int)_pos == 0) {
+//				pos = 0;
+//			}
+//			
+//			if((int)_pos == 1) {
+//				pos = (hand.Count-_amount) / 2;
+//			}
+//			
+//			if((int)_pos == 2) {
+//				pos = hand.Count-_amount;
+//			}
+//			for(int i = 0; i < _amount; i++) {
+//				removedcards.Add(hand[pos]);
+//				hand.RemoveAt(pos);
+//			}
+//		}
 
-	public void AddCard(Card _card)
-	{
-		if(_card != null) {
-			_card.transform.position = this.gameObject.transform.position;
-			_card.GetComponent<MeshRenderer>().enabled = true;
-			
-			hand.Add(_card);
-			_card.transform.parent = this.gameObject.transform;
-		}
-		
-		CardSelection.selectedCard = null;
-	}
 
-	public void AddCard(Card _card, Demo.Position _pos) 
-	{ 
-		int pos = (int)_pos;
-		Debug.Log(_pos);
-		
-		if((int)_pos == 0) {
-			pos = 0;
+		/// <summary>
+		/// Temporary function for testing purposes
+		/// Reaveals the contents of the Hand
+		/// </summary>
+		public Card[] Peak(){
+			return container.ToArray();
 		}
-		
-		if((int)_pos == 1) {
-			pos = hand.Count / 2;
-		}
-		
-		if((int)_pos == 2) {
-			pos = hand.Count;
-		}
-
-		if(_card != null) {
-			field.AddCard(_card);
-			hand.RemoveAt(pos);
-		}
-	}
-
-	public void AddCard(Card _card, int _amount)
-	{
-		for(int i = 1; i <= (int)_amount; i++) {
-//			int pos = (int)_pos;
-
-			hand.Add(_card);
-			_card.transform.position = this.gameObject.transform.position;
-			_card.GetComponent<MeshRenderer>().enabled = true;
-			_card.transform.parent = this.gameObject.transform;
-		}
-	}
+		void Sort()
+		{
 	
-	public void RemoveCard(Card _card)
-	{
-		// Removes the selected card from the hand and into the player's field
-		if(_card != null) {
-			field.AddCard(_card);
-			hand.Remove(_card);
-		}
-	}
-
-	public void RemoveCard(Card _card, int _amount) {
-		for (int i = 1; i <= _amount; i++) {
-			hand.Remove (_card);
-		}
-	}
-
-	public void RemoveCard(Demo.Position _pos, int _amount) 
-	{ 
-		int pos = 0;
-		
-		for(int i = 1; i < (int)_amount; i++) {
-			Destroy(hand[pos].gameObject);
-			hand.RemoveAt(pos);
-		}
-	}
-
-	public void RemoveCard(Card _card, Demo.Position _position, Demo.Target _target)
-	{
-		if((int)_target == 0) {
-			deck.AddCard(_card);
-			hand.Remove (_card);
-		}
-		if((int)_target == 2) {
-			field.AddCard(_card);
-			hand.Remove(_card);
-		}
-		if((int)_target == 3) {
-			subconscious.AddCard(_card);
-			hand.Remove(_card);
-		}
-	}
-
-	public void Sort(Demo.SortBy _category)
-	{
-		switch (_category) {
-			case (Demo.SortBy.type):
-				SortByType ();
-				break;
-			case (Demo.SortBy.iCost):
-				SortByICost ();	
-				break;
-			case (Demo.SortBy.wCost):
-				SortByWCost();
-				break;
-		}
-	}
-	
-	private void SortByType()
-	{
-		for (int i = 1; i < hand.Count; i++) {
-			Card currentCard = hand[i];
-			string cardType = currentCard.GetComponent<Card>().Type;
-			int index = i - 1;
-			
-			while((index > -1) && (hand[index].GetComponent<Card>().Type != cardType)) {
-				hand[index+1] = hand[index];
-				index = index - 1;
-			}
-			
-			hand[index+1] = currentCard;
-		}
-	}
-	
-	private void SortByICost()
-	{
-		for (int i = 1; i < hand.Count; i++) {
-			Card currentCard = hand[i];
-			int cardValue = currentCard.GetComponent<Card>().iCost;
-			int index = i - 1;
-			
-			while ((index > -1) && (hand[index].GetComponent<Card>().iCost > cardValue)) {
-				hand[index+1] = hand[index];
-				index = index - 1;
-			}
-			
-			hand[index+1] = currentCard;
-		}
-	}
-	
-	private void SortByWCost()
-	{
-		for (int i = 1; i < hand.Count; i++) {
-			Card currentCard = hand[i];
-			int cardValue = currentCard.GetComponent<Card>().wCost;
-			int index = i - 1;
-			
-			while ((index > -1) && (hand[index].GetComponent<Card>().wCost > cardValue)) {
-				hand[index+1] = hand[index];
-				index = index - 1;
-			}
-			
-			hand[index+1] = currentCard;
 		}
 	}
 }
