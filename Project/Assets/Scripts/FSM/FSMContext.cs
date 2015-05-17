@@ -23,7 +23,11 @@ namespace FSM
         /// <param name="data"></param>
         public void put(string name, object data)
         {
-            contextMap.Add(name, data);
+			if (contextMap.ContainsKey (name)) {
+				contextMap [name] = data;
+			} else {
+				contextMap.Add (name, data);
+			}
         }
 
         /// <summary>

@@ -5,13 +5,13 @@ using FSM;
 namespace Dreamscape
 {
 	/// <summary>
-	/// Board manager.
-	/// Stores information that will be shared between both players
-	/// and current and next player data.
-	/// 
-	/// Properties: CurrentPlayer, NextPlayer
-	/// Accessors: int PlayerHealth(int), int PlayerResource(int), int PlayerDeckSize(int)
-	/// 	int PlayerHandSize(int), Field PlayerField(int), Subconscious PlayerDiscard(int)
+	/// <para>Board manager.</para>
+	/// <para>Stores information that will be shared between both players
+	/// and current and next player data.</para>
+	/// <para></para>
+	/// <para>Properties: CurrentPlayer, NextPlayer</para>
+	/// <para>Accessors: int PlayerHealth(int), int PlayerResource(int), int PlayerDeckSize(int)
+	/// 	int PlayerHandSize(int), Field PlayerField(int), Subconscious PlayerDiscard(int)</para>
 	/// </summary>
 	class BoardManager {
 		//Player Turn data

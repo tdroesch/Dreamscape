@@ -27,7 +27,7 @@ namespace Dreamscape
 		
 		[RPC]
 		void NetInitClient(){
-			gm.InitClient(this);
+			gm.InitClient(new int[40], new int[6], 2000, 250, this);
 		}
 		
 		[RPC]

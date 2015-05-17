@@ -6,8 +6,8 @@ using System;
 namespace Dreamscape
 {
 	/// <summary>
-	/// Game Manager to control game initialization.
-	/// Manages players connecting and input.
+	/// <para>Game Manager to control game initialization.</para>
+	/// <para>Manages players connecting and input.</para>
 	/// </summary>
 	public class ServerGameManager : MonoBehaviour {
 		/// <summary>
@@ -53,7 +53,7 @@ namespace Dreamscape
 		public void AddClient(IClient _client){
 			if (player1 == null) {
 				player1 = _client;
-			} else if (player2 == null && player1 != _client) {
+			} else if (player2 == null /*&& player1 != _client*/) {
 				player2 = _client;
 			}
 			if (player1 != null && player2 != null) {
@@ -77,9 +77,9 @@ namespace Dreamscape
 		/// Initialize a client in the state machine.
 		/// </summary>
 		/// <param name="_player">The player being initialized.</param>
-		public void InitClient (int[] _deckList, int[] _sleepPattern, IClient _player /*There will be more paramaters in here*/)
+		public void InitClient (int[] _deckList, int[] _sleepPattern, int _initWill, int _initImagination, IClient _player /*There will be more paramaters in here*/)
 		{
-			stateMessage ("Init Player", new PlayerData(_player, _deckList, _sleepPattern));
+			stateMessage ("Init Player", new PlayerData(_player, _deckList, _sleepPattern, _initWill, _initImagination));
 		}
 		
 		/// <summary>
@@ -167,11 +167,15 @@ namespace Dreamscape
 		public IClient client;
 		public int[] deckList;
 		public int[] sleepPattern;
+		public int initWill;
+		public int initImagination;
 
-		public PlayerData (IClient _client, int[] _deckList, int[] _sleepPattern){
+		public PlayerData (IClient _client, int[] _deckList, int[] _sleepPattern, int _initWill, int _initImagination){
 			client = _client;
 			deckList = _deckList;
 			sleepPattern = _sleepPattern;
+			initWill = _initWill;
+			initImagination = _initImagination;
 		}
 	}
 

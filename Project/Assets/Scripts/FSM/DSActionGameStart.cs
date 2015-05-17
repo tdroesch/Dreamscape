@@ -9,15 +9,15 @@ class DSActionGameStart : FSMAction {
 
 	public void execute (FSMContext context, object data)
 	{
-		//throw new System.NotImplementedException ();
 		if (context.get ("Player 1").GetType() == typeof(Player) && context.get ("Player 2").GetType() == typeof(Player)) {
 			// Get the who players.
 			BoardManager bm = context.get ("Game Attribute Manager") as BoardManager;
-			Player currentPlayer = (Player)context.get ("Player " + (bm.CurrentPlayer + 1));
-			Player opposingPlayer = (Player)context.get ("Player " + ((bm.CurrentPlayer + 1) % 2 + 1));
-			// Set each players starting Imagination
-			currentPlayer.Imagination += startingImagination;
-			opposingPlayer.Imagination += startingImagination;
+			Player currentPlayer = (Player)context.get ("Player 1");
+			Player opposingPlayer = (Player)context.get ("Player 2");
+			bm.init(Random.Range(0,1), currentPlayer, opposingPlayer);
+			currentPlayer = (Player)context.get ("Player " + (bm.CurrentPlayer + 1));
+			opposingPlayer = (Player)context.get ("Player " + ((bm.CurrentPlayer + 1) % 2 + 1));
+
 			// Draw cards to each players starting hand
 			for (int i=0; i<startingHandSize; i++) {
 				currentPlayer.DrawCard ();

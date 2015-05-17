@@ -13,13 +13,15 @@ namespace Dreamscape
 		void Start ()
 		{
 			gm = GetComponent<ServerGameManager> ();
+			gm.AddClient (this);
+			gm.AddClient (this);
 		}
 		
 		// Update is called once per frame
 		void Update ()
 		{
 			if (Input.GetKeyDown (KeyCode.Q)) {
-				gm.InitClient(new int[]{1,2,3}, new int[]{1,2,3}, this);
+				gm.InitClient(new int[40], new int[]{1,2,3}, 2000, 250, this);
 			} else if (Input.GetKeyDown (KeyCode.W)) {
 				gm.PlayCard (0, null, 0, this);
 			} else if (Input.GetKeyDown (KeyCode.E)) {
@@ -41,9 +43,9 @@ namespace Dreamscape
 		/// Initialize a client in the state machine.
 		/// </summary>
 		/// <param name="_player">The player being initialized.</param>
-		public override void InitClient (int[] _deckList, int[] _sleepPattern)
+		public override void InitClient (int[] _deckList, int[] _sleepPattern, int _initWill, int _initImagination)
 		{
-			gm.InitClient(_deckList, _sleepPattern, this);
+			gm.InitClient(_deckList, _sleepPattern, _initWill, _initImagination, this);
 		}
 
 		/// <summary>

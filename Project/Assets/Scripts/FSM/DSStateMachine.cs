@@ -91,6 +91,9 @@ class DSStateMachine {
 			break;
 		case "Init Player":
 			context.dispatch (msg, data);
+			if (context.get ("Player 1").GetType() == typeof(Player) && context.get ("Player 2").GetType() == typeof(Player)){
+				context.dispatch("Start Game", null);
+			}
 			break;
 		// Check if the player asking for the action can make the action.
 		// Cast the data as TurnActionData to get access to the player field.

@@ -79,7 +79,7 @@ namespace Dreamscape
 		/// Initialize a client in the state machine.
 		/// </summary>
 		/// <param name="_player">The player being initialized.</param>
-		public override void InitClient (int[] _deckList, int[] _sleepPattern)
+		public override void InitClient (int[] _deckList, int[] _sleepPattern, int _initWill, int _initImagination)
 		{
 			
 		}

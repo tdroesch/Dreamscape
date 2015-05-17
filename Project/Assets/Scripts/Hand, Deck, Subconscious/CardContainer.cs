@@ -6,15 +6,15 @@ namespace Dreamscape
 	public abstract class CardContainer : ICardContainer{
 		protected List<Card> container = new List<Card> ();
 		private static int createdContainers = 0;
-		protected int gameID;
+		protected int GUID;
 
 		protected void NewContainer(CardContainer _cc){
 			createdContainers++;
-			_cc.gameID = createdContainers;
+			_cc.GUID = createdContainers;
 		}
 
 		public int ContainerID{
-			get { return gameID;}
+			get { return GUID;}
 		}
 
 		public int Count{
