@@ -22,7 +22,7 @@ namespace Dreamscape
 		
 		}
 
-		void OnPlayerConnect(NetworkPlayer __player){
+		void OnPlayerConnected(NetworkPlayer __player){
 			gm.AddClient (this);
 		}
 		
