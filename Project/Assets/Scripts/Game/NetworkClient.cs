@@ -170,5 +170,37 @@ namespace Dreamscape
 		
 		}
 		//**********************************
+		
+		//**********************************
+		//Junk Network Functions
+		[RPC]
+		void NetTestLog(string data){
+		}
+		
+		[RPC]
+		void NetTestWarning(string data){
+		}
+		
+		//Receivers
+		
+		[RPC]
+		void NetCreateCard(string _info){
+		}
+		
+		[RPC]
+		void NetMoveCard(string _info){
+		}
+		
+		[RPC]
+		void NetChangeCardAttribute(string _info){
+		}
+		
+		[RPC]
+		void NetChangePlayerAttribute(string _info){
+		}
+		
+		[RPC]
+		void NetEndGame(int _playerID){
+		}
 	}
 }

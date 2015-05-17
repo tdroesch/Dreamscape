@@ -188,5 +188,31 @@ namespace Dreamscape
 			
 		}
 		//**********************************
+
+		//**********************************
+		//Junk Network Functions
+		[RPC]
+		void NetInitClient(string _info){
+		}
+		
+		[RPC]
+		void NetPlayCard(string _info){
+		}
+		
+		[RPC]
+		void NetUseCardAbility(string _info){
+		}
+		
+		[RPC]
+		void NetMoveCardToField(string _info){
+		}
+		
+		[RPC]
+		void NetEndPhase(){
+		}
+		
+		[RPC]
+		void NetResign(){
+		}
 	}
 }
