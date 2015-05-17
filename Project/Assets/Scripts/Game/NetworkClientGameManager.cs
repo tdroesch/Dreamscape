@@ -79,9 +79,8 @@ namespace Dreamscape
 		/// Initialize a client in the state machine.
 		/// </summary>
 		/// <param name="_player">The player being initialized.</param>
-		public override void InitClient (/*There will be paramaters in here*/)
-		{
-			
+		public override void InitClient (/*There will be paramaters in here*/){
+			networkView.RPC("NetInitClient",RPCMode.Server);
 		}
 
 		/// <summary>
@@ -90,7 +89,16 @@ namespace Dreamscape
 		/// <param name="_cardID">ID of the card being played.</param>
 		/// <param name="_targets">The targets of the card.</param>
 		/// <param name="_destination">ID of the container it is moved to.</param>
-		public override void PlayCard (int _cardID, int[] _targets, int _destination){}
+		public override void PlayCard (int _cardID, int[] _targets, int _destination){
+		
+			string data = string.Empty;
+			data+= _cardID.ToString()+";";
+			data+= Utility.IntArrayToString(_targets)+";";
+			data+= _destination.ToString();
+			
+			networkView.RPC("NetPlayCard",RPCMode.Server,data);
+		
+		}
 		
 		/// <summary>
 		/// Uses the card ability.
@@ -98,27 +106,49 @@ namespace Dreamscape
 		/// <param name="_cardID">ID of the card being used.</param>
 		/// <param name="_abilityID">ID of the ability being used.</param>
 		/// <param name="_targets">The targets of the ability.</param>
-		public override void UseCardAbility (int _cardID, int _abilityID, int[] _targets){}
+		public override void UseCardAbility (int _cardID, int _abilityID, int[] _targets){
+		
+			string data = string.Empty;
+			data+= _cardID.ToString()+";";
+			data+= _abilityID.ToString()+";";
+			data+= Utility.IntArrayToString(_targets);
+			
+			networkView.RPC("NetUseCardAbility",RPCMode.Server,data);
+			
+		}
 		
 		/// <summary>
 		/// Rearange cards possitions on the board
 		/// </summary>
 		/// <param name="_cardID">ID of the card being moved.</param>
 		/// <param name="_destination">ID of the container it is moved to.</param>
-		public override void MoveCardToField (int _cardID, int _destination){}
+		public override void MoveCardToField (int _cardID, int _destination){
+			
+			string data = string.Empty;
+			data+= _cardID.ToString()+";";
+			data+= _destination.ToString();
+			
+			networkView.RPC("NetMoveCardToField",RPCMode.Server,data);
+			
+		}
 		
 		/// <summary>
 		/// Ends the phase.
 		/// </summary>
-		public override void EndPhase (){}
+		public override void EndPhase (){
+			
+			networkView.RPC("NetEndPhase",RPCMode.Server);
+			
+		}
 
 		/// <summary>
 		/// Resign the specified _player.
 		/// </summary>
 		/// <param name="_player">Player who requested the command.</param>
-		public override void Resign ()
-		{
-
+		public override void Resign (){
+		
+			networkView.RPC("Resign",RPCMode.Server);
+			
 		}
 		//**********************************
 	}

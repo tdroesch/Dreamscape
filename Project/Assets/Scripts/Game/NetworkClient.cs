@@ -82,7 +82,15 @@ namespace Dreamscape
 		/// <param name="_cardID">ID of the card being moved.</param>
 		/// <param name="_source">ID of the container it is moved from.</param>
 		/// <param name="_destination">ID of the container it is moved to.</param>
-		public void MoveCard (int _cardID, int _source, int _destination){}
+		public void MoveCard (int _cardID, int _source, int _destination){
+			string data = string.Empty;
+			data+= _cardID.ToString()+";";
+			data+= _source.ToString()+";";
+			data+= _destination.ToString();
+			
+			networkView.RPC("NetMoveCard",RPCMode.Server,data);
+			
+		}
 		
 		/// <summary>
 		/// Changes the card attribute.
@@ -90,7 +98,16 @@ namespace Dreamscape
 		/// <param name="_cardID">ID of the card being changed.</param>
 		/// <param name="_attribute">Name of the attribute being changed.</param>
 		/// <param name="_value">Value of the change.</param>
-		public void ChangeCardAttribute (int _cardID, CardAttribute _attribute, int _value){}
+		public void ChangeCardAttribute (int _cardID, CardAttribute _attribute, int _value){
+			
+			string data = string.Empty;
+			data+= _cardID.ToString()+";";
+			data+= _attribute.ToString()+";";
+			data+= _value.ToString();
+			
+			networkView.RPC("NetChangeCardAttribute",RPCMode.Server,data);
+		
+		}
 		
 		/// <summary>
 		/// Changes one of the player's attributes.
@@ -98,13 +115,26 @@ namespace Dreamscape
 		/// <param name="_playerID">ID of the player.</param>
 		/// <param name="_attribute">Name of the attribute being changed.</param>
 		/// <param name="_value">Value change to the player's will.</param>
-		public void ChangePlayerAttribute (int _playerID, PlayerAttribute _attribute, int _value){}
+		public void ChangePlayerAttribute (int _playerID, PlayerAttribute _attribute, int _value){
+			
+			string data = string.Empty;
+			data+= _playerID.ToString()+";";
+			data+= _attribute.ToString()+";";
+			data+= _value.ToString();
+			
+			networkView.RPC("NetChangePlayerAttribute",RPCMode.Server,data);
+		
+		}
 		
 		/// <summary>
 		/// Ends the game with a winner.
 		/// </summary>
 		/// <param name="_playerID">ID of the player that wins.</param>
-		public void EndGame(int _playerID){}
+		public void EndGame(int _playerID){
+			
+			networkView.RPC("NetEndGame",RPCMode.Server);
+		
+		}
 		//**********************************
 	}
 }
