@@ -21,13 +21,24 @@ namespace Dreamscape
 		{
 		
 		}
+
+		void OnPlayerConnect(NetworkPlayer __player){
+			gm.AddClient (this);
+		}
 		
 		//***********************************************
 		//Network messages
 		
 		[RPC]
-		void NetInitClient(){
-			gm.InitClient(this);
+		void NetInitClient(string _info){
+			string[] args = _info.Split (';');
+
+			int[] deckList = Utility.StringToIntArray (args[0]);
+			int[] sleepPattern = Utility.StringToIntArray (args[1]);
+			int initWill = int.Parse (args [2]);
+			int initImagination = int.Parse (args [3]);
+
+			gm.InitClient(deckList, sleepPattern, initWill, initImagination, this);
 		}
 		
 		[RPC]
@@ -75,7 +86,22 @@ namespace Dreamscape
 		//**********************************
 		// Messages from the ServerGameManager
 		// Send message over the network to the NetworkClientGameManager
-		
+
+		/// <summary>
+		/// Creates a card.
+		/// </summary>
+		/// <param name="_cardID">The card database ID.</param>
+		/// <param name="_GUID">ID of the card being moved.</param>
+		/// <param name="_destination">ID of the card container the card is in.</param>
+		public void CreateCard(int _cardID, int _GUID, int _destination){
+			string data = string.Empty;
+			data += _cardID.ToString () + ";";
+			data += _GUID.ToString () + ";";
+			data+= _destination.ToString();
+
+			networkView.RPC ("NetCreateCard", NetworkManager.Client, data);
+		}
+
 		/// <summary>
 		/// Moves the card.
 		/// </summary>
@@ -88,7 +114,7 @@ namespace Dreamscape
 			data+= _source.ToString()+";";
 			data+= _destination.ToString();
 			
-			networkView.RPC("NetMoveCard",RPCMode.Server,data);
+			networkView.RPC("NetMoveCard",NetworkManager.Client,data);
 			
 		}
 		
@@ -105,7 +131,7 @@ namespace Dreamscape
 			data+= _attribute.ToString()+";";
 			data+= _value.ToString();
 			
-			networkView.RPC("NetChangeCardAttribute",RPCMode.Server,data);
+			networkView.RPC("NetChangeCardAttribute",NetworkManager.Client,data);
 		
 		}
 		
@@ -122,7 +148,7 @@ namespace Dreamscape
 			data+= _attribute.ToString()+";";
 			data+= _value.ToString();
 			
-			networkView.RPC("NetChangePlayerAttribute",RPCMode.Server,data);
+			networkView.RPC("NetChangePlayerAttribute",NetworkManager.Client,data);
 		
 		}
 		
@@ -132,7 +158,7 @@ namespace Dreamscape
 		/// <param name="_playerID">ID of the player that wins.</param>
 		public void EndGame(int _playerID){
 			
-			networkView.RPC("NetEndGame",RPCMode.Server);
+			networkView.RPC("NetEndGame",NetworkManager.Client);
 		
 		}
 		//**********************************

@@ -14,7 +14,6 @@ namespace Dreamscape
 		{
 			gm = GetComponent<ServerGameManager> ();
 			gm.AddClient (this);
-			gm.AddClient (this);
 		}
 		
 		// Update is called once per frame
