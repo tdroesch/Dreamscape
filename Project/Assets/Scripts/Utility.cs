@@ -14,4 +14,17 @@ public static class Utility {
 		return result;
 		
 	}
+	
+	public static string IntArrayToString(int[] _input){
+		string result = string.Empty;
+		
+		for(int i=0;i<_input.Length;i++){
+			result += i.ToString();
+			if(i != _input.Length-1){
+				result += ",";
+			}
+		}
+		
+		return result;
+	}
 }
