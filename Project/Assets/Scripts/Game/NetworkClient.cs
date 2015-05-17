@@ -86,6 +86,14 @@ namespace Dreamscape
 		//**********************************
 		// Messages from the ServerGameManager
 		// Send message over the network to the NetworkClientGameManager
+		
+		// Test functions
+		public void TestLog(string _data){
+			networkView.RPC ("NetTestLog", NetworkManager.Client, _data);
+		}
+		public void TestWarning(string _data){
+			networkView.RPC ("NetTestWarning", NetworkManager.Client, _data);
+		}
 
 		/// <summary>
 		/// Creates a card.

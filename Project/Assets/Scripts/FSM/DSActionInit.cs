@@ -15,7 +15,8 @@ class DSActionInit : FSMAction {
 		context.put ("Player 2", p2);
 		context.put ("Game Attribute Manager", bm);
 
-		Debug.LogWarning ("Game Initialized");
+		p1.TestWarning ("Game Initialized");
+		p2.TestWarning ("Game Initialized");
 //		Debug.Log ("Current Player: " + (bm.CurrentPlayer+1));
 //		Debug.Log ("Player 1 Stats - Will: " + ((Player)context.get ("Player 1")).Will +
 //		           ", Imagination: " + ((Player)context.get ("Player 1")).Imagination +
@@ -23,7 +24,8 @@ class DSActionInit : FSMAction {
 //		Debug.Log ("Player 2 Stats - Will: " + ((Player)context.get ("Player 2")).Will +
 //		           ", Imagination: " + ((Player)context.get ("Player 2")).Imagination +
 //		           ", Hand Size: " + ((Player)context.get ("Player 2")).HandSize);
-		Debug.Log ("Press Q to Add the First Player");
+		p1.TestLog ("Press Q to Add the First Player");
+		p2.TestLog ("Press Q to Add the First Player");
 	}
 
 	public DSActionInit(IClient p1, IClient p2, BoardManager bm){

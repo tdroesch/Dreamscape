@@ -23,14 +23,22 @@ class DSActionGameStart : FSMAction {
 				currentPlayer.DrawCard ();
 				opposingPlayer.DrawCard ();
 			}
-			Debug.LogWarning ("Game Start");
-			Debug.Log ("Current Player: " + (bm.CurrentPlayer + 1));
-			Debug.Log ("Player 1 Stats - Will: " + ((Player)context.get ("Player 1")).Will +
+			currentPlayer.Client.TestWarning ("Game Start");
+			currentPlayer.Client.TestLog ("Current Player: " + (bm.CurrentPlayer + 1));
+			currentPlayer.Client.TestLog ("Player 1 Stats - Will: " + ((Player)context.get ("Player 1")).Will +
 				", Imagination: " + ((Player)context.get ("Player 1")).Imagination +
 				", Hand Size: " + ((Player)context.get ("Player 1")).HandSize);
-			Debug.Log ("Player 2 Stats - Will: " + ((Player)context.get ("Player 2")).Will +
+			currentPlayer.Client.TestLog ("Player 2 Stats - Will: " + ((Player)context.get ("Player 2")).Will +
 				", Imagination: " + ((Player)context.get ("Player 2")).Imagination +
 				", Hand Size: " + ((Player)context.get ("Player 2")).HandSize);
+			opposingPlayer.Client.TestWarning ("Game Start");
+			opposingPlayer.Client.TestLog ("Current Player: " + (bm.CurrentPlayer + 1));
+			opposingPlayer.Client.TestLog ("Player 1 Stats - Will: " + ((Player)context.get ("Player 1")).Will +
+			                              ", Imagination: " + ((Player)context.get ("Player 1")).Imagination +
+			                              ", Hand Size: " + ((Player)context.get ("Player 1")).HandSize);
+			opposingPlayer.Client.TestLog ("Player 2 Stats - Will: " + ((Player)context.get ("Player 2")).Will +
+			                              ", Imagination: " + ((Player)context.get ("Player 2")).Imagination +
+			                              ", Hand Size: " + ((Player)context.get ("Player 2")).HandSize);
 		}
 	}
 
