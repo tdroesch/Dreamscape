@@ -35,6 +35,15 @@ namespace Dreamscape
 		}
 		//***********************************************
 
+		[RPC]
+		void NetTestLog(string data){
+			Debug.Log(data);
+		}
+		
+		[RPC]
+		void NetTestWarning(string data){
+			Debug.LogWarning(data);
+		}
 		
 		//Receivers
 

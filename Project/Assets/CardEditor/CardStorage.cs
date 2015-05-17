@@ -30,5 +30,16 @@ public class CardStorage{
 		dreamValue = _dreamValue;
 		ability = _ability;
 	}
+	public CardStorage(){
+		id = 0;
+		name = "Name";
+		image = new Texture2D(10,10);
+		type = types.Thing;
+		subtype = subTypes.SubThing;
+		cost = 100;
+		nightMareValue = 200;
+		dreamValue = 300;
+		ability = "None";
+	}
 	
 }
