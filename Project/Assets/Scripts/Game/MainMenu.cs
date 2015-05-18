@@ -1,25 +1,19 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-
-
 public class MainMenu : MonoBehaviour
 {
-	//new game function, loads a new level
-	public void NewGame()
-	{
-		Application.LoadLevel (1);
-	}
-
 	//card catalog function, loads the card catalog level
 	public void CardCatalog ()
 	{
-		Application.LoadLevel (2);
+		//put whatever level the card catalog is in here
+		Application.LoadLevel ("Place Holder Level");
 	}
 
 	//quit game function, exits the application
 	public void QuitGame()
 	{
+		//once the game is built, function will work
 		Application.Quit ();
 	}
 }
