@@ -18,7 +18,7 @@ namespace Dreamscape
 		/// Initialize a client in the state machine.
 		/// </summary>
 		/// <param name="_player">The player being initialized.</param>
-		public abstract void InitClient (int[] _deckList, int[] _sleepPattern, int _initWill, int _initImagination);
+		public abstract void InitClient (int charID, int[] _deckList, int[] _sleepPattern, int _initWill, int _initImagination);
 
 		/// <summary>
 		/// Plays the card.
@@ -54,25 +54,6 @@ namespace Dreamscape
 		/// <param name="_player">Player who requested the command.</param>
 		public abstract void Resign ();
 		//**********************************
-	}
-
-	/// <summary>
-	/// Player attribute.
-	/// </summary>
-	public enum PlayerAttribute {
-		Will,
-		Imagination,
-		Actions,
-		Stage,
-		Cycle
-	}
-
-	/// <summary>
-	/// Card attribute.
-	/// </summary>
-	public enum CardAttribute {
-		NightmareValue,
-		DreamValue
 	}
 }
 

@@ -26,9 +26,9 @@ namespace Dreamscape
 
 	public static class DreamscapeExtensions{
 
-		public static bool RemoveCard(this List<Card> _container, string _name, out Card _card){
+		public static bool RemoveCard(this List<Card> _container, int _cardID, out Card _card){
 			for (int i=0; i<_container.Count; i++){
-				if (_container[i].Name.Equals(_name)){
+				if (_container[i].CardID.Equals(_cardID)){
 					_card = _container[i];
 					_container.RemoveAt(i);
 					return true;

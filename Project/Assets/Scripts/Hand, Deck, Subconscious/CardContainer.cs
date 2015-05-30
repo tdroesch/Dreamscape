@@ -114,7 +114,7 @@ namespace Dreamscape
 			List<Card> removedcards = new List<Card>();
 			Card temp = null;
 			for (int i = 0; i < _amount; i++) {
-				if(container.RemoveCard (_card.Name, out temp)){
+				if(container.RemoveCard (_card.CardID, out temp)){
 					removedcards.Add(temp);
 				}
 			}

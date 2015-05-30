@@ -11,6 +11,8 @@ namespace Dreamscape
 	/// Methods: void DrawCard(), void PlayCard()
 	/// </summary>
 	public class Player {
+		int charID;
+		int guid;
 		Hand hand;
 		Deck deck;
 		Field field;
@@ -26,6 +28,22 @@ namespace Dreamscape
 		int handsize;
 		int deckSize;
 		//******************************
+
+		/// <summary>
+		/// Gets the character ID.
+		/// </summary>
+		/// <value>The character database ID value for this instance.</value>
+		public int CharID{
+			get {return charID;}
+		}
+
+		/// <summary>
+		/// Gets the GUID.
+		/// </summary>
+		/// <value>The GUID of this player for the game.</value>
+		public int GUID {
+			get {return guid;}
+		}
 	
 		/// <summary>
 		/// Gets or sets the imagination.
@@ -75,6 +93,14 @@ namespace Dreamscape
 		public int HandSize {
 			get{ return hand.Count;}
 		}
+
+		/// <summary>
+		/// Gets the hand GUID.
+		/// </summary>
+		/// <value>The hand GUID.</value>
+		public int HandGUID {
+			get {return hand.GUID;}
+		}
 	
 		/// <summary>
 		/// Gets the size of the deck.
@@ -82,6 +108,14 @@ namespace Dreamscape
 		/// <value>The size of the deck.</value>
 		public int DeckSize {
 			get{ return deck.Count;}
+		}
+
+		/// <summary>
+		/// Gets the deck GUID.
+		/// </summary>
+		/// <value>The deck GUID.</value>
+		public int DeckGUID {
+			get{ return deck.GUID;}
 		}
 	
 		/// <summary>
@@ -118,8 +152,9 @@ namespace Dreamscape
 		/// <param name="field">Field.</param>
 		/// <param name="discard">Discard.</param>
 		/// <param name="client">Client.</param>
-		public Player (int will, int imagination, Hand hand, Deck deck, Field field, Subconscious discard, IClient client)
+		public Player (int charID, int will, int imagination, Hand hand, Deck deck, Field field, Subconscious discard, IClient client)
 		{
+			this.charID = charID;
 			this.will = will;
 			this.imagination = imagination;
 			this.hand = hand;
@@ -130,14 +165,17 @@ namespace Dreamscape
 			this.sleepCycles = 3;
 			this.sleepStage = 1;
 			this.sleepActions = 0;
+			this.guid = BoardManager.GetGUID();
 		}
 	
 		/// <summary>
 		/// Draws a card.
 		/// </summary>
-		public void DrawCard ()
+		public Card DrawCard ()
 		{
-			hand.AddCard(deck.RemoveCard(Position.top));
+			Card drawnCard = deck.RemoveCard(Position.top);
+			hand.AddCard(drawnCard);
+			return drawnCard;
 		}
 	
 		/// <summary>
@@ -152,7 +190,7 @@ namespace Dreamscape
 				if (c.iCost <= this.imagination){
 					this.field.AddCard(hand.RemoveCard(c));
 					imagination -= c.iCost;
-					Debug.Log("Current Player Plays " + c.Name + " for " + c.iCost + ".");
+					Debug.Log("Current Player Plays " + c.CardID + " for " + c.iCost + ".");
 				}
 			}
 		}
