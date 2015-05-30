@@ -11,6 +11,12 @@ namespace Dreamscape
 		private Hand hand;
 		private Field field;
 		private Subconscious subconscious;
+		
+		int guid;
+		
+		public int GUID{
+			get {return guid;}
+		}
 
 		/// <summary>
 		/// Fills the deck with random card.
