@@ -20,7 +20,7 @@ namespace Dreamscape
 		void Update ()
 		{
 			if (Input.GetKeyDown (KeyCode.Q)) {
-				gm.InitClient(0, new int[40], new int[]{1,2,3}, 2000, 250, this);
+				gm.InitClient(new int[40], new int[]{1,2,3}, 2000, 250, this);
 			} else if (Input.GetKeyDown (KeyCode.W)) {
 				gm.PlayCard (0, null, 0, this);
 			} else if (Input.GetKeyDown (KeyCode.E)) {
@@ -42,9 +42,9 @@ namespace Dreamscape
 		/// Initialize a client in the state machine.
 		/// </summary>
 		/// <param name="_player">The player being initialized.</param>
-		public override void InitClient (int _charID, int[] _deckList, int[] _sleepPattern, int _initWill, int _initImagination)
+		public override void InitClient (int[] _deckList, int[] _sleepPattern, int _initWill, int _initImagination)
 		{
-			gm.InitClient(_charID, _deckList, _sleepPattern, _initWill, _initImagination, this);
+			gm.InitClient(_deckList, _sleepPattern, _initWill, _initImagination, this);
 		}
 
 		/// <summary>
@@ -135,14 +135,6 @@ namespace Dreamscape
 		/// <param name="_attribute">Name of the attribute being changed.</param>
 		/// <param name="_value">Value of the change.</param>
 		public void ChangeCardAttribute (int _GUID, CardAttribute _attribute, int _value){}
-		
-		/// <summary>
-		/// Creates a new player in the game.
-		/// </summary>
-		/// <param name="_charID">The Character Database ID.</param>
-		/// <param name="_GUID">Game ID of the player.</param>
-		/// <param name="_value">O if this character is of the recieving player.  1 if character is for opponent</param>
-		public void CreatePlayer (int _charID, int _GUID, int _opponent){}
 		
 		/// <summary>
 		/// Changes one of the player's attributes.

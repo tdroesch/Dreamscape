@@ -14,19 +14,6 @@ namespace Dreamscape
 	/// 	int PlayerHandSize(int), Field PlayerField(int), Subconscious PlayerDiscard(int)</para>
 	/// </summary>
 	class BoardManager {
-
-		/// <summary>
-		/// Gets a GUID for a newly created object.
-		/// </summary>
-		/// <returns>The GUID assigned to the object for the game.</returns>
-		public static int GetGUID ()
-		{
-			return objectsInGame++;
-		}
-
-		// Track the number of objects created in the game.
-		static int objectsInGame = 0;
-
 		//Player Turn data
 		int currentPlayer;
 		int nextPlayer;

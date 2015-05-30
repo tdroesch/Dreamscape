@@ -77,9 +77,9 @@ namespace Dreamscape
 		/// Initialize a client in the state machine.
 		/// </summary>
 		/// <param name="_player">The player being initialized.</param>
-		public void InitClient (int _charID, int[] _deckList, int[] _sleepPattern, int _initWill, int _initImagination, IClient _player /*There will be more paramaters in here*/)
+		public void InitClient (int[] _deckList, int[] _sleepPattern, int _initWill, int _initImagination, IClient _player /*There will be more paramaters in here*/)
 		{
-			stateMessage ("Init Player", new PlayerData(_charID, _deckList, _sleepPattern, _initWill, _initImagination, _player));
+			stateMessage ("Init Player", new PlayerData(_player, _deckList, _sleepPattern, _initWill, _initImagination));
 		}
 		
 		/// <summary>
@@ -167,13 +167,12 @@ namespace Dreamscape
 
 	class PlayerData{
 		public IClient client;
-		public int charID;
 		public int[] deckList;
 		public int[] sleepPattern;
 		public int initWill;
 		public int initImagination;
 
-		public PlayerData (int _charID, int[] _deckList, int[] _sleepPattern, int _initWill, int _initImagination, IClient _client){
+		public PlayerData (IClient _client, int[] _deckList, int[] _sleepPattern, int _initWill, int _initImagination){
 			client = _client;
 			deckList = _deckList;
 			sleepPattern = _sleepPattern;

@@ -33,13 +33,12 @@ namespace Dreamscape
 		void NetInitClient(string _info){
 			string[] args = _info.Split (';');
 
-			int charID = int.Parse (args[0]);
-			int[] deckList = Utility.StringToIntArray (args[1]);
-			int[] sleepPattern = Utility.StringToIntArray (args[2]);
-			int initWill = int.Parse (args [3]);
-			int initImagination = int.Parse (args [4]);
+			int[] deckList = Utility.StringToIntArray (args[0]);
+			int[] sleepPattern = Utility.StringToIntArray (args[1]);
+			int initWill = int.Parse (args [2]);
+			int initImagination = int.Parse (args [3]);
 
-			gm.InitClient(charID, deckList, sleepPattern, initWill, initImagination, this);
+			gm.InitClient(deckList, sleepPattern, initWill, initImagination, this);
 		}
 		
 		[RPC]
@@ -145,23 +144,6 @@ namespace Dreamscape
 		}
 		
 		/// <summary>
-		/// Creates a new player in the game.
-		/// </summary>
-		/// <param name="_charID">The Character Database ID.</param>
-		/// <param name="_GUID">Game ID of the player.</param>
-		/// <param name="_value">O if this character is of the recieving player.  1 if character is for opponent</param>
-		public void CreatePlayer (int _charID, int _GUID, int _opponent){
-			
-			string data = string.Empty;
-			data+= _charID.ToString()+";";
-			data+= _GUID.ToString()+";";
-			data+= _opponent.ToString();
-			
-			networkView.RPC("NetCreatePlayer",NetworkManager.Client,data);
-
-		}
-		
-		/// <summary>
 		/// Changes one of the player's attributes.
 		/// </summary>
 		/// <param name="_playerID">ID of the player.</param>
@@ -212,11 +194,7 @@ namespace Dreamscape
 		[RPC]
 		void NetChangeCardAttribute(string _info){
 		}
-
-		[RPC]
-		void NetCreatePlayer(string _info){
-		}
-
+		
 		[RPC]
 		void NetChangePlayerAttribute(string _info){
 		}

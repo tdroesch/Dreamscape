@@ -4,29 +4,28 @@ using System.Collections;
 namespace Dreamscape {
 	public class Card
 	{
-		int cardID;
-		int guid;
+		static int CardsCreated = 0;
+		int gameID;
+		public string Name;
 		public int iCost;
 		public int wCost;
 
-		public int GUID{
-			get {return guid;}
-		}
-
 		public int CardID{
-			get {return cardID;}
+			get {return gameID;}
 		}
 	
-		public Card(int cardID, int iCost, int wCost)
+		public Card(string name, int iCost, int wCost)
 		{
-			this.guid = BoardManager.GetGUID();
-	        this.cardID = cardID;
+			CardsCreated++;
+			this.gameID = CardsCreated;
+	        this.Name = name;
 	        this.iCost = iCost;
 	        this.wCost = wCost;
 		}
 		public Card(Card _card){
-			this.guid = BoardManager.GetGUID();
-			this.cardID = _card.CardID;
+			CardsCreated++;
+			this.gameID = CardsCreated;
+			this.Name = _card.Name;
 			this.iCost = _card.iCost;
 			this.wCost = _card.wCost;
 		}
