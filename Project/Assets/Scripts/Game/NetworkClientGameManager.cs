@@ -24,7 +24,7 @@ namespace Dreamscape
 		void Update ()
 		{
 			if (Input.GetKeyDown (KeyCode.Q)) {
-				InitClient(new int[40], new int[]{1,2,3}, 2000, 250);
+				InitClient(0, new int[40], new int[]{1,2,3}, 2000, 250);
 			} else if (Input.GetKeyDown (KeyCode.W)) {
 				PlayCard (0, new int[1] , 0);
 			} else if (Input.GetKeyDown (KeyCode.E)) {
@@ -83,6 +83,18 @@ namespace Dreamscape
 		}
 		
 		[RPC]
+		void NetCreatePlayer(string _info){
+			string[] args = _info.Split (';');
+			
+			int charID = int.Parse(args[0]);
+			int GUID = int.Parse(args[1]);
+			int opponent = int.Parse(args[2]);
+			
+			//CreatePlayer(charID, GUID, opponent);
+			
+		}
+		
+		[RPC]
 		void NetChangePlayerAttribute(string _info){
 			string[] args = _info.Split (';');
 			
@@ -109,13 +121,14 @@ namespace Dreamscape
 		/// Initialize a client in the state machine.
 		/// </summary>
 		/// <param name="_player">The player being initialized.</param>
-		public override void InitClient (int[] _deckList, int[] _sleepPattern, int _initWill, int _initImagination){
+		public override void InitClient (int _charID, int[] _deckList, int[] _sleepPattern, int _initWill, int _initImagination){
 
 			string data = string.Empty;
+			data += _charID.ToString() + ";";
 			data += Utility.IntArrayToString (_deckList) + ";";
 			data += Utility.IntArrayToString (_sleepPattern) + ";";
 			data += _initWill.ToString () + ";";
-			data += _initImagination.ToString () + ";";
+			data += _initImagination.ToString ();
 
 			networkView.RPC("NetInitClient",RPCMode.Server,data);
 		}

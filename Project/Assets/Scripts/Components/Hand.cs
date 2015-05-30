@@ -5,6 +5,11 @@ using System.Collections.Generic;
 namespace Dreamscape {
 	public class Hand : CardContainer
 	{
+		int guid;
+
+		public int GUID{
+			get {return guid;}
+		}
 //		public List<Card> hand = new List<Card> ();
 //	
 //		public void AddCard(Card _card)
