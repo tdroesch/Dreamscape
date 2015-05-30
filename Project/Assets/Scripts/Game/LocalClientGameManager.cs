@@ -103,7 +103,15 @@ namespace Dreamscape
 		// IClient implementation
 		// Messages from the ServerGameManager
 		// These messages will be execute the BaseClientGameManager Functions
-
+		
+		// Test functiosn
+		public void TestLog(string _data){
+			Debug.Log (_data);
+		}
+		public void TestWarning(string _data){
+			Debug.LogWarning (_data);
+		}
+		
 		/// <summary>
 		/// Creates a card.
 		/// </summary>

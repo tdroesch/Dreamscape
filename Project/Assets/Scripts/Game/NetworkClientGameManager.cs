@@ -26,7 +26,7 @@ namespace Dreamscape
 			if (Input.GetKeyDown (KeyCode.Q)) {
 				InitClient(new int[40], new int[]{1,2,3}, 2000, 250);
 			} else if (Input.GetKeyDown (KeyCode.W)) {
-				PlayCard (0, null, 0);
+				PlayCard (0, new int[1] , 0);
 			} else if (Input.GetKeyDown (KeyCode.E)) {
 				EndPhase ();
 			} else if (Input.GetKeyDown (KeyCode.R)) {
@@ -35,6 +35,15 @@ namespace Dreamscape
 		}
 		//***********************************************
 
+		[RPC]
+		void NetTestLog(string data){
+			Debug.Log(data);
+		}
+		
+		[RPC]
+		void NetTestWarning(string data){
+			Debug.LogWarning(data);
+		}
 		
 		//Receivers
 
@@ -108,7 +117,7 @@ namespace Dreamscape
 			data += _initWill.ToString () + ";";
 			data += _initImagination.ToString () + ";";
 
-			networkView.RPC("NetInitClient",RPCMode.Server);
+			networkView.RPC("NetInitClient",RPCMode.Server,data);
 		}
 
 		/// <summary>
@@ -175,9 +184,35 @@ namespace Dreamscape
 		/// <param name="_player">Player who requested the command.</param>
 		public override void Resign (){
 		
-			networkView.RPC("Resign",RPCMode.Server);
+			networkView.RPC("NetResign",RPCMode.Server);
 			
 		}
 		//**********************************
+
+		//**********************************
+		//Junk Network Functions
+		[RPC]
+		void NetInitClient(string _info){
+		}
+		
+		[RPC]
+		void NetPlayCard(string _info){
+		}
+		
+		[RPC]
+		void NetUseCardAbility(string _info){
+		}
+		
+		[RPC]
+		void NetMoveCardToField(string _info){
+		}
+		
+		[RPC]
+		void NetEndPhase(){
+		}
+		
+		[RPC]
+		void NetResign(){
+		}
 	}
 }

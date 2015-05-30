@@ -16,15 +16,25 @@ class DSActionTurnDraw : FSMAction {
 		//Draw Cards
 		currentPlayer.DrawCard ();
 		
-		Debug.LogWarning ("Turn Draw");
-		Debug.Log ("Current Player: " + (bm.CurrentPlayer+1));
-		Debug.Log ("Player 1 Stats - Will: " + ((Player)context.get ("Player 1")).Will +
+		currentPlayer.Client.TestWarning ("Turn Draw");
+		currentPlayer.Client.TestLog ("Current Player: " + (bm.CurrentPlayer+1));
+		currentPlayer.Client.TestLog ("Player 1 Stats - Will: " + ((Player)context.get ("Player 1")).Will +
 		           ", Imagination: " + ((Player)context.get ("Player 1")).Imagination +
 		           ", Hand Size: " + ((Player)context.get ("Player 1")).HandSize);
-		Debug.Log ("Player 2 Stats - Will: " + ((Player)context.get ("Player 2")).Will +
+		currentPlayer.Client.TestLog ("Player 2 Stats - Will: " + ((Player)context.get ("Player 2")).Will +
 		           ", Imagination: " + ((Player)context.get ("Player 2")).Imagination +
 		           ", Hand Size: " + ((Player)context.get ("Player 2")).HandSize);
-		Debug.Log ("Next phase starts automatically.");
+		currentPlayer.Client.TestLog ("Next phase starts automatically.");
+		
+		opposingPlayer.Client.TestWarning ("Turn Draw");
+		opposingPlayer.Client.TestLog ("Current Player: " + (bm.CurrentPlayer+1));
+		opposingPlayer.Client.TestLog ("Player 1 Stats - Will: " + ((Player)context.get ("Player 1")).Will +
+		                              ", Imagination: " + ((Player)context.get ("Player 1")).Imagination +
+		                              ", Hand Size: " + ((Player)context.get ("Player 1")).HandSize);
+		opposingPlayer.Client.TestLog ("Player 2 Stats - Will: " + ((Player)context.get ("Player 2")).Will +
+		                              ", Imagination: " + ((Player)context.get ("Player 2")).Imagination +
+		                              ", Hand Size: " + ((Player)context.get ("Player 2")).HandSize);
+		opposingPlayer.Client.TestLog ("Next phase starts automatically.");
 	}
 }
 
