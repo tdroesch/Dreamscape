@@ -156,9 +156,11 @@ namespace Dreamscape
 		/// <returns>The routine.</returns>
 		/// <param name="_time">Ttime.</param>
 		IEnumerator ResponseRoutine(float _time, IClient _player){
-			Debug.LogWarning ("Response Time Started.  Wait " + _time + " seconds.");
+			player1.TestWarning ("Response Time Started.  Wait " + _time + " seconds.");
+			player2.TestWarning ("Response Time Started.  Wait " + _time + " seconds.");
 			yield return new WaitForSeconds(_time);
-			Debug.LogWarning ("Response Time Ended.");
+			player1.TestWarning ("Response Time Ended.");
+			player2.TestWarning ("Response Time Ended.");
 			stateMachine.message("End Response", _player);
 		}
 	}

@@ -55,5 +55,24 @@ namespace Dreamscape
 		public abstract void Resign ();
 		//**********************************
 	}
+
+	/// <summary>
+	/// Player attribute.
+	/// </summary>
+	public enum PlayerAttribute {
+		Will,
+		Imagination,
+		Actions,
+		Stage,
+		Cycle
+	}
+
+	/// <summary>
+	/// Card attribute.
+	/// </summary>
+	public enum CardAttribute {
+		NightmareValue,
+		DreamValue
+	}
 }
 

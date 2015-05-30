@@ -10,6 +10,10 @@ namespace Dreamscape
 		//**********************************
 		// Messages from the ServerGameManager
 
+		// Test functiosn
+		void TestLog(string _data);
+		void TestWarning(string _data);
+
 		/// <summary>
 		/// Creates a card.
 		/// </summary>

@@ -22,7 +22,7 @@ namespace Dreamscape
 		
 		}
 
-		void OnPlayerConnect(NetworkPlayer __player){
+		void OnPlayerConnected(NetworkPlayer __player){
 			gm.AddClient (this);
 		}
 		
@@ -86,6 +86,14 @@ namespace Dreamscape
 		//**********************************
 		// Messages from the ServerGameManager
 		// Send message over the network to the NetworkClientGameManager
+		
+		// Test functions
+		public void TestLog(string _data){
+			networkView.RPC ("NetTestLog", NetworkManager.Client, _data);
+		}
+		public void TestWarning(string _data){
+			networkView.RPC ("NetTestWarning", NetworkManager.Client, _data);
+		}
 
 		/// <summary>
 		/// Creates a card.
@@ -162,5 +170,37 @@ namespace Dreamscape
 		
 		}
 		//**********************************
+		
+		//**********************************
+		//Junk Network Functions
+		[RPC]
+		void NetTestLog(string data){
+		}
+		
+		[RPC]
+		void NetTestWarning(string data){
+		}
+		
+		//Receivers
+		
+		[RPC]
+		void NetCreateCard(string _info){
+		}
+		
+		[RPC]
+		void NetMoveCard(string _info){
+		}
+		
+		[RPC]
+		void NetChangeCardAttribute(string _info){
+		}
+		
+		[RPC]
+		void NetChangePlayerAttribute(string _info){
+		}
+		
+		[RPC]
+		void NetEndGame(int _playerID){
+		}
 	}
 }
