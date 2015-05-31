@@ -33,8 +33,8 @@ namespace Dreamscape
 		/// Gets the character ID.
 		/// </summary>
 		/// <value>The character database ID value for this instance.</value>
-		public int CharID{
-			get {return charID;}
+		public int CharID {
+			get { return charID;}
 		}
 
 		/// <summary>
@@ -42,7 +42,7 @@ namespace Dreamscape
 		/// </summary>
 		/// <value>The GUID of this player for the game.</value>
 		public int GUID {
-			get {return guid;}
+			get { return guid;}
 		}
 	
 		/// <summary>
@@ -60,6 +60,7 @@ namespace Dreamscape
 		/// <value>The will.</value>
 		public int Will {
 			get{ return will;}
+			set{ will = value;}
 		}
 
 		/// <summary>
@@ -68,22 +69,42 @@ namespace Dreamscape
 		/// <value>The sleep cycles.</value>
 		public int SleepCycles {
 			get{ return sleepCycles;}
+			set{ sleepCycles = value;}
 		}
 
 		/// <summary>
 		/// Gets the sleep stage.
 		/// </summary>
 		/// <value>The sleep stage.</value>
-		public int SleepStage{
+		public int SleepStage {
 			get{ return sleepStage;}
+			set{ sleepStage = value;}
 		}
 
 		/// <summary>
 		/// Gets the sleep actions.
 		/// </summary>
 		/// <value>The sleep actions.</value>
-		public int SleepActions{
+		public int SleepActions {
 			get{ return sleepActions;}
+			set{ sleepActions = value;}
+		}
+
+		public int StageImagination {
+			get {
+				switch (sleepStage) {
+				case 1:
+					return 100;
+				case 2:
+					return 250;
+				case 3:
+					return 450;
+				case 4:
+					return 500;
+				default:
+					return 0;
+				}
+			}
 		}
 	
 		/// <summary>
@@ -99,7 +120,7 @@ namespace Dreamscape
 		/// </summary>
 		/// <value>The hand GUID.</value>
 		public int HandGUID {
-			get {return hand.GUID;}
+			get { return hand.GUID;}
 		}
 	
 		/// <summary>
@@ -165,7 +186,7 @@ namespace Dreamscape
 			this.sleepCycles = 3;
 			this.sleepStage = 1;
 			this.sleepActions = 0;
-			this.guid = BoardManager.GetGUID();
+			this.guid = BoardManager.GetGUID ();
 		}
 	
 		/// <summary>
@@ -173,8 +194,8 @@ namespace Dreamscape
 		/// </summary>
 		public Card DrawCard ()
 		{
-			Card drawnCard = deck.RemoveCard(Position.top);
-			hand.AddCard(drawnCard);
+			Card drawnCard = deck.RemoveCard (Position.top);
+			hand.AddCard (drawnCard);
 			return drawnCard;
 		}
 	
@@ -185,12 +206,12 @@ namespace Dreamscape
 		/// </summary>
 		public void PlayCards ()
 		{
-			Card[] cards = hand.Peak();
-			foreach (Card c in cards){
-				if (c.iCost <= this.imagination){
-					this.field.AddCard(hand.RemoveCard(c));
+			Card[] cards = hand.Peak ();
+			foreach (Card c in cards) {
+				if (c.iCost <= this.imagination) {
+					this.field.AddCard (hand.RemoveCard (c));
 					imagination -= c.iCost;
-					Debug.Log("Current Player Plays " + c.CardID + " for " + c.iCost + ".");
+					Debug.Log ("Current Player Plays " + c.CardID + " for " + c.iCost + ".");
 				}
 			}
 		}

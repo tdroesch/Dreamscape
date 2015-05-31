@@ -16,7 +16,7 @@ namespace Dreamscape
 		/// <summary>
 		/// Delegate outline for the card events.
 		/// </summary>
-		public delegate void GameEvent (int _playerGUID, int _componentGUID);
+		public delegate void GameEvent (TurnActionData _data);
 		/// <summary>
 		/// The event types for each card.
 		/// </summary>
@@ -35,79 +35,79 @@ namespace Dreamscape
 		/// <summary>
 		/// Raises the turn start event.
 		/// </summary>
-		public void OnTurnStart ()
+		public void OnTurnStart (TurnActionData _data)
 		{
-			TurnStart ();
+			TurnStart (_data);
 		}
 		/// <summary>
 		/// Raises the turn end event.
 		/// </summary>
-		public void OnTurnEnd ()
+		public void OnTurnEnd (TurnActionData _data)
 		{
-			TurnEnd ();
+			TurnEnd (_data);
 		}
 		/// <summary>
 		/// Raises the phase change event.
 		/// </summary>
-		public void OnPhaseChange ()
+		public void OnPhaseChange (TurnActionData _data)
 		{
-			PhaseChange ();
+			PhaseChange (_data);
 		}
 		/// <summary>
 		/// Raises the attack event.
 		/// </summary>
-		public void OnCardAttack ()
+		public void OnCardAttack (TurnActionData _data)
 		{
-			CardAttack ();
+			CardAttack (_data);
 		}
 		/// <summary>
 		/// Raises the deal damage event.
 		/// </summary>
-		public void OnCardDealDamage ()
+		public void OnCardDealDamage (TurnActionData _data)
 		{
-			CardDealDamage ();
+			CardDealDamage (_data);
 		}
 		/// <summary>
 		/// Raises the recieve damage event.
 		/// </summary>
-		public void OnCardRecieveDamage ()
+		public void OnCardRecieveDamage (TurnActionData _data)
 		{
-			CardRecieveDamage ();
+			CardRecieveDamage (_data);
 		}
 		/// <summary>
 		/// Raises the play event.
 		/// </summary>
-		public void OnCardPlay ()
+		public void OnCardPlay (TurnActionData _data)
 		{
-			CardPlay ();
+			CardPlay (_data);
 		}
 		/// <summary>
 		/// Raises the death event.
 		/// </summary>
-		public void OnCardDiscard ()
+		public void OnCardDiscard (TurnActionData _data)
 		{
-			CardDiscard ();
+			CardDiscard (_data);
 		}
 		/// <summary>
 		/// Raises the draw event.
 		/// </summary>
-		public void OnCardDraw ()
+		public void OnCardDraw (TurnActionData _data)
 		{
-			CardDraw ();
+			CardDraw (_data);
 		}
 		/// <summary>
 		/// Raises the change field event.
 		/// </summary>
-		public void OnCardChangeField ()
+		public void OnCardChangeField (TurnActionData _data)
 		{
-			CardChangeField ();
+			CardChangeField (_data);
 		}
 		/// <summary>
 		/// Raises the ability use event.
 		/// </summary>
-		public void OnCardAbilityUse ()
+		public void OnCardAbilityUse (TurnActionData _data)
 		{
-			CardAbilityUse ();
+			CardAbilityUse (_data);
 		}
 	}
 }

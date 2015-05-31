@@ -16,7 +16,7 @@ namespace Dreamscape
 		/// <summary>
 		/// Delegate outline for the card events.
 		/// </summary>
-		public delegate void CardEvent ();
+		public delegate void CardEvent (TurnActionData _data);
 		/// <summary>
 		/// The event types for each card.
 		/// </summary>
@@ -27,65 +27,65 @@ namespace Dreamscape
 		void Start ()
 		{
 			foreach (CardEffect cardEffect in cardEffects) {
-				cardEffect.RegisterEffects (this);
+				cardEffect.Effect (this);
 			}
 		}
 
 		/// <summary>
 		/// Raises the attack event.
 		/// </summary>
-		public void OnAttack ()
+		public void OnAttack (TurnActionData _data)
 		{
-			Attack ();
+			Attack (_data);
 		}
 		/// <summary>
 		/// Raises the deal damage event.
 		/// </summary>
-		public void OnDealDamage ()
+		public void OnDealDamage (TurnActionData _data)
 		{
-			DealDamage ();
+			DealDamage (_data);
 		}
 		/// <summary>
 		/// Raises the recieve damage event.
 		/// </summary>
-		public void OnRecieveDamage ()
+		public void OnRecieveDamage (TurnActionData _data)
 		{
-			RecieveDamage ();
+			RecieveDamage (_data);
 		}
 		/// <summary>
 		/// Raises the play event.
 		/// </summary>
-		public void OnPlay ()
+		public void OnPlay (TurnActionData _data)
 		{
-			Play ();
+			Play (_data);
 		}
 		/// <summary>
 		/// Raises the death event.
 		/// </summary>
-		public void OnDiscard ()
+		public void OnDiscard (TurnActionData _data)
 		{
-			Discard ();
+			Discard (_data);
 		}
 		/// <summary>
 		/// Raises the draw event.
 		/// </summary>
-		public void OnDraw ()
+		public void OnDraw (TurnActionData _data)
 		{
-			Draw ();
+			Draw (_data);
 		}
 		/// <summary>
 		/// Raises the change field event.
 		/// </summary>
-		public void OnChangeField ()
+		public void OnChangeField (TurnActionData _data)
 		{
-			ChangeField ();
+			ChangeField (_data);
 		}
 		/// <summary>
 		/// Raises the ability use event.
 		/// </summary>
-		public void OnAbilityUse ()
+		public void OnAbilityUse (TurnActionData _data)
 		{
-			AbilityUse ();
+			AbilityUse (_data);
 		}
 	}
 }

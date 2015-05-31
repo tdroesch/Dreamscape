@@ -1,5 +1,6 @@
 using UnityEngine;
 using System.Collections;
+using System.Collections.Generic;
 using FSM;
 
 namespace Dreamscape
@@ -19,13 +20,19 @@ namespace Dreamscape
 		/// Gets a GUID for a newly created object.
 		/// </summary>
 		/// <returns>The GUID assigned to the object for the game.</returns>
-		public static int GetGUID ()
+		public static int GetGUID (object o)
 		{
+			objectsDic.Add (objectsInGame, o);
 			return objectsInGame++;
+		}
+
+		public static object GetObject (int _GUID){
+			return objectsDic [_GUID];
 		}
 
 		// Track the number of objects created in the game.
 		static int objectsInGame = 0;
+		static Dictionary<int, object> objectsDic = new Dictionary<int, object>();
 
 		//Player Turn data
 		int currentPlayer;
@@ -206,6 +213,46 @@ namespace Dreamscape
 		/// <returns><c>true</c>, if stack has actions, <c>false</c> otherwise.</returns>
 		public bool ActionsOnStack(){
 			return actionStack.Count > 0;
+		}
+
+		/// <summary>
+		/// Draws a card for a player and sends the message to the clients.
+		/// </summary>
+		/// <param name="_player">The player who is drawing a card.</param>
+		public void DrawCard(Player _player){
+			Card card = _player.DrawCard ();
+			_player.Client.CreateCard(card.CardID, card.GUID, _player.HandGUID);
+			if (_player.Equals (player1)) {
+				player2.Client.CreateCard (0, card.GUID, player1.HandGUID);
+			} else {
+				player1.Client.CreateCard (0, card.GUID, player2.HandGUID);
+			}
+		}
+
+		public void ChangePlayerAttribute(Player _player, PlayerAttribute _attribute, int _value){
+			switch (_attribute) {
+			case PlayerAttribute.Actions:
+				_player.SleepActions+=_value;
+				break;
+			case PlayerAttribute.Stage:
+				_player.SleepStage+=_value;
+				break;
+			case PlayerAttribute.Cycle:
+				_player.SleepCycles+=_value;
+				break;
+			case PlayerAttribute.Will:
+				_player.Will+=_value;
+				break;
+			case PlayerAttribute.Imagination:
+				_player.Imagination+=_value;
+				break;
+			}
+			_player.Client.ChangePlayerAttribute(_player.GUID, _attribute, _value);
+			if (_player.Equals(player1)){
+				player2.Client.ChangePlayerAttribute(_player.GUID, _attribute, _value);
+			} else {
+				player1.Client.ChangePlayerAttribute(_player.GUID, _attribute, _value);
+			}
 		}
 	}
 }

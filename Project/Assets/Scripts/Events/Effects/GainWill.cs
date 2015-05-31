@@ -1,13 +1,9 @@
-﻿using UnityEngine;
-using System.Collections;
-
-
 namespace Dreamscape
 {
 	/// <summary>
-	/// Draw on death effect.
+	/// Gain will.
 	/// </summary>
-	public class DrawOnDeath : CardEffect {
+	public class GainWill : CardEffect {
 		/// <summary>
 		/// Registers the DrawCard function to the Death event on the CEM.
 		/// </summary>
@@ -16,12 +12,6 @@ namespace Dreamscape
 		{
 			CEM.Discard += DrawCard;
 		}
-		/// <summary>
-		/// Has the player draw a card.
-		/// </summary>
-		void DrawCard ()
-		{
-			Debug.Log ("You Drew a Card");
-		}
 	}
 }
+

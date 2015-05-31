@@ -27,7 +27,7 @@ namespace Dreamscape
 			NewContainer (this);
 			Random.seed = System.DateTime.Now.Millisecond;
 			for (int i = 0; i < _cardList.Length; i++) {
-				container.Add (new Card ("Card_" + i, Random.Range (1, 10) * 100, Random.Range (1, 10) * 100));
+				container.Add (new Card (i, Random.Range (1, 10) * 100, Random.Range (1, 10) * 100));
 			}
 		}
 
