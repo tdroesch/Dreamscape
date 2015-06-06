@@ -7,13 +7,8 @@ public class NetworkManager : MonoBehaviour {
 	public string connectionIP = "127.0.0.1";
 	//Server's port. Probably don't need to bother changing this ever unless we got some sick LAN parties going
 	public int connectionPort = 25001;
-
-	public static NetworkPlayer Client;
-
-	void OnPlayerConnected(NetworkPlayer _player){
-		Client = _player;
-	}
-
+	
+	
 	void OnGUI(){
 			
 		//Three states that the network can be in

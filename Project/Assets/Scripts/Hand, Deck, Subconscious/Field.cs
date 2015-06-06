@@ -4,7 +4,7 @@ using System.Collections.Generic;
 
 namespace Dreamscape
 {
-	public class Field : CardContainer{
+	public class Field : CardContainer {
 //		public List<Card> field = new List<Card> ();
 //	
 //		private Deck deck;

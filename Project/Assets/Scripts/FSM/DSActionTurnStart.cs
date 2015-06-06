@@ -24,27 +24,16 @@ class DSActionTurnStart : FSMAction {
 			card.getEventManager().OnTurnStart();
 		}*/
 
-		currentPlayer.Client.TestWarning ("Turn Start");
-		currentPlayer.Client.TestLog ("Start of Turn Card Effects");
-		currentPlayer.Client.TestLog ("Current Player: " + (bm.CurrentPlayer+1));
-		currentPlayer.Client.TestLog ("Player 1 Stats - Will: " + ((Player)context.get ("Player 1")).Will +
-		                              ", Imagination: " + ((Player)context.get ("Player 1")).Imagination +
-		                              ", Hand Size: " + ((Player)context.get ("Player 1")).HandSize);
-		currentPlayer.Client.TestLog ("Player 2 Stats - Will: " + ((Player)context.get ("Player 2")).Will +
-		                              ", Imagination: " + ((Player)context.get ("Player 2")).Imagination +
-		                              ", Hand Size: " + ((Player)context.get ("Player 2")).HandSize);
-		currentPlayer.Client.TestLog ("Press W to continue with the turn");
-		
-		opposingPlayer.Client.TestWarning ("Turn Start");
-		opposingPlayer.Client.TestLog ("Start of Turn Card Effects");
-		opposingPlayer.Client.TestLog ("Current Player: " + (bm.CurrentPlayer+1));
-		opposingPlayer.Client.TestLog ("Player 1 Stats - Will: " + ((Player)context.get ("Player 1")).Will +
-		                              ", Imagination: " + ((Player)context.get ("Player 1")).Imagination +
-		                              ", Hand Size: " + ((Player)context.get ("Player 1")).HandSize);
-		opposingPlayer.Client.TestLog ("Player 2 Stats - Will: " + ((Player)context.get ("Player 2")).Will +
-		                              ", Imagination: " + ((Player)context.get ("Player 2")).Imagination +
-		                              ", Hand Size: " + ((Player)context.get ("Player 2")).HandSize);
-		opposingPlayer.Client.TestLog ("Press W to continue with the turn");
+		Debug.LogWarning ("Turn Start");
+		Debug.Log ("Start of Turn Card Effects");
+		Debug.Log ("Current Player: " + (bm.CurrentPlayer+1));
+		Debug.Log ("Player 1 Stats - Will: " + ((Player)context.get ("Player 1")).Will +
+			", Imagination: " + ((Player)context.get ("Player 1")).Imagination +
+		           ", Hand Size: " + ((Player)context.get ("Player 1")).HandSize);
+		Debug.Log ("Player 2 Stats - Will: " + ((Player)context.get ("Player 2")).Will +
+		           ", Imagination: " + ((Player)context.get ("Player 2")).Imagination +
+		           ", Hand Size: " + ((Player)context.get ("Player 2")).HandSize);
+		Debug.Log ("Press W to continue with the turn");
 
 	}
 }

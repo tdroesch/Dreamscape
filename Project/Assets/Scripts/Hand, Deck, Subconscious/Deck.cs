@@ -167,10 +167,10 @@ namespace Dreamscape
 		/// Fills the deck with random card.
 		/// This is temporary and will be replaced with paramatized constructor.
 		/// </summary>
-		public Deck(int[] _cardList){
+		public Deck(){
 			NewContainer (this);
 			Random.seed = System.DateTime.Now.Millisecond;
-			for (int i = 0; i < _cardList.Length; i++){
+			for (int i = 0; i < 40; i++){
 				container.Add(new Card("Card_"+i, Random.Range(1,10)*100, Random.Range(1,10)*100));
 			}
 		}
