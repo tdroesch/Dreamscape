@@ -120,6 +120,8 @@ public class playerScript : MonoBehaviour
 		}
 		attackButt.SetActive (false);
 		defenseButt.SetActive (false);
+
+		// Resetting the selection 
 		_selectedCard = null;
 		cardSelected = false;
 	}
