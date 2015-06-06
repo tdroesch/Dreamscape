@@ -165,7 +165,7 @@ namespace Dreamscape
 		}
 	}
 
-	class PlayerData{
+	public class PlayerData{
 		public IClient client;
 		public int charID;
 		public int[] deckList;
@@ -186,7 +186,7 @@ namespace Dreamscape
 	/// Turn action data.
 	/// Class used to pass actions into the state machine.
 	/// </summary>
-	class TurnActionData {
+	public class TurnActionData {
 		public TurnActionType turnActionType;
 		public int GUID;
 		public int abilityID;
@@ -210,7 +210,7 @@ namespace Dreamscape
 	/// <summary>
 	/// Turn action type.
 	/// </summary>
-	enum TurnActionType {
+	public enum TurnActionType {
 		PlayCard,
 		UseAbility,
 		MoveCard
@@ -219,5 +219,5 @@ namespace Dreamscape
 	/// <summary>
 	/// Response time callback.
 	/// </summary>
-	delegate void ResponseTimeCallback(float _time, IClient _player);
+	public delegate void ResponseTimeCallback(float _time, IClient _player);
 }

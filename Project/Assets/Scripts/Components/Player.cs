@@ -186,7 +186,7 @@ namespace Dreamscape
 			this.sleepCycles = 3;
 			this.sleepStage = 1;
 			this.sleepActions = 0;
-			this.guid = BoardManager.GetGUID ();
+			this.guid = BoardManager.GetGUID (this);
 		}
 	
 		/// <summary>

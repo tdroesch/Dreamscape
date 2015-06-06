@@ -24,12 +24,12 @@ namespace Dreamscape
 								Attack, DealDamage, RecieveDamage,
 								ChangeField, AbilityUse;
 		// Use this for initialization
-		void Start ()
-		{
-			foreach (CardEffect cardEffect in cardEffects) {
-				cardEffect.Effect (this);
-			}
-		}
+//		void Start ()
+//		{
+//			foreach (CardEffect cardEffect in cardEffects) {
+//				cardEffect.Effect (this);
+//			}
+//		}
 
 		/// <summary>
 		/// Raises the attack event.

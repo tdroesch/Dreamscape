@@ -38,6 +38,7 @@ namespace Dreamscape
 		int currentPlayer;
 		int nextPlayer;
 		bool waitingForResponse;
+		GameEventManager eventManager;
 	
 		/// <summary>
 		/// Gets the current player.
@@ -64,6 +65,8 @@ namespace Dreamscape
 			get{ return waitingForResponse;}
 			set{ waitingForResponse = value;}
 		}
+
+
 	
 	
 		//Board Data

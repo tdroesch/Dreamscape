@@ -8,9 +8,9 @@
 		/// Registers the DrawCard function to the Death event on the CEM.
 		/// </summary>
 		/// <param name="CEM">The CardEventManager that will be handling the effects.</param>
-		public override void RegisterEffects (CardEventManager CEM)
+		public override void Effect (CardEventManager CEM)
 		{
-			CEM.Discard += DrawCard;
+//			CEM.Discard += DrawCard;
 		}
 	}
 }

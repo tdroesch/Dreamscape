@@ -15,7 +15,7 @@ namespace Dreamscape
 		void Update ()
 		{
 			if (Input.GetButtonDown ("Jump") && CEM != null) {
-				CEM.OnDiscard ();
+//				CEM.OnDiscard ();
 			}
 		}
 	}
