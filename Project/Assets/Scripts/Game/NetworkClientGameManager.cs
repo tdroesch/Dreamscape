@@ -130,7 +130,7 @@ namespace Dreamscape
 			data += _initWill.ToString () + ";";
 			data += _initImagination.ToString ();
 
-			networkView.RPC("NetInitClient",RPCMode.Server,data);
+			GetComponent<NetworkView>().RPC("NetInitClient",RPCMode.Server,data);
 		}
 
 		/// <summary>
@@ -146,7 +146,7 @@ namespace Dreamscape
 			data+= Utility.IntArrayToString(_targets)+";";
 			data+= _destination.ToString();
 			
-			networkView.RPC("NetPlayCard",RPCMode.Server,data);
+			GetComponent<NetworkView>().RPC("NetPlayCard",RPCMode.Server,data);
 		
 		}
 		
@@ -163,7 +163,7 @@ namespace Dreamscape
 			data+= _abilityID.ToString()+";";
 			data+= Utility.IntArrayToString(_targets);
 			
-			networkView.RPC("NetUseCardAbility",RPCMode.Server,data);
+			GetComponent<NetworkView>().RPC("NetUseCardAbility",RPCMode.Server,data);
 			
 		}
 		
@@ -178,7 +178,7 @@ namespace Dreamscape
 			data+= _cardID.ToString()+";";
 			data+= _destination.ToString();
 			
-			networkView.RPC("NetMoveCardToField",RPCMode.Server,data);
+			GetComponent<NetworkView>().RPC("NetMoveCardToField",RPCMode.Server,data);
 			
 		}
 		
@@ -187,7 +187,7 @@ namespace Dreamscape
 		/// </summary>
 		public override void EndPhase (){
 			
-			networkView.RPC("NetEndPhase",RPCMode.Server);
+			GetComponent<NetworkView>().RPC("NetEndPhase",RPCMode.Server);
 			
 		}
 
@@ -197,7 +197,7 @@ namespace Dreamscape
 		/// <param name="_player">Player who requested the command.</param>
 		public override void Resign (){
 		
-			networkView.RPC("NetResign",RPCMode.Server);
+			GetComponent<NetworkView>().RPC("NetResign",RPCMode.Server);
 			
 		}
 		//**********************************

@@ -36,7 +36,8 @@ public class CardStorage{
 		dreamValue = _dreamValue;
 		ability = _ability;
 	}
-
+	
+	//this is for writing to XML, it wasn't working instantly so i skipped to raw text
 	public static void ToXML(CardStorage _Input){
 		
 		System.Xml.Serialization.XmlSerializer writer = new System.Xml.Serialization.XmlSerializer(typeof(CardStorage));
@@ -45,6 +46,7 @@ public class CardStorage{
 		file.Close();
 	}
 	
+	//writes a card to text file. 
 	public static void ToFile(CardStorage _Input){
 		TextWriter file = new StreamWriter(@"d:\temp\testfile.txt");
 		                            
@@ -67,6 +69,7 @@ public class CardStorage{
 		
 	}
 	
+	//saves image to file
 	public static void SaveTextureToFile(Texture2D texture, string fileName){
 		byte[] bytes=texture.EncodeToPNG();
 		FileStream file = File.Open(@"d:\temp\"+fileName,FileMode.OpenOrCreate);;
