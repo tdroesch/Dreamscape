@@ -4,7 +4,7 @@ using System.Xml;
 using System.IO;
 
 public class CardEditor : MonoBehaviour {
-
+	//got started on legacy GUI scrollable area for scrolling through list of cards, probably wont use
 	public Vector2 scrollPosition = Vector2.zero;
 	void OnGUI() {
 		scrollPosition = GUI.BeginScrollView(new Rect(10, 300, 100, 100), scrollPosition, new Rect(0, 0, 220, 200));

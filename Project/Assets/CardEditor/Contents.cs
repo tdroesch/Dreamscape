@@ -2,7 +2,9 @@
 using System.Collections;
 
 public class Contents : MonoBehaviour {
-
+	
+	//this is for setting/getting uGUI card properties
+	
 	public Component id;
 	public Component name;
 	public Component image;

@@ -90,10 +90,10 @@ namespace Dreamscape
 		
 		// Test functions
 		public void TestLog(string _data){
-			networkView.RPC ("NetTestLog", NetworkManager.Client, _data);
+			GetComponent<NetworkView>().RPC ("NetTestLog", NetworkManager.Client, _data);
 		}
 		public void TestWarning(string _data){
-			networkView.RPC ("NetTestWarning", NetworkManager.Client, _data);
+			GetComponent<NetworkView>().RPC ("NetTestWarning", NetworkManager.Client, _data);
 		}
 
 		/// <summary>
@@ -108,7 +108,7 @@ namespace Dreamscape
 			data += _GUID.ToString () + ";";
 			data+= _destination.ToString();
 
-			networkView.RPC ("NetCreateCard", NetworkManager.Client, data);
+			GetComponent<NetworkView>().RPC ("NetCreateCard", NetworkManager.Client, data);
 		}
 
 		/// <summary>
@@ -123,7 +123,7 @@ namespace Dreamscape
 			data+= _source.ToString()+";";
 			data+= _destination.ToString();
 			
-			networkView.RPC("NetMoveCard",NetworkManager.Client,data);
+			GetComponent<NetworkView>().RPC("NetMoveCard",NetworkManager.Client,data);
 			
 		}
 		
@@ -140,7 +140,7 @@ namespace Dreamscape
 			data+= _attribute.ToString()+";";
 			data+= _value.ToString();
 			
-			networkView.RPC("NetChangeCardAttribute",NetworkManager.Client,data);
+			GetComponent<NetworkView>().RPC("NetChangeCardAttribute",NetworkManager.Client,data);
 		
 		}
 		
@@ -174,7 +174,7 @@ namespace Dreamscape
 			data+= _attribute.ToString()+";";
 			data+= _value.ToString();
 			
-			networkView.RPC("NetChangePlayerAttribute",NetworkManager.Client,data);
+			GetComponent<NetworkView>().RPC("NetChangePlayerAttribute",NetworkManager.Client,data);
 		
 		}
 		
@@ -184,7 +184,7 @@ namespace Dreamscape
 		/// <param name="_playerID">ID of the player that wins.</param>
 		public void EndGame(int _playerID){
 			
-			networkView.RPC("NetEndGame",NetworkManager.Client);
+			GetComponent<NetworkView>().RPC("NetEndGame",NetworkManager.Client);
 		
 		}
 		//**********************************
