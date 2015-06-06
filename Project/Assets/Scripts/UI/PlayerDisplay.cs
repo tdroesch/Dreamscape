@@ -35,7 +35,7 @@ public class PlayerDisplay : MonoBehaviour {
 	public Text ima;
 
 	// gets the name of the players
-	void Awake () {
+	void Start () {
 		if (player1)
 		{
 			cardName.text = gameManager.p1_name;
