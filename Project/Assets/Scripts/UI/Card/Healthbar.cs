@@ -25,10 +25,33 @@ public class Healthbar : MonoBehaviour {
 			}
 			initHealthBars();
 		}
-//		int barWidthScale = transform.localScale.x;
-//		int barWidth = transform.localScale.x*512;
-
-//		for (int i = 0, i < 
+		float tempHealth = currentHealth;
+		float totalBarWidth = 512 * transform.localScale.x;
+		float numBars = maxHealth/100;
+		float barWidth = (1 / numBars) * 0.95f;
+		foreach (Transform t in healthBars){
+			if (tempHealth <= 0){
+				t.gameObject.SetActive(false);
+			} else if(tempHealth <= 50){
+				t.gameObject.SetActive(true);
+				Vector3 tempScale = t.localScale;
+				tempScale.x = barWidth/2;
+				t.localScale = tempScale;
+				Vector3 tempPos = t.localPosition;
+				tempPos.x = (-(((numBars + 1.5f) * totalBarWidth) / 2) / numBars) + ((healthBars.IndexOf(t)+1) * (totalBarWidth) / numBars);
+				t.localPosition = tempPos;
+				tempHealth -= 100;
+			} else {
+				t.gameObject.SetActive(true);
+				Vector3 tempScale = t.localScale;
+				tempScale.x = barWidth;
+				t.localScale = tempScale;
+				Vector3 tempPos = t.localPosition;
+				tempPos.x = (-(numBars + 1) * totalBarWidth / 2) / numBars + (healthBars.IndexOf(t)+1) * (totalBarWidth) / numBars;
+				t.localPosition = tempPos;
+				tempHealth -= 100;
+			}
+		}
 	}
 
 	void initHealthBars ()
@@ -41,17 +64,17 @@ public class Healthbar : MonoBehaviour {
 		// 		position.x = -totalbarwidth/2+i*totalbarwidth/2/number of bars
 		float totalBarWidth = 512 * transform.localScale.x;
 		float numBars = maxHealth/100;
-		float barWidth = (1 / numBars) * 0.98f;
+		float barWidth = (1 / numBars) * 0.95f;
 		for (int i=1; i<=Mathf.CeilToInt(numBars); i++) {
 			float posX = (-(numBars + 1) * totalBarWidth / 2) / numBars + i * (totalBarWidth) / numBars;
 			float scalX = barWidth;
-			if (Mathf.FloorToInt (numBars) > i) {
+			if (Mathf.FloorToInt (numBars) < i) {
 				scalX = barWidth/2;
 				posX = (-(((numBars + 1.5f) * totalBarWidth) / 2) / numBars) + (i * (totalBarWidth) / numBars);
 			}
 			Transform newBar = Instantiate (healthBar) as Transform;
 			newBar.parent = transform;
-			newBar.position = new Vector3 (posX, 0, 0);
+			newBar.localPosition = new Vector3 (posX, 0, 0);
 			newBar.localScale = new Vector3 (scalX, 0.75f, 1);
 			healthBars.Add (newBar);
 		}
