@@ -20,8 +20,8 @@ class DSActionGameStart : FSMAction {
 
 			// Draw cards to each players starting hand
 			for (int i=0; i<startingHandSize; i++) {
-				currentPlayer.DrawCard ();
-				opposingPlayer.DrawCard ();
+				bm.DrawCard(currentPlayer);
+				bm.DrawCard(opposingPlayer);
 			}
 			currentPlayer.Client.TestWarning ("Game Start");
 			currentPlayer.Client.TestLog ("Current Player: " + (bm.CurrentPlayer + 1));

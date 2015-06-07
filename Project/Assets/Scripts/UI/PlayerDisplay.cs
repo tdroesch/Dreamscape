@@ -26,7 +26,7 @@ public class PlayerDisplay : MonoBehaviour {
 	public Sprite slucid;
 
 	// references to the UI elements that the game manager will alter
-	public Text name;
+	public Text cardName;
 	public Image stagesLeft;
 	public Text cyclesLeft;
 	public Image currStage1;
@@ -38,15 +38,15 @@ public class PlayerDisplay : MonoBehaviour {
 	void Awake () {
 		if (player1)
 		{
-			name.text = gameManager.p1_name;
+			cardName.text = gameManager.p1_name;
 		}
 		else
 		{
-			name.text = gameManager.p2_name;
+			cardName.text = gameManager.p2_name;
 		}
 
 		// changes font to the set font
-		name.font = uiFont;
+		cardName.font = uiFont;
 		cyclesLeft.font = uiFont;
 		currStage2.font = uiFont;
 		will.font = uiFont;

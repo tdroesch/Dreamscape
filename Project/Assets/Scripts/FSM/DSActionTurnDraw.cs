@@ -12,9 +12,9 @@ class DSActionTurnDraw : FSMAction {
 		Player currentPlayer = (Player)context.get ("Player "+(bm.CurrentPlayer+1));
 		Player opposingPlayer = (Player)context.get ("Player "+((bm.CurrentPlayer+1)%2+1));
 		//Gain Imagination
-		currentPlayer.Imagination += 200;
+		bm.ChangePlayerAttribute(currentPlayer, PlayerAttribute.Imagination, currentPlayer.StageImagination);
 		//Draw Cards
-		currentPlayer.DrawCard ();
+		bm.DrawCard(currentPlayer);
 		
 		currentPlayer.Client.TestWarning ("Turn Draw");
 		currentPlayer.Client.TestLog ("Current Player: " + (bm.CurrentPlayer+1));

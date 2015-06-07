@@ -77,9 +77,9 @@ namespace Dreamscape
 		/// Initialize a client in the state machine.
 		/// </summary>
 		/// <param name="_player">The player being initialized.</param>
-		public void InitClient (int[] _deckList, int[] _sleepPattern, int _initWill, int _initImagination, IClient _player /*There will be more paramaters in here*/)
+		public void InitClient (int _charID, int[] _deckList, int[] _sleepPattern, int _initWill, int _initImagination, IClient _player /*There will be more paramaters in here*/)
 		{
-			stateMessage ("Init Player", new PlayerData(_player, _deckList, _sleepPattern, _initWill, _initImagination));
+			stateMessage ("Init Player", new PlayerData(_charID, _deckList, _sleepPattern, _initWill, _initImagination, _player));
 		}
 		
 		/// <summary>
@@ -165,14 +165,15 @@ namespace Dreamscape
 		}
 	}
 
-	class PlayerData{
+	public class PlayerData{
 		public IClient client;
+		public int charID;
 		public int[] deckList;
 		public int[] sleepPattern;
 		public int initWill;
 		public int initImagination;
 
-		public PlayerData (IClient _client, int[] _deckList, int[] _sleepPattern, int _initWill, int _initImagination){
+		public PlayerData (int _charID, int[] _deckList, int[] _sleepPattern, int _initWill, int _initImagination, IClient _client){
 			client = _client;
 			deckList = _deckList;
 			sleepPattern = _sleepPattern;
@@ -185,7 +186,7 @@ namespace Dreamscape
 	/// Turn action data.
 	/// Class used to pass actions into the state machine.
 	/// </summary>
-	class TurnActionData {
+	public class TurnActionData {
 		public TurnActionType turnActionType;
 		public int GUID;
 		public int abilityID;
@@ -209,7 +210,7 @@ namespace Dreamscape
 	/// <summary>
 	/// Turn action type.
 	/// </summary>
-	enum TurnActionType {
+	public enum TurnActionType {
 		PlayCard,
 		UseAbility,
 		MoveCard
@@ -218,5 +219,5 @@ namespace Dreamscape
 	/// <summary>
 	/// Response time callback.
 	/// </summary>
-	delegate void ResponseTimeCallback(float _time, IClient _player);
+	public delegate void ResponseTimeCallback(float _time, IClient _player);
 }

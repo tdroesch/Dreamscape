@@ -18,7 +18,7 @@ namespace Dreamscape
 		/// Creates a card.
 		/// </summary>
 		/// <param name="_cardID">The card database ID.</param>
-		/// <param name="_GUID">ID of the card being moved.</param>
+		/// <param name="_GUID">Game ID of the card being created.</param>
 		/// <param name="_destination">ID of the card container the card is in.</param>
 		void CreateCard(int _cardID, int _GUID, int _destination);
 
@@ -37,13 +37,21 @@ namespace Dreamscape
 		/// <param name="_attribute">Name of the attribute being changed.</param>
 		/// <param name="_value">Value of the change.</param>
 		void ChangeCardAttribute (int _GUID, CardAttribute _attribute, int _value);
+
+		/// <summary>
+		/// Creates a new player in the game.
+		/// </summary>
+		/// <param name="_charID">The Character Database ID.</param>
+		/// <param name="_GUID">Game ID of the player.</param>
+		/// <param name="_value">O if this character is of the recieving player.  1 if character is for opponent</param>
+		void CreatePlayer (int _charID, int _GUID, int _opponent);
 		
 		/// <summary>
 		/// Changes one of the player's attributes.
 		/// </summary>
 		/// <param name="_GUID">ID of the player.</param>
 		/// <param name="_attribute">Name of the attribute being changed.</param>
-		/// <param name="_value">Value change to the player's will.</param>
+		/// <param name="_value">Value change to the player's attribute.</param>
 		void ChangePlayerAttribute (int _GUID, PlayerAttribute _attribute, int _value);
 
 		/// <summary>
@@ -73,7 +81,8 @@ namespace Dreamscape
 	/// </summary>
 	public enum CardAttribute {
 		NightmareValue,
-		DreamValue
+		DreamValue,
+		CardID
 	}
 }
 
