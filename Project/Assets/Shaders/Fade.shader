@@ -1,7 +1,7 @@
 ﻿Shader "Custom/Fade" {
 	Properties {
 		_MainTex ("Base (RGB)", 2D) = "white" {}
-		_FadeDistance ("Fade Distance", Range (-100, 100)) = 50
+		_FadeDistance ("Fade Distance", Range (-80, 80)) = 50
 	}
 	SubShader {
 		Tags { "Queue"="Transparent" "IgnoreProjector"="True" "RenderType"="Transparent" }
