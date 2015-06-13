@@ -142,9 +142,53 @@ namespace Dreamscape {
 		public Card[] Peak(){
 			return container.ToArray();
 		}
-		void Sort()
-		{
-	
-		}
+
+		//	private void SortByType()
+		//	{
+		//		for (int i = 1; i < deck.Count; i++) {
+		//			Card currentCard = deck[i];
+		//			string cardType = currentCard.GetComponent<Card>().Type;
+		//			int index = i - 1;
+		//
+		//			while((index > -1) && (deck[index].GetComponent<Card>().Type != cardType)) {
+		//				deck[index+1] = deck[index];
+		//				index = index - 1;
+		//			}
+		//
+		//			deck[index+1] = currentCard;
+		//		}
+		//	}
+		
+		//	private void SortByICost()
+		//	{
+		//		for (int i = 1; i < deck.Count; i++) {
+		//			Card currentCard = deck[i];
+		//			int cardValue = currentCard.GetComponent<Card>().iCost;
+		//			int index = i - 1;
+		//
+		//			while ((index > -1) && (deck[index].GetComponent<Card>().iCost > cardValue)) {
+		//				deck[index+1] = deck[index];
+		//				index = index - 1;
+		//			}
+		//
+		//			deck[index+1] = currentCard;
+		//		}
+		//	}
+		
+		//	private void SortByWCost()
+		//	{
+		//		for (int i = 1; i < deck.Count; i++) {
+		//			Card currentCard = deck[i];
+		//			int cardValue = currentCard.GetComponent<Card>().wCost;
+		//			int index = i - 1;
+		//			
+		//			while ((index > -1) && (deck[index].GetComponent<Card>().wCost > cardValue)) {
+		//				deck[index+1] = deck[index];
+		//				index = index - 1;
+		//			}
+		//			
+		//			deck[index+1] = currentCard;
+		//		}
+		//	}
 	}
 }
